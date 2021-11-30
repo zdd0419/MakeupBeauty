@@ -1,4 +1,4 @@
-package com.example.makeupbeauty.ui.theme.BottomNavigation
+package com.example.makeupbeauty.BottomNavigation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -10,20 +10,27 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.makeupbeauty.Screens.*
+
 //底部导航
 @ExperimentalAnimationApi
 @Composable
-fun BottomNavigaition(
-    currentScreenId:String,
-    onItemSelected:(Screen)->Unit
+fun BottomNavigation(
+    navController: NavController
 ) {
-    val items = Screen.Items.list
+    val items = NavigationItem.Items.list
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
 
     Row(
         modifier= Modifier
@@ -35,9 +42,24 @@ fun BottomNavigaition(
     ){
         items.forEach{
             item->
-            BottomNavigationItem(item = item, isSelected = item.id==currentScreenId) {
-                onItemSelected(item)
-            }
+            BottomNavigationItem(item = item, isSelected = currentRoute == item.id,
+            onClick =  {
+                navController.navigate(item.id) {
+                    // Pop up to the start destination of the graph to
+                    // avoid building up a large stack of destinations
+                    // on the back stack as users select items
+                    navController.graph.startDestinationRoute?.let { route ->
+                        popUpTo(route) {
+                            saveState = true
+                        }
+                    }
+                    // Avoid multiple copies of the same destination when
+                    // reselecting the same item
+                    launchSingleTop = true
+                    // Restore state when reselecting a previously selected item
+                    restoreState = true
+                }
+            })
         }
     }
 }
@@ -46,11 +68,9 @@ fun BottomNavigaition(
 
 @ExperimentalAnimationApi
 @Composable
-fun BottomNavigationItem(item:Screen,isSelected:Boolean,onClick:()->Unit){
+fun BottomNavigationItem(item: NavigationItem, isSelected:Boolean, onClick:()->Unit){
     val background=if(isSelected) MaterialTheme.colors.primary.copy(alpha = 0.1f) else Color.Transparent
     val contentColor=if(isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground
-
-
 
     Box(modifier= Modifier
         .clip(CircleShape)
@@ -74,16 +94,7 @@ fun BottomNavigationItem(item:Screen,isSelected:Boolean,onClick:()->Unit){
 @ExperimentalAnimationApi
 @Composable
 @Preview
-fun prev1(){
-    BottomNavigaition(currentScreenId = Screen.Home.id){
-
-    }
-}
-
-@ExperimentalAnimationApi
-@Composable
-@Preview
 fun prev2(){
-BottomNavigationItem(item = Screen.Home, isSelected = true) {
+BottomNavigationItem(item = NavigationItem.Home, isSelected = true) {
 
 }}
