@@ -2,6 +2,7 @@ package com.example.makeupbeauty.Screens
 
 
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -24,6 +25,9 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.component.card.FaceLabCard
+import com.example.makeupbeauty.component.card.HairLabCard
+import com.example.makeupbeauty.component.card.HandLabCard
 import com.example.makeupbeauty.data.DemoDataProvider
 import androidx.compose.foundation.lazy.items as items
 
@@ -31,48 +35,44 @@ import androidx.compose.foundation.lazy.items as items
 @Composable
 fun HomeScreen() {
     val scrollState = rememberScrollState(0)
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
     ) {
-      
-        ScrollableContent(scrollState = scrollState)
+        VerticalListView()
     }
 }
 
 
 @Composable
-fun ScrollableContent(scrollState: ScrollState){
+fun HomeHeader(){
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .background(MaterialTheme.colors.background)
-                .padding(20.dp)
-//                .verticalScroll(state = scrollState)
+                .padding(horizontal = 10.dp)
+                .padding(top = 16.dp)
+                .padding(bottom = 0.dp)
         ) {
-//
             //首页主图
             Image(
                 painter = painterResource(id = com.example.makeupbeauty.R.drawable.makeup),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .width(400.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp)
                     .height(150.dp)
             )
             Row {
-                CardDemo1()
-                CardDemo2()
-                CardDemo3()
+                HairLabCard()
+                FaceLabCard()
+                HandLabCard()
                 //三个实验室的part
-
             }
-
+            Spacer(modifier = Modifier.height(16.dp))
             RecommendTitle("每日推荐")
-            VerticalListView()
-
         }
 
 
@@ -82,10 +82,11 @@ fun ScrollableContent(scrollState: ScrollState){
 fun RecommendTitle(text: String, modifier: Modifier = Modifier){
     Text(
         text = text,
+        fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         color = Color.Blue,
         textAlign = TextAlign.Center,
-        modifier = modifier.padding(8.dp,4.dp,8.dp,24.dp)
+        modifier = modifier.padding(8.dp,4.dp,8.dp,0.dp)
     )
 }
 
@@ -95,123 +96,13 @@ fun HomeScreenPreview() {
     HomeScreen()
 }
 
-
-@Composable
-fun CardDemo1() {
-    Card(
-        modifier = Modifier
-            .padding(10.dp) // 外边距
-            .clickable { }
-            .wrapContentSize()
-            ,
-        // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
-        // 将无法显示波纹效果
-
-        elevation = 6.dp // 设置阴影
-    ) {
-        Row(
-            modifier = Modifier.padding(10.dp) // 内边距
-        ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("美发实验室")
-                    }
-                }
-            )
-            Image(painter = painterResource(id = com.example.makeupbeauty.R.drawable.hair),
-                contentDescription =null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
-            )
-        }
-    }
-}
-
-
-
-@Composable
-fun CardDemo2() {
-    Card(
-        modifier = Modifier
-            .padding(10.dp) // 外边距
-            .clickable { }
-            .wrapContentSize()
-        ,
-
-        // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
-        // 将无法显示波纹效果
-
-        elevation = 6.dp // 设置阴影
-    ) {
-        Row(
-            modifier = Modifier.padding(10.dp) // 内边距
-        ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("脸部实验室")
-                    }
-                }
-            )
-            Image(painter = painterResource(id = com.example.makeupbeauty.R.drawable.face),
-                contentDescription =null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
-            )
-        }
-    }
-}
-
-@Composable
-fun CardDemo3() {
-    Card(
-        modifier = Modifier
-            .padding(10.dp) // 外边距
-            .clickable { }
-            .wrapContentSize()
-        ,
-
-        // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
-        // 将无法显示波纹效果
-
-        elevation = 6.dp // 设置阴影
-    ) {
-        Row(
-            modifier = Modifier.padding(10.dp) // 内边距
-        ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("美甲实验室")
-                    }
-                }
-            )
-            Image(painter = painterResource(id = com.example.makeupbeauty.R.drawable.hand),
-                contentDescription =null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
-            )
-        }
-    }
-}
-
-
-
-
 @Composable
 fun VerticalListView() {
     val list = remember { DemoDataProvider.itemList }
     LazyColumn {
+        item {
+            HomeHeader()
+        }
         items(
             items = list,
             itemContent = { item -> VerticalListItem(item = item)
