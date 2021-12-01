@@ -26,15 +26,13 @@ fun StoreScreen() {
             .background(MaterialTheme.colors.background)
             .wrapContentSize(Alignment.Center)
     ) {
-//        Text(
-//            text = "Store View",
-//            fontWeight = FontWeight.Bold,
-//            color = Color.White,
-//            modifier = Modifier.align(Alignment.CenterHorizontally),
-//            textAlign = TextAlign.Center,
-//            fontSize = 25.sp
-//        )
-        
+        Text(
+            text = "Store View",
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            textAlign = TextAlign.Center,
+            fontSize = 25.sp
+        )
     }
 }
 

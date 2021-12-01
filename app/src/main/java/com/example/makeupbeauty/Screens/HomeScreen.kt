@@ -29,7 +29,7 @@ fun HomeScreen() {
 //        Text(
 //            text = "Home View",
 //            fontWeight = FontWeight.Bold,
-//            color = Color.White,
+//            color = Color.Black,
 //            textAlign = TextAlign.Center,
 //            fontSize = 25.sp
 //        )
