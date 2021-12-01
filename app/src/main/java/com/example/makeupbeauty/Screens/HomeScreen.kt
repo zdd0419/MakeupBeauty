@@ -44,13 +44,13 @@ fun HomeScreen() {
 
 @Composable
 fun ScrollableContent(scrollState: ScrollState){
-    Column() {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
                 .padding(20.dp)
-                .verticalScroll(state = scrollState)
+//                .verticalScroll(state = scrollState)
         ) {
 //
             //首页主图
@@ -71,11 +71,11 @@ fun ScrollableContent(scrollState: ScrollState){
             }
 
             RecommendTitle("每日推荐")
-
+            VerticalListView()
 
         }
-        VerticalListView()
-    }
+
+
 }
 
 @Composable
@@ -84,7 +84,7 @@ fun RecommendTitle(text: String, modifier: Modifier = Modifier){
         text = text,
         fontWeight = FontWeight.Bold,
         color = Color.Blue,
-        textAlign = TextAlign.Left,
+        textAlign = TextAlign.Center,
         modifier = modifier.padding(8.dp,4.dp,8.dp,24.dp)
     )
 }
@@ -206,34 +206,6 @@ fun CardDemo3() {
 }
 
 
-@Composable
-fun ArtistCard(
-//    artist: Artist,
-//    onClick: () -> Unit
-) {
-    val padding = 16.dp
-    Column(
-        Modifier
-//            .clickable(onClick = onClick)
-//            .padding(padding)
-            .fillMaxWidth()
-    ) {
-        Row() {
-            Image(painter =  painterResource(id = com.example.makeupbeauty.R.drawable.profile),
-                contentDescription = null,
-                    modifier=Modifier.size(60.dp)
-                                 .clip(CircleShape)
-
-            )
-            Column() {
-                Text(text="zdd")
-                Text(text="dddd")
-            }
-        /*...*/ }
-        Spacer(modifier = Modifier.width(12.dp))
-        Card(elevation = 4.dp) { /*...*/ }
-    }
-}
 
 
 @Composable

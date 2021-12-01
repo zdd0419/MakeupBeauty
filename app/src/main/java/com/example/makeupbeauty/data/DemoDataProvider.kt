@@ -8,62 +8,62 @@ object DemoDataProvider {
     val itemList = listOf(
         Item(
             1,
-            "Fresh Vegges and Greens",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美妆1",
+            "好看的妆容",
             R.drawable.face1
         ),
         Item(
             2,
-            "Best blue berries",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美妆2",
+            "好看的妆容",
             R.drawable.face2
         ),
         Item(
             3,
-            "Cherries La Bloom",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美妆3",
+            "好看的妆容",
             R.drawable.face3
         ),
         Item(
             4,
-            "Fruits everyday",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "发色1",
+            "好看的发色",
             R.drawable.hair1
         ),
         Item(
             5,
-            "Sweet and sour",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "发色2",
+            "好看的发色",
             R.drawable.hair2
         ),
         Item(
             6,
-            "Pancakes for everyone",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "发色3",
+            "好看的发色",
             R.drawable.hair3
         ),
         Item(
             7,
-            "Cupcakes and sparkle",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美甲1",
+            "好看的美甲",
             R.drawable.hand1
         ),
         Item(
             8,
-            "Best Burgers shop",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美甲2",
+            "好看的美甲",
             R.drawable.hand2
         ),
         Item(
             9,
-            "Coffee of India",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美甲3",
+            "好看的美甲",
             R.drawable.hand3
         ),
         Item(
             10,
-            "Pizza boy town",
-            "Very awesome list item has very awesome subtitle. This is bit long",
+            "美甲4",
+            "好看的美甲g",
             R.drawable.hand4
         )
 

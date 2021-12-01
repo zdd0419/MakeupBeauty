@@ -30,7 +30,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
     ) {
 
         val imageModifier = Modifier
-            .height(150.dp)
+            .height(250.dp)
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
 
