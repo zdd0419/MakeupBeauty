@@ -44,34 +44,37 @@ fun HomeScreen() {
 
 @Composable
 fun ScrollableContent(scrollState: ScrollState){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background)
-            .padding(20.dp)
-            .verticalScroll(state = scrollState)
-    ) {
-//
-        //首页主图
-        Image(painter = painterResource(id = com.example.makeupbeauty.R.drawable.makeup),
-            contentDescription =null,
-            contentScale = ContentScale.Crop,
+    Column() {
+        Column(
             modifier = Modifier
-                .width(400.dp)
-                .height(150.dp)
-        )
-        Row {
-            CardDemo1()
-            CardDemo2()
-            CardDemo3()
-            //三个实验室的part
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background)
+                .padding(20.dp)
+                .verticalScroll(state = scrollState)
+        ) {
+//
+            //首页主图
+            Image(
+                painter = painterResource(id = com.example.makeupbeauty.R.drawable.makeup),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .width(400.dp)
+                    .height(150.dp)
+            )
+            Row {
+                CardDemo1()
+                CardDemo2()
+                CardDemo3()
+                //三个实验室的part
+
+            }
+
+            RecommendTitle("每日推荐")
+
 
         }
-
-        RecommendTitle("每日推荐")
-
         VerticalListView()
-
     }
 }
 
