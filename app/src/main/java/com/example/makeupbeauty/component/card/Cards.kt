@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,6 +25,7 @@ fun HairLabCard() {
         modifier = Modifier
             .padding(10.dp) // 外边距
             .clickable { }
+            .fillMaxWidth()
             .wrapContentSize()
         ,
         // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
@@ -31,22 +34,30 @@ fun HairLabCard() {
         elevation = 6.dp // 设置阴影
     ) {
         Row(
-            modifier = Modifier.padding(10.dp) // 内边距
+            Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
         ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("美发实验室")
+            Column {
+                Text(
+                    buildAnnotatedString {
+                        withStyle(style = SpanStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colors.primary)
+                        ) {
+                            append("美发实验室")
+                        }
                     }
-                }
-            )
-            Image(painter = painterResource(id = R.drawable.hair),
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "尝试新发色\n123123123123\n.......",
+                    fontSize = 16.sp,
+                )
+            }
+
+            Image(painter = painterResource(id = R.drawable.ic_hair_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
+                modifier = Modifier.height(120.dp)
             )
         }
     }
@@ -61,6 +72,7 @@ fun FaceLabCard() {
             .padding(10.dp) // 外边距
             .clickable { }
             .wrapContentSize()
+            .fillMaxWidth()
         ,
 
         // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
@@ -73,18 +85,17 @@ fun FaceLabCard() {
         ) {
             Text(
                 buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
+                    withStyle(style = SpanStyle(fontSize = 12.sp, color = Color(0xFF4552B8))
                     ) {
                         append("脸部实验室")
                     }
                 }
             )
-            Image(painter = painterResource(id = R.drawable.face),
+            Image(painter = painterResource(id = R.drawable.ic_face_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
+                    .height(48.dp)
             )
         }
     }
@@ -97,6 +108,7 @@ fun HandLabCard() {
             .padding(10.dp) // 外边距
             .clickable { }
             .wrapContentSize()
+            .fillMaxWidth()
         ,
 
         // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
@@ -109,18 +121,17 @@ fun HandLabCard() {
         ) {
             Text(
                 buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 8.sp, color = Color(0xFF4552B8))
+                    withStyle(style = SpanStyle(fontSize = 12.sp, color = Color(0xFF4552B8))
                     ) {
                         append("美甲实验室")
                     }
                 }
             )
-            Image(painter = painterResource(id = R.drawable.hand),
+            Image(painter = painterResource(id = R.drawable.ic_hand_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .width(25.dp)
-                    .height(25.dp)
+                    .height(48.dp)
             )
         }
     }

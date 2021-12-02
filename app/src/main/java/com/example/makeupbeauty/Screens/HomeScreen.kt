@@ -12,6 +12,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,30 +47,27 @@ fun HomeScreen() {
 
 
 @Composable
-fun HomeHeader(){
-
+fun HomeHeader() {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colors.background)
-                .padding(horizontal = 10.dp)
-                .padding(top = 16.dp)
                 .padding(bottom = 0.dp)
         ) {
-            //首页主图
-            Image(
-                painter = painterResource(id = com.example.makeupbeauty.R.drawable.makeup),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
+                Image(
+                    painter = painterResource(id = com.example.makeupbeauty.R.drawable.home_banner),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp)
+                        .clickable {}
+                )
+            Column(
+                modifier = Modifier.padding(horizontal = 4.dp)
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-                    .height(150.dp)
-            )
-            Row {
+                    .wrapContentHeight()
+            ) {
                 HairLabCard()
-                FaceLabCard()
-                HandLabCard()
-                //三个实验室的part
             }
             Spacer(modifier = Modifier.height(16.dp))
             RecommendTitle("每日推荐")
@@ -111,9 +109,6 @@ fun VerticalListView() {
         )
     }
 }
-
-
-
 
 @Composable
 private fun ListItemDivider() {
