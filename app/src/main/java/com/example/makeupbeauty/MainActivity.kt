@@ -7,27 +7,35 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
-import com.example.makeupbeauty.ui.theme.BottomNavigation.BottomNavigaition
-import com.example.makeupbeauty.ui.theme.BottomNavigation.Screen
+import com.example.makeupbeauty.Screens.*
+import com.example.makeupbeauty.BottomNavigation.BottomNavigation
+import com.example.makeupbeauty.Topbars.TopBarNavigation
+
 
 class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val currentScreen= mutableStateOf<Screen>(com.example.makeupbeauty.ui.theme.BottomNavigation.Screen.Home)
+            val currentScreen= mutableStateOf<NavigationItem>(NavigationItem.Home)
+            val navController = rememberNavController()
+
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Scaffold(bottomBar = {
-                        BottomNavigaition(currentScreenId = currentScreen.value.id){
-                            currentScreen.value=it
-                        }
-
+                    Scaffold(
+                        topBar = {
+                            TopBarNavigation(navController = navController)
+                        },
+                        bottomBar = {
+                            BottomNavigation(navController = navController)
                     }) {
-
+                        Navigation(navController)
                     }
                 }
             }
@@ -36,13 +44,22 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    MakeupBeautyTheme {
-
+fun Navigation(navController: NavHostController) {
+    NavHost(navController, startDestination = NavigationItem.Home.id) {
+        composable(NavigationItem.Home.id) {
+            HomeScreen()
+        }
+        composable(NavigationItem.Store.id) {
+            StoreScreen()
+        }
+        composable(NavigationItem.Community.id) {
+            CommunityScreen()
+        }
+        composable(NavigationItem.Profile.id) {
+            ProfileScreen()
+        }
     }
-    
 }
 
 
