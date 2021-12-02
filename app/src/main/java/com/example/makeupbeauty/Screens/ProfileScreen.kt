@@ -14,24 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.makeup_me.ui.theme.MyInfo
+import com.example.makeupbeauty.R
 
 @Composable
 fun ProfileScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background)
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Profile View",
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
+    MyInfo(R.drawable.avatar, "ylg", "1", 0, 0);
 }
 
 @Preview(showBackground = true)
