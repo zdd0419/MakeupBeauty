@@ -57,11 +57,3 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview
-//@Composable
-//fun PreviewVerticalListItem() {
-//    val item = DemoDataProvider.item
-//
-//    VerticalListItem(item = item)
-//
-//}

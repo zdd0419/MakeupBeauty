@@ -49,15 +49,15 @@ fun HairLabCard() {
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
-                    text = "尝试新发色\n123123123123\n.......",
-                    fontSize = 16.sp,
+                    text = "尝试新发色\n秋冬发色\n总有一款是你心仪的",
+                    fontSize = 14.sp,
                 )
             }
 
             Image(painter = painterResource(id = R.drawable.ic_hair_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.height(120.dp)
+                modifier = Modifier.height(150.dp)
             )
         }
     }
@@ -83,19 +83,28 @@ fun FaceLabCard() {
         Row(
             modifier = Modifier.padding(10.dp) // 内边距
         ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 12.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("脸部实验室")
+            Column() {
+                Text(
+                    buildAnnotatedString {
+                        withStyle(style = SpanStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold,color = MaterialTheme.colors.primary)
+                        ) {
+                            append("脸部实验室")
+                        }
                     }
-                }
-            )
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "尝试新妆容\n圣诞特定妆容\n快来试试吧",
+                    fontSize = 14.sp,
+                )
+
+            }
+
             Image(painter = painterResource(id = R.drawable.ic_face_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .height(48.dp)
+                modifier = Modifier.height(150.dp)
             )
         }
     }
@@ -119,19 +128,26 @@ fun HandLabCard() {
         Row(
             modifier = Modifier.padding(10.dp) // 内边距
         ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontSize = 12.sp, color = Color(0xFF4552B8))
-                    ) {
-                        append("美甲实验室")
+            Column() {
+                Text(
+                    buildAnnotatedString {
+                        withStyle(style = SpanStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colors.primary)
+                        ) {
+                            append("美甲实验室")
+                        }
                     }
-                }
-            )
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "尝试新美甲\n圣诞美甲新品来咯！\n快叫上你的姐妹一起来试试！",
+                    fontSize = 14.sp,
+                )
+            }
+
             Image(painter = painterResource(id = R.drawable.ic_hand_card),
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .height(48.dp)
+                modifier = Modifier.height(150.dp)
             )
         }
     }

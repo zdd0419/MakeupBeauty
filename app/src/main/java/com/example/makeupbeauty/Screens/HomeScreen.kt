@@ -68,6 +68,8 @@ fun HomeHeader() {
                     .wrapContentHeight()
             ) {
                 HairLabCard()
+                FaceLabCard()
+                HandLabCard()
             }
             Spacer(modifier = Modifier.height(16.dp))
             RecommendTitle("每日推荐")
@@ -84,7 +86,7 @@ fun RecommendTitle(text: String, modifier: Modifier = Modifier){
         fontWeight = FontWeight.Bold,
         color = Color.Blue,
         textAlign = TextAlign.Center,
-        modifier = modifier.padding(8.dp,4.dp,8.dp,0.dp)
+        modifier = modifier.padding(10.dp,4.dp,8.dp,0.dp)
     )
 }
 
