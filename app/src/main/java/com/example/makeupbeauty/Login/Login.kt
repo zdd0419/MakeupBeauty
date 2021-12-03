@@ -1,4 +1,4 @@
-package com.example.makeup
+package com.example.makeupbeauty.Login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,11 +12,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +24,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.input.*
@@ -36,7 +33,6 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.makeupbeauty.Login.AnimatedButton
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
@@ -140,7 +136,8 @@ class Login : ComponentActivity() {
                                     OutlinedTextField(
                                         value = emailText.value,
                                         leadingIcon = {
-                                            Icon(Icons.Default.Email,
+                                            Icon(
+                                                Icons.Default.Email,
                                                 contentDescription = "",
                                                 tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
                                             )
@@ -209,7 +206,7 @@ class Login : ComponentActivity() {
 //                                                            )
 //                                                        }
                                                         Icon(
-                                                            Icons.Filled.ExitToApp,
+                                                            Icons.Filled.VisibilityOff,
                                                             //ImageBitmap.imageResource(id = R.drawable.eye_hide),
                                                             contentDescription = "Check fingerprint",
                                                             //tint = Color.Green,
@@ -230,7 +227,7 @@ class Login : ComponentActivity() {
 //                                                            )
 //                                                        }
                                                         Icon(
-                                                            Icons.Default.Lock,
+                                                            Icons.Filled.Visibility,
                                                             //painter = painterResource(id = R.drawable.eye_show),
                                                             tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
                                                             contentDescription = "",
