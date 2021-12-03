@@ -1,6 +1,6 @@
-package com.example.makeupbeauty.data.model
+package com.example.makeupbeauty.component.models
 
-data class Item(
+data class RecommendItem(
     val id: Int,
     val title: String,
     val subtitle: String,
