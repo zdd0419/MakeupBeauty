@@ -18,7 +18,7 @@ fun TopBarNavigation(
     val currentRoute = navBackStackEntry?.destination?.route
     if (currentRoute == NavigationItem.Store.id){
         StoreTopbar()
-    }else{
+    }else if(currentRoute != NavigationItem.Profile.id){
         DefaultTopbar()
     }
 }

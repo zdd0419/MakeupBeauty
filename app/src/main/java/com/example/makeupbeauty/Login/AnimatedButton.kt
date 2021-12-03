@@ -14,7 +14,6 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -25,29 +24,29 @@ enum class ButtonState{
 
 @Composable
 fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordText: MutableState<String>){
-    val buttonstate = remember {
+    val buttonState = remember {
         mutableStateOf(ButtonState.Normal)
     }
     
-    val transition = updateTransition(targetState = buttonstate, label = "ButtonTransition")
+    val transition = updateTransition(targetState = buttonState, label = "ButtonTransition")
 
     val duration = 600
 
     val buttonBackgroundColor: Color by transition.animateColor(
         transitionSpec = { tween(duration)},
         label = "Button Background Color"
-    ) { buttonstate ->
-        when(buttonstate.value){
-            ButtonState.Normal -> Color.Blue
-            ButtonState.Pressed -> Color.Gray
+    ) { it ->
+        when(it.value){
+            ButtonState.Normal-> Color.Blue
+            ButtonState.Pressed-> Color.Gray
         }
     }
 
     val buttonWidth: Dp by transition.animateDp(
         transitionSpec = { tween(duration)},
         label = "Button Width"
-    ) { buttonstate ->
-        when(buttonstate.value){
+    ) { it ->
+        when(it.value){
             ButtonState.Normal -> 350.dp
             ButtonState.Pressed -> 60.dp
         }
@@ -56,8 +55,8 @@ fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordTex
     val buttonShape: Dp by transition.animateDp(
         transitionSpec = { tween(duration)},
         label = "Button Shape"
-    ) { buttonstate ->
-        when(buttonstate.value){
+    ) { it ->
+        when(it.value){
             ButtonState.Normal -> 4.dp
             ButtonState.Pressed -> 100.dp
         }
@@ -70,7 +69,7 @@ fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordTex
         shape = RoundedCornerShape(buttonShape),
         enabled = emailText.value.isNotBlank() && passwordText.value.isNotBlank(),
         onClick = {
-            buttonstate.value = if (buttonstate.value == ButtonState.Normal){
+            buttonState.value = if (buttonState.value == ButtonState.Normal){
                 ButtonState.Pressed
             } else{
                 ButtonState.Normal
@@ -81,7 +80,7 @@ fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordTex
             disabledBackgroundColor = Color.Blue.copy(0.5f)
         )
     ){
-        if(buttonstate.value == ButtonState.Normal){
+        if(buttonState.value == ButtonState.Normal){
             Text(text = btnText, color = Color.White)
         }else{
             CircularProgressIndicator(

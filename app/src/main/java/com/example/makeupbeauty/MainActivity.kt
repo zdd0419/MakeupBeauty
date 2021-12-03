@@ -15,9 +15,13 @@ import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.Screens.*
 import com.example.makeupbeauty.BottomNavigation.BottomNavigation
 import com.example.makeupbeauty.Topbars.TopBarNavigation
+import com.google.accompanist.pager.ExperimentalPagerApi
+import kotlinx.coroutines.InternalCoroutinesApi
 
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalPagerApi
+    @InternalCoroutinesApi
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +48,8 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@InternalCoroutinesApi
+@ExperimentalPagerApi
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Home.id) {
