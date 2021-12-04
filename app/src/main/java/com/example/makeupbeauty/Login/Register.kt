@@ -16,6 +16,8 @@ import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,6 +66,12 @@ class Register : ComponentActivity() {
                                 )
                             }
                             val passwordInteractionState = remember { MutableInteractionSource() }
+                            var showPwd by remember {
+                                mutableStateOf(true)
+                            }
+                            var ConfirmshowPwd by remember {
+                                mutableStateOf(true)
+                            }
 
                             var ConfirmPasswordVisualTransformation by remember {
                                 mutableStateOf<VisualTransformation>(
@@ -137,17 +145,29 @@ class Register : ComponentActivity() {
                                                 contentDescription = "",
                                                 tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)) },
                                         trailingIcon = {
-                                            Icon(Icons.Default.Lock,
-                                                contentDescription = "",
-                                                tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-                                                modifier = Modifier.clickable(onClick = {
-                                                    passwordVisualTransformation =
-                                                        if (passwordVisualTransformation != VisualTransformation.None) {
-                                                            VisualTransformation.None
-                                                        } else {
-                                                            PasswordVisualTransformation()
-                                                        }
-                                                })) },
+                                            if (showPwd) {
+                                                Icon(
+                                                    Icons.Filled.VisibilityOff,
+                                                    contentDescription = "Check fingerprint",
+                                                    //tint = Color.Green,
+                                                    //painter = painterResource(id = R.drawable.eye_hide),
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    //contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                )
+                                            } else {
+                                                Icon(
+                                                    Icons.Filled.Visibility,
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                )
+                                            }
+                                                       },
                                         maxLines = 1,
                                         isError = hasError,
                                         modifier = Modifier.fillMaxWidth(),
@@ -180,22 +200,29 @@ class Register : ComponentActivity() {
                                             )
                                                       },
                                         trailingIcon = {
-                                            Icon(
-                                                Icons.Default.Email,
-//                                                ImageBitmap.imageResource(id = R.drawable.eye_hide),
-                                                contentDescription = "Check fingerprint",
-                                                //tint = Color.Green
-                                                //Icons.Default.Lock,
-                                                //contentDescription = "",
-                                                tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-                                                modifier = Modifier.clickable(onClick = {
-                                                    ConfirmPasswordVisualTransformation =
-                                                        if (ConfirmPasswordVisualTransformation != VisualTransformation.None) {
-                                                            VisualTransformation.None
-                                                        } else {
-                                                            PasswordVisualTransformation()
-                                                        }
-                                                })) },
+                                            if (ConfirmshowPwd) {
+                                                Icon(
+                                                    Icons.Filled.VisibilityOff,
+                                                    contentDescription = "Check fingerprint",
+                                                    //tint = Color.Green,
+                                                    //painter = painterResource(id = R.drawable.eye_hide),
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    //contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {ConfirmshowPwd = !ConfirmshowPwd})
+                                                )
+                                            } else {
+                                                Icon(
+                                                    Icons.Filled.Visibility,
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {ConfirmshowPwd = !ConfirmshowPwd})
+                                                )
+                                            }
+                                                       },
                                         maxLines = 1,
                                         isError = hasError,
                                         modifier = Modifier.fillMaxWidth(),

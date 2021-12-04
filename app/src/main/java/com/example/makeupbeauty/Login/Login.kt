@@ -36,12 +36,8 @@ import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-enum class ScreenName {
-    LoginPage, RegisterPage
-}
 
 class Login : ComponentActivity() {
-    private val screenName = mutableStateOf(ScreenName.LoginPage)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,11 +60,6 @@ class Login : ComponentActivity() {
                                 mutableStateOf("")
                             }
                             var hasError by remember { mutableStateOf(false) }
-                            var passwordVisualTransformation by remember {
-                                mutableStateOf<VisualTransformation>(
-                                    PasswordVisualTransformation()
-                                )
-                            }
                             val pwdVisualTransformation = PasswordVisualTransformation()
                             var showPwd by remember {
                                 mutableStateOf(true)
@@ -195,47 +186,29 @@ class Login : ComponentActivity() {
                                                 Icons.Default.Lock,
                                                 contentDescription = "",
                                                 tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)) },
-                                                trailingIcon = {
-                                                    if (showPwd) {
-//                                                        IconButton(onClick = { showPwd = !showPwd }) {
-//                                                            Icon(
-//                                                                painter = painterResource(id = R.drawable.eye_hide),
-//                                                                tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-//                                                                contentDescription = "",
-//                                                                modifier = Modifier.size(30.dp)
-//                                                            )
-//                                                        }
-                                                        Icon(
-                                                            Icons.Filled.VisibilityOff,
-                                                            //ImageBitmap.imageResource(id = R.drawable.eye_hide),
-                                                            contentDescription = "Check fingerprint",
-                                                            //tint = Color.Green,
-                                                            //painter = painterResource(id = R.drawable.eye_hide),
-                                                            //tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-                                                            //contentDescription = "",
-                                                            modifier = Modifier
-                                                                .size(30.dp)
-                                                                .clickable(onClick = {showPwd = !showPwd})
-                                                        )
-                                                    } else {
-//                                                        IconButton(onClick = { showPwd = !showPwd }) {
-//                                                            Icon(
-//                                                                painter = painterResource(id = R.drawable.eye_show),
-//                                                                tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-//                                                                contentDescription = "",
-//                                                                modifier = Modifier.size(30.dp)
-//                                                            )
-//                                                        }
-                                                        Icon(
-                                                            Icons.Filled.Visibility,
-                                                            //painter = painterResource(id = R.drawable.eye_show),
-                                                            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-                                                            contentDescription = "",
-                                                            modifier = Modifier
-                                                                .size(30.dp)
-                                                                .clickable(onClick = {showPwd = !showPwd})
-                                                        )
-                                                    }
+                                        trailingIcon = {
+                                            if (showPwd) {
+                                                Icon(
+                                                    Icons.Filled.VisibilityOff,
+                                                    contentDescription = "Check fingerprint",
+                                                    //tint = Color.Green,
+                                                    //painter = painterResource(id = R.drawable.eye_hide),
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    //contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                )
+                                            } else {
+                                                Icon(
+                                                    Icons.Filled.Visibility,
+                                                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                                                    contentDescription = "",
+                                                    modifier = Modifier
+                                                        .size(30.dp)
+                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                )
+                                            }
 //                                                    Icon(Icons.Default.Lock,
 //                                                        contentDescription = "",
 //                                                        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
@@ -247,7 +220,7 @@ class Login : ComponentActivity() {
 //                                                                    PasswordVisualTransformation()
 //                                                                }
 //                                                        }))
-                                                               },
+                                                       },
                                         maxLines = 1,
                                         isError = hasError,
                                         modifier = Modifier.fillMaxWidth(),
@@ -320,6 +293,7 @@ class Login : ComponentActivity() {
                                         text = annotatedString.toAnnotatedString(),
                                         modifier = Modifier
                                             .fillMaxWidth()
+                                            .align(Alignment.BottomCenter)
                                             .padding(vertical = 16.dp)
                                             .clickable(onClick = {}),
                                         textAlign = TextAlign.Center
@@ -332,11 +306,6 @@ class Login : ComponentActivity() {
             }
         }
     //}
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
 }
 
 //@Composable
@@ -409,6 +378,4 @@ fun LoginPage() {
             )
         }
     }
-
-
 }
