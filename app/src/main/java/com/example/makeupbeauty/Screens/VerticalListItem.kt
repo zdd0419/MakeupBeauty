@@ -11,11 +11,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.makeupbeauty.component.models.RecommendItem
+import com.example.makeupbeauty.component.models.Item
 
 
 @Composable
-fun VerticalListItem(item: RecommendItem, modifier: Modifier = Modifier) {
+fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
 //    val typography = MaterialTheme.typography
     Column(
         modifier = modifier

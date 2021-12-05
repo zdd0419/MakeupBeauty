@@ -31,7 +31,6 @@ fun TopLabCards(
         modifier = Modifier
             .padding(10.dp) // 外边距
             .clickable(onClick = onClick)
-            .wrapContentSize()
             .fillMaxWidth()
         ,
 
@@ -46,23 +45,24 @@ fun TopLabCards(
             Column() {
                 Text(
                     buildAnnotatedString {
-                        withStyle(style = SpanStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colors.primary)
+                        withStyle(style = SpanStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colors.primary)
                         ) {
                             append(labTitle)
                         }
                     }
                 )
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(14.dp))
                 Text(
                     text = labContent,
-                    fontSize = 14.sp,
+                    fontSize = 10.sp,
                 )
             }
 
             Image(painter = labImage,
                 contentDescription =null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.height(150.dp)
+                modifier = Modifier.height(50.dp)
+                    .width(50.dp)
             )
         }
     }
