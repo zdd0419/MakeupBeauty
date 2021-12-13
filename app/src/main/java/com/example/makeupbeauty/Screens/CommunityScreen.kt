@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.Screens
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -22,10 +23,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider
 import com.example.makeupbeauty.R
+import kotlinx.coroutines.InternalCoroutinesApi
 
 private enum class DemoTabs(val value: String) {
     CONCERN("关注"),
@@ -33,6 +37,7 @@ private enum class DemoTabs(val value: String) {
 }
 
 
+@InternalCoroutinesApi
 @ExperimentalFoundationApi
 @Composable
 fun CommunityScreen() {
@@ -79,16 +84,19 @@ fun CommunityScreen() {
     }
 }
 
+@InternalCoroutinesApi
 @Composable
 fun getConcern() {
     val list = remember { ConcernDataProvider.ConcernItemList }
+    //navController.navigate("PostActivity")
+
     LazyColumn {
         item {
             //HomeHeader()
         }
         items(
             items = list,
-            itemContent = { item -> ConcernItem(item = item)
+            itemContent = { item -> ConcernItem(item = item, modifier = Modifier)
                 ListItemDivider()
             }
         )
@@ -103,6 +111,7 @@ private fun ListItemDivider() {
     )
 }
 
+@InternalCoroutinesApi
 @ExperimentalFoundationApi
 @Composable
 fun getCommend() {
@@ -137,11 +146,12 @@ fun getCommend() {
 
 
 
+@InternalCoroutinesApi
 @ExperimentalFoundationApi
 @Preview(showBackground = true)
 @Composable
 fun CommunityScreenPreview() {
-    CommunityScreen()
+    //CommunityScreen()
 }
 
 
