@@ -2,7 +2,9 @@ package com.example.makeupbeauty.data
 
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.Screens.ConcernItem
-import com.example.makeupbeauty.component.models.RecommendItem
+import com.example.makeupbeauty.component.models.Comment
+
+//import com.example.makeupbeauty.component.models.RecommendItem
 
 object ConcernDataProvider {
     val ConcernItemList = listOf(
@@ -123,4 +125,6 @@ object ConcernDataProvider {
             "小熊小可爱啦啦啦啦啦啦"
         )
     )
+
+
 }
