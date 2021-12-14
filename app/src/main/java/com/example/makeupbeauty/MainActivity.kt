@@ -1,5 +1,6 @@
 package com.example.makeupbeauty
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import com.example.makeupbeauty.BottomNavigation.BottomNavigation
 import com.example.makeupbeauty.CommunityPost.PostActivity
 import com.example.makeupbeauty.CommunityPost.PostContent
 import com.example.makeupbeauty.Topbars.TopBarNavigation
+import com.example.makeupbeauty.TryOn.TryOn
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -29,6 +31,7 @@ class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        startActivity(Intent(this, TryOn::class.java))
         setContent {
             val currentScreen= mutableStateOf<NavigationItem>(NavigationItem.Home)
             val navController = rememberNavController()
@@ -70,6 +73,7 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Profile.id) {
             ProfileScreen()
         }
+
     }
 }
 
