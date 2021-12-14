@@ -32,6 +32,9 @@ fun BottomNavigation(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
+    if(currentRoute == "PostActivity")
+        return ;
+
     Row(
         modifier= Modifier
             .background(MaterialTheme.colors.background)

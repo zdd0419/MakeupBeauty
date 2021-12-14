@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -14,12 +15,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.Screens.*
 import com.example.makeupbeauty.BottomNavigation.BottomNavigation
+import com.example.makeupbeauty.CommunityPost.PostActivity
+import com.example.makeupbeauty.CommunityPost.PostContent
 import com.example.makeupbeauty.Topbars.TopBarNavigation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalFoundationApi
     @ExperimentalPagerApi
     @InternalCoroutinesApi
     @ExperimentalAnimationApi
@@ -48,6 +52,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@ExperimentalFoundationApi
 @InternalCoroutinesApi
 @ExperimentalPagerApi
 @Composable
