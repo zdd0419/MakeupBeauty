@@ -47,6 +47,7 @@ fun GridListItem(
                     style = MaterialTheme.typography.caption.copy(fontSize = 7.sp),
 //                    maxLines = 4,
                     overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(5.dp,0.dp,0.dp,0.dp)
 //                    textAlign = TextAlign.Center ,
 //                    modifier = Modifier.padding(4.dp,1.dp,8.dp,0.dp)
 

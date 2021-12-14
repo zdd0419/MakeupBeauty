@@ -5,13 +5,18 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,6 +28,7 @@ import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.GridListItem
 import com.example.makeupbeauty.data.DemoDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider.item
+import com.example.makeupbeauty.data.model.storeItem
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -86,13 +92,19 @@ fun GridListView() {
 @Composable
 fun productList(){
     val list = remember { DemoDataProvider.storeItemlist.take(6) }
+
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             VerticalGrid(columns = 3) {
                 list.forEach {
                     GridListItem(item = it)
+//                    when(it){
+//                        storeItem(4,"迪奥迷你唇膏口红",R.drawable.dior2) ->ProductDetailsScreen()
+//                    }
                 }
             }
     }
+
+
 }
 
 @InternalCoroutinesApi
@@ -101,4 +113,9 @@ fun productList(){
 @Composable
 fun StoreScreenPreview() {
     StoreScreen()
+
 }
+
+
+
+

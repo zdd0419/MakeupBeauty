@@ -201,5 +201,13 @@ object DemoDataProvider {
         )
     )
 
+    val productList = listOf(
+        "eye",
+        "cd",
+        "dior",
+        "diorkh",
+        "test",
+        "moddy",
+    )
 
 }
