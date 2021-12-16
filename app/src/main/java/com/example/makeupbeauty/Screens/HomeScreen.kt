@@ -1,6 +1,7 @@
 package com.example.makeupbeauty.Screens
 
 
+import android.content.Intent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,13 +14,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.TryOn.TryOn
 import com.example.makeupbeauty.component.card.TopLabCards
 import com.example.makeupbeauty.data.DemoDataProvider
 import androidx.compose.foundation.lazy.items as items
@@ -40,6 +44,9 @@ fun HomeScreen() {
 
 @Composable
 fun HomeHeader() {
+    val face_intent = Intent(LocalContext.current, TryOn::class.java)
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
@@ -62,7 +69,10 @@ fun HomeHeader() {
         ) {
             item {
                 TopLabCards(labTitle = "美发实验室", labContent = "尝试新发色\n秋冬发色\n总有一款是你心仪的", labImage = painterResource(id = R.drawable.ic_hair_card))
-                TopLabCards(labTitle = "脸部实验室", labContent = "尝试新妆容\n圣诞特定妆容\n快来试试吧", labImage = painterResource(id = R.drawable.ic_face_card))
+                TopLabCards(labTitle = "脸部实验室", labContent = "尝试新妆容\n圣诞特定妆容\n快来试试吧", labImage = painterResource(id = R.drawable.ic_face_card),
+                            onClick = {
+                                startActivity(context, face_intent, null)
+                            })
                 TopLabCards(labTitle = "美甲实验室", labContent = "尝试新美甲\n圣诞美甲新品来咯！\n快叫上你的姐妹一起来试试！", labImage = painterResource(id = R.drawable.ic_hand_card))
             }
 
@@ -115,5 +125,3 @@ private fun ListItemDivider() {
 //        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
     )
 }
-
-

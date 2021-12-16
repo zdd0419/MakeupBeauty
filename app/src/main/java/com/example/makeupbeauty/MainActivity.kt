@@ -31,9 +31,7 @@ class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this, TryOn::class.java))
         setContent {
-            val currentScreen= mutableStateOf<NavigationItem>(NavigationItem.Home)
             val navController = rememberNavController()
 
             MakeupBeautyTheme {
@@ -73,7 +71,6 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Profile.id) {
             ProfileScreen()
         }
-
     }
 }
 
