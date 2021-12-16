@@ -98,7 +98,7 @@ fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
                 Row(modifier = Modifier.padding(horizontal = 4.dp), Arrangement.Center) {
                     Text(text = name, fontWeight = FontWeight.ExtraBold, fontSize = 25.sp)
                     Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "vip "+vip,color = Color.Cyan, textAlign = TextAlign.Center, fontSize = 17.sp)
+                    Text(text = "vip $vip",color = Color.Cyan, textAlign = TextAlign.Center, fontSize = 17.sp)
                 }
                 Spacer(
                     Modifier
