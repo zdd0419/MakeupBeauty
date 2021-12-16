@@ -162,12 +162,6 @@ class TryOn : AppCompatActivity() {
             return viewHolder
         }
 
-        override fun onViewAttachedToWindow(viewHolder: ViewHolder) {
-            super.onViewAttachedToWindow(viewHolder)
-            (viewHolder.mImg as NiceImageView).isCircle(true)
-            (viewHolder.mImg as NiceImageView).setCornerRadius(32)
-        }
-
         /**
          * 设置值
          */
