@@ -116,22 +116,6 @@ private fun ListItemDivider() {
 @Composable
 fun getCommend() {
     val list = remember { ConcernDataProvider.CommendItemList }
-/*
-    LazyVerticalGrid(cells = GridCells.Fixed(2)) {
-        items(
-            items = list,
-            itemContent = { item -> CommendItem(item = item)
-                //ListItemDivider()
-            }
-        )
-
-        item {
-        }
-
-        itemsIndexed(list) { index, item ->
-            //Text("Item at index $index is $item")
-        }
-    }*/
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {

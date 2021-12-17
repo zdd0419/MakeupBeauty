@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeupBeauty">
         <activity
+            android:name=".Search.Catagory"
+            android:exported="true"
+            android:label="@string/title_activity_catagory"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".Search.SearchActivity"
+            android:exported="true"
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
             android:name=".CommunityPost.PostActivity"
             android:exported="true"
             android:label="@string/title_activity_posr"
