@@ -12,4 +12,6 @@
     <string name="title_activity_posr">PosrActivity</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_catagory">Catagory</string>
+    <string name="text_mastercard_image">支付宝</string>
+    <string name="title_activity_payment">订单支付</string>
 </resources>
