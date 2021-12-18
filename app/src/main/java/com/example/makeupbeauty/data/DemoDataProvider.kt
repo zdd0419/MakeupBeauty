@@ -1,7 +1,9 @@
 package com.example.makeupbeauty.data
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.CarouselItem
+import com.example.makeupbeauty.component.models.Goods
 import com.example.makeupbeauty.component.models.Item
+import com.example.makeupbeauty.component.models.User
 import com.example.makeupbeauty.data.model.Tweet
 import com.example.makeupbeauty.data.model.storeItem
 
@@ -200,6 +202,104 @@ object DemoDataProvider {
             id = R.drawable.hair
         )
     )
+
+    val historyList = listOf(
+        "siggi", "连衣裙", "TOP",
+        "完美日记", "围巾", "针织帽"
+    )
+
+    val discoveryList = listOf(
+        "棉服设计感小众", "冬季针织帽", "针织喇叭裤",
+        "日月晶采眼影", "粉色连衣裙", "费尔岛毛衣",
+        "高级感套装裙", "啦啦啦", "羽绒服"
+    )
+
+    val userList = listOf(
+        User(
+            R.drawable.avatar,
+            "papi",
+            "638112890",
+            240,
+            3880,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "papi",
+            "638112890",
+            240,
+            3880,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "papi",
+            "638112890",
+            240,
+            3880,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "papi",
+            "638112890",
+            240,
+            3880,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "papi",
+            "638112890",
+            240,
+            3880,
+            concern = true
+        )
+    )
+
+    val goodsList = listOf(
+        Goods(
+            R.drawable.hand,
+            "浮生八记连衣裙",
+            230.5f
+        ),
+        Goods(
+            R.drawable.face3,
+            "浮生八记连衣裙",
+            230.5f
+        ),
+        Goods(
+            R.drawable.post1,
+            "浮生八记连衣裙",
+            230.5f
+        ),
+        Goods(
+            R.drawable.post1,
+            "浮生八记连衣裙",
+            230.5f
+        ),
+        Goods(
+            R.drawable.post1,
+            "浮生八记连衣裙",
+            230.5f
+        ),
+        Goods(
+            R.drawable.post1,
+            "浮生八记连衣裙",
+            230.5f
+        )
+    )
+   
+    val productList = listOf(
+        "eye",
+        "cd",
+        "dior",
+        "diorkh",
+        "test",
+        "moddy",
+    )
+
+}
 
     val productlist = listOf(
         CarouselItem(

@@ -2,6 +2,7 @@ package com.example.makeupbeauty
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -18,11 +20,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.Search.SearchActivity
 
 val searchText = mutableStateOf("")
 
 @Composable
 fun DefaultTopbar() {
+    val context = LocalContext.current;
     TopAppBar(
         content = {
             IconButton(
@@ -38,7 +42,11 @@ fun DefaultTopbar() {
                 )
             }
             Spacer(modifier = Modifier.width(12.dp))
-            Surface(modifier = Modifier.padding(end = 10.dp).weight(1f)) {
+            Surface(modifier = Modifier
+                .padding(end = 10.dp)
+                .weight(1f)
+                .clickable { context.startActivity(SearchActivity.newIntent(context)) })
+            {
                 SearchSection()
             }
         },
@@ -49,6 +57,7 @@ fun DefaultTopbar() {
 
 @Composable
 fun SearchSection() {
+    val context = LocalContext.current;
     TextField(
         value = searchText.value,
         onValueChange = {
@@ -74,9 +83,10 @@ fun SearchSection() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_search_24),
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = MaterialTheme.colors.primary,
+                modifier = Modifier.clickable { context.startActivity(SearchActivity.newIntent(context)) }
             )
-        }
+        },
     )
 }
 
