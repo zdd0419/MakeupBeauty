@@ -18,6 +18,7 @@
             android:exported="true"
             android:label="@string/title_activity_search"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
             android:name=".TryOn.TryOn"
             android:exported="true"
             android:label="TryOnActivity"
