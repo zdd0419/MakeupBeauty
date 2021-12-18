@@ -73,6 +73,7 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager-indicators:0.20.0"
 
     implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
     implementation 'com.github.zane618:NiceImageView:1.0.0'
 

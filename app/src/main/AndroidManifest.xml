@@ -17,12 +17,16 @@
             android:name=".Search.SearchActivity"
             android:exported="true"
             android:label="@string/title_activity_search"
+            android:name=".commodityDetail.productDetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_product_detail"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
         <activity
             android:name=".TryOn.TryOn"
             android:exported="true"
             android:label="TryOnActivity"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar"/>
+
         <activity
             android:name=".CommunityPost.PostActivity"
             android:exported="true"

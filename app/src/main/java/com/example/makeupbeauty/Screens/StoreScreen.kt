@@ -92,7 +92,6 @@ fun GridListView() {
 @Composable
 fun productList(){
     val list = remember { DemoDataProvider.storeItemlist.take(6) }
-
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             VerticalGrid(columns = 3) {
                 list.forEach {
