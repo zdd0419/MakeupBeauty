@@ -18,6 +18,8 @@ import com.example.makeupbeauty.BottomNavigation.BottomNavigation
 import com.example.makeupbeauty.CommunityPost.PostActivity
 import com.example.makeupbeauty.CommunityPost.PostContent
 import com.example.makeupbeauty.Topbars.TopBarNavigation
+import com.example.makeupbeauty.commodityDetail.AddToCartScren
+import com.example.makeupbeauty.notes.notes
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -65,7 +67,9 @@ fun Navigation(navController: NavHostController) {
             StoreScreen()
         }
         composable(NavigationItem.Community.id) {
-            CommunityScreen()
+//            CommunityScreen()
+//            notes()
+            AddToCartScren()
         }
         composable(NavigationItem.Profile.id) {
             ProfileScreen()

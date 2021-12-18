@@ -9,12 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
+
 import com.example.makeupbeauty.data.model.storeItem
 
 @Composable
@@ -22,6 +25,7 @@ fun GridListItem(
     item: storeItem,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current;
     Material3Card(
         shape = androidx.compose.material.MaterialTheme.shapes.medium,
         modifier = modifier
@@ -31,7 +35,9 @@ fun GridListItem(
 //            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
 
     ) {
-        Column(modifier = Modifier.clickable(onClick = { })) {
+        Column(modifier = Modifier.clickable(onClick = {
+
+        })) {
             Image(
                 painter = painterResource(item.imageId),
                 contentScale = ContentScale.Crop,
@@ -39,6 +45,7 @@ fun GridListItem(
                 modifier = Modifier
                     .height(60.dp)
                     .width(60.dp)
+                    .clickable(onClick ={context.startActivity(productDetailActivity.newIntent(context))} )
             )
             Column(modifier = Modifier.padding(1.dp)
                 ) {
