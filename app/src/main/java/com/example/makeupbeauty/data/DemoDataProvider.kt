@@ -288,6 +288,8 @@ object DemoDataProvider {
             "浮生八记连衣裙",
             230.5f
         )
+    )
+   
     val productList = listOf(
         "eye",
         "cd",
