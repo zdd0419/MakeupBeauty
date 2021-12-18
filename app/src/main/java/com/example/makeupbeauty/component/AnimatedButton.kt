@@ -1,4 +1,4 @@
-package com.example.makeupbeauty.Login
+package com.example.makeupbeauty.component
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.animateDp
