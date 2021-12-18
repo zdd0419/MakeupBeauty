@@ -34,10 +34,11 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.component.AnimatedButton
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
 
-class Login : ComponentActivity() {
+class LoginScreen : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -344,7 +345,7 @@ class QureytoImageShapes(var hudu: Float = 100f) : Shape {
 @Preview(name = "login")
 @Composable
 fun LoginPage() {
-    val imageBitmap: ImageBitmap = ImageBitmap.imageResource(R.drawable.head_god)
+    val imageBitmap: ImageBitmap = ImageBitmap.imageResource(R.drawable.head)
     val delectedIcon: ImageBitmap = ImageBitmap.imageResource(R.drawable.logotest)
     Box(contentAlignment = Alignment.Center) {
         Image(

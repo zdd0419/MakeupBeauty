@@ -32,20 +32,20 @@ import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-class Setting : ComponentActivity(){
-    override fun onCreate(savedInstanceState: Bundle?){
-        super.onCreate(savedInstanceState)
-        setContent{
-            MakeupBeautyTheme{
-                Surface(color = MaterialTheme.colors.background){
-                    SettingScreen()
-                }
-            }
-        }
-
-    }
-
-}
+//class SettingScreen : ComponentActivity(){
+//    override fun onCreate(savedInstanceState: Bundle?){
+//        super.onCreate(savedInstanceState)
+//        setContent{
+//            MakeupBeautyTheme{
+//                Surface(color = MaterialTheme.colors.background){
+//                    SettingScreen()
+//                }
+//            }
+//        }
+//
+//    }
+//
+//}
 
 @Composable
 fun SettingScreen() {
