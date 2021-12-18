@@ -201,13 +201,23 @@ object DemoDataProvider {
         )
     )
 
-    val productList = listOf(
-        "eye",
-        "cd",
-        "dior",
-        "diorkh",
-        "test",
-        "moddy",
+    val productlist = listOf(
+        CarouselItem(
+            id = R.drawable.product
+        ),
+        CarouselItem(
+            id = R.drawable.ysl1
+        ),
+        CarouselItem(
+            id = R.drawable.ysl2
+        ),
+        CarouselItem(
+            id = R.drawable.ysl3
+        ),
+        CarouselItem(
+            id = R.drawable.ysl4
+        )
     )
+
 
 }
