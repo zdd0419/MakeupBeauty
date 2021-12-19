@@ -15,18 +15,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.makeupbeauty.CommunityPost.PostActivity
 import com.example.makeupbeauty.component.models.ConcernItem
 
 import com.example.makeupbeauty.R
+import kotlinx.coroutines.InternalCoroutinesApi
 
 
+@InternalCoroutinesApi
 @Composable
 fun CommendItem(item: ConcernItem, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
+    val context = LocalContext.current;
 //    val typography = MaterialTheme.typography
     Card(modifier = Modifier
-        .clickable { onClick }
+        .clickable { context.startActivity(PostActivity.newIntent(context)) }
         .padding(4.dp))
     {
         Column(

@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.Screens.SettingScreen
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.commodityDetail.MyoderActivity
 import com.example.makeupbeauty.notes.MynotesActivity
@@ -33,6 +34,7 @@ import com.example.makeupbeauty.notes.collectActivity
 
 @Composable
 fun ProfileScreen() {
+    val context = LocalContext.current;
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,18 +48,19 @@ fun ProfileScreen() {
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(start = 12.dp, end = 12.dp, top = 18.dp, bottom = 12.dp)
+                    .clickable { context.startActivity(SettingScreen.newIntent(context)) }
             )
             Head(R.drawable.avatar, "test longest", "1", 0, 0)
         }
         List()
     }
 }
-
+/*
 @Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview() {
     ProfileScreen()
-}
+}*/
 
 @Composable
 fun List() {
@@ -82,6 +85,7 @@ fun List() {
 //头像部分
 @Composable
 fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
+
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(4.dp,24.dp,0.dp,8.dp)

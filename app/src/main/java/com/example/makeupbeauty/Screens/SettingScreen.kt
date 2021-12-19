@@ -1,5 +1,7 @@
-package com.example.makeupbeauty.Login
+package com.example.makeupbeauty.Screens
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,35 +32,40 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.Search.SearchActivity
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-//class SettingScreen : ComponentActivity(){
-//    override fun onCreate(savedInstanceState: Bundle?){
-//        super.onCreate(savedInstanceState)
-//        setContent{
-//            MakeupBeautyTheme{
-//                Surface(color = MaterialTheme.colors.background){
-//                    SettingScreen()
-//                }
-//            }
-//        }
-//
-//    }
-//
-//}
+class SettingScreen : ComponentActivity(){
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, SettingScreen::class.java).apply { putExtra("search",true) }
+    }
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContent{
+            MakeupBeautyTheme{
+                Surface(color = MaterialTheme.colors.background){
+                    Setting()
+                }
+            }
+        }
+
+    }
+
+}
 
 @Composable
-fun SettingScreen() {
+fun Setting() {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.LightGray)
     ) {
         Box(Modifier.background(Color.White)) {
-            Head(R.drawable.avatar, "test longest", "1", 0, 0)
+            SettingHead(R.drawable.avatar, "test longest", "1", 0, 0)
         }
         // 设置列表
-        List()
+        SettingList()
     }
 }
 
@@ -70,7 +77,7 @@ fun ProfileScreenPreview() {
 
 // 设置列表
 @Composable
-fun List() {
+fun SettingList() {
     LazyColumn(){
         item{
             Spacer(
@@ -259,7 +266,7 @@ fun List() {
 
 //头像部分
 @Composable
-fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
+fun SettingHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(4.dp, 24.dp, 0.dp, 8.dp)

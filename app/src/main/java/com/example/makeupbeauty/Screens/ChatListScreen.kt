@@ -1,6 +1,11 @@
-package com.example.makeup
+package com.example.makeupbeauty.Screens
 
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +30,29 @@ import com.example.makeupbeauty.R
 import com.example.makeupbeauty.Topbars.ChatTopBar
 import com.example.makeupbeauty.component.models.Chat
 import com.example.makeupbeauty.data.ChatViewModel
+import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
+
+class ChatListScreen : ComponentActivity(){
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, ChatListScreen::class.java).apply { putExtra("ChatList",true) }
+    }
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContent{
+            MakeupBeautyTheme{
+                val viewModel: ChatViewModel = viewModel()
+                Surface(color = MaterialTheme.colors.background){
+                    ChatList(viewModel.chats)
+                }
+            }
+        }
+
+    }
+
+}
+
+
 
 @Composable
 fun ChatList(chats: List<Chat>) {

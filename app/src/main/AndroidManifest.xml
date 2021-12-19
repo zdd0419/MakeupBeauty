@@ -58,6 +58,13 @@
             android:exported="true"
             android:label="@string/title_activity_posr"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
+        <activity
+            android:name=".Screens.SettingScreen"
+            android:exported="true"
+            android:label="SettingScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
