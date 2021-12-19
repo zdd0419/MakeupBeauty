@@ -1,8 +1,6 @@
 package com.example.makeupbeauty.data
 
 import com.example.makeupbeauty.R
-import com.example.makeupbeauty.Screens.ConcernItem
-import com.example.makeupbeauty.component.models.Comment
 
 //import com.example.makeupbeauty.component.models.RecommendItem
 

@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeupBeauty">
         <activity
-            android:name=".notes.collectActivity"
+            android:name=".ui.collectActivity"
             android:exported="false"
             android:label="@string/title_activity_collect"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
         <activity
-            android:name=".notes.MynotesActivity"
+            android:name=".ui.MynotesActivity"
             android:exported="false"
             android:label="@string/title_activity_mynotes"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
@@ -60,13 +60,13 @@
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
         <activity
-            android:name=".Screens.SettingScreen"
+            android:name="com.example.makeupbeauty.ui.Screens.SettingScreen"
             android:exported="true"
             android:label="SettingScreen"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar">
