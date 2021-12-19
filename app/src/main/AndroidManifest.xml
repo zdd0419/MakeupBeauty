@@ -16,7 +16,8 @@
         <activity
             android:name=".Search.SearchActivity"
             android:exported="true"
-            android:label="@string/title_activity_search"
+            android:label="@string/title_activity_search"/>
+        <activity
             android:name=".commodityDetail.productDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_product_detail"
@@ -32,6 +33,13 @@
             android:exported="true"
             android:label="@string/title_activity_posr"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
+        <activity
+            android:name=".Screens.SettingScreen"
+            android:exported="true"
+            android:label="SettingScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

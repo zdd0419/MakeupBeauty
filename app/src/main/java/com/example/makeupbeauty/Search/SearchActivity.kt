@@ -3,15 +3,18 @@ package com.example.makeupbeauty.Search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -32,6 +35,11 @@ class SearchActivity : ComponentActivity() {
             Intent(context, SearchActivity::class.java).apply { putExtra("search",true) }
     }
 
+    private fun goBack() {
+        Toast.makeText(null, "back", Toast.LENGTH_SHORT).show()
+        finish()
+    }
+
     @InternalCoroutinesApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +53,25 @@ class SearchActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                     Scaffold(
                         topBar = {
-                            SearchTopBar({onBackPressed()}, navController)
+                            TopAppBar(
+                                title = {
+                                    Surface(modifier = Modifier) {
+
+                                        Row() {
+                                            SearchTextField()
+                                            SearchButton(navController)
+                                        }
+
+
+                                    }
+                                },
+                                navigationIcon = {
+                                    IconButton(onClick = { onBackPressed() }) {
+                                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                                    }
+                                },
+                                backgroundColor = MaterialTheme.colors.background
+                            )
                         }
                     ) {
                         SearchNavigation(navController)
