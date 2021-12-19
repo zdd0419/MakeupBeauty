@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.makeupbeauty">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeupBeauty">
         <activity
+            android:name=".notes.collectActivity"
+            android:exported="false"
+            android:label="@string/title_activity_collect"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".notes.MynotesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_mynotes"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".commodityDetail.MyoderActivity"
+            android:exported="false"
+            android:label="@string/title_activity_myoder"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".commodityDetail.paymentActivity"
+            android:exported="false"
+            android:label="@string/title_activity_payment"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".commodityDetail.shoppingCarActivity"
+            android:exported="true"
+            android:label="@string/title_activity_shopping_car"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
             android:name=".Search.Catagory"
             android:exported="true"
             android:label="@string/title_activity_catagory"
@@ -16,7 +42,8 @@
         <activity
             android:name=".Search.SearchActivity"
             android:exported="true"
-            android:label="@string/title_activity_search"
+            android:label="@string/title_activity_search" />
+        <activity
             android:name=".commodityDetail.productDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_product_detail"
@@ -25,8 +52,7 @@
             android:name=".TryOn.TryOn"
             android:exported="true"
             android:label="TryOnActivity"
-            android:theme="@style/Theme.MakeupBeauty.NoActionBar"/>
-
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
         <activity
             android:name=".CommunityPost.PostActivity"
             android:exported="true"

@@ -15,4 +15,8 @@
     <string name="text_mastercard_image">支付宝</string>
     <string name="title_activity_payment">订单支付</string>
     <string name="title_activity_product_detail">productDetailActivity</string>
+    <string name="title_activity_shopping_car">shoppingCarActivity</string>
+    <string name="title_activity_myoder">MyoderActivity</string>
+    <string name="title_activity_mynotes">MynotesActivity</string>
+    <string name="title_activity_collect">collectActivity</string>
 </resources>

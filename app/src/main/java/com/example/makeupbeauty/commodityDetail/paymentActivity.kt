@@ -1,8 +1,16 @@
 package com.example.makeupbeauty.commodityDetail
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,7 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
+
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,7 +39,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -41,21 +49,31 @@ import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
 
 
-class Payment : ComponentActivity() {
-
+class paymentActivity : ComponentActivity() {
+    companion object {
+        fun newIntent(context: Context) =
+            Intent(context, paymentActivity::class.java).apply { putExtra("payment", true) }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PaymentView()
+            MakeupBeautyTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    PaymentView()
+                }
+            }
         }
     }
 }
+
+
 
 @Composable
 @Preview
 fun PaymentView() {
 
-    MakeupBeautyTheme {
+    com.example.makeupbeauty.ui.theme.MakeupBeautyTheme {
         Scaffold(
             topBar = {
                 TopBarWithBack(
@@ -66,13 +84,18 @@ fun PaymentView() {
                 )
             }, backgroundColor = cottonBall,
             content = {
-                LazyColumn(){
-                    item{
-                        Owner(imageid = R.drawable.avatar, name = "蛋蛋", address = "北京交通大学南门", phoneNumber = "18907763271")
+                LazyColumn() {
+                    item {
+                        Owner(
+                            imageid = R.drawable.avatar,
+                            name = "蛋蛋",
+                            address = "北京交通大学南门",
+                            phoneNumber = "18907763271"
+                        )
 
                         ProductItemList()
                         pay()
-                        total(1,350.00 )
+                        total(1, 350.00)
                     }
 
                 }
@@ -229,7 +252,7 @@ fun product(
 
                     }
 
-                        productAddNumber(count)
+                    productAddNumber(count)
 //                        Spacer(modifier = Modifier.width(150.dp))
                     Row {
                         Text(
@@ -379,7 +402,7 @@ fun pay(){
 //总计
 @Composable
 fun total(totalCount:Int=0,
-price:Double=0.00
+          price:Double=0.00
 ){
     Row(modifier = Modifier
         .fillMaxWidth()) {

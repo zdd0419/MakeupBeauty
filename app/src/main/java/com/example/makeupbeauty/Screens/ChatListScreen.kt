@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -66,6 +67,7 @@ fun Modifier.unread(show: Boolean, color: Color): Modifier = this.drawWithConten
 }
 
 // 赞与收藏 新增关注 评论和@
+
 @Composable
 fun ChatCard(){
     Row(

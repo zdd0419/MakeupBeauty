@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -39,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.PopupProperties
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.makeupbeauty.CommunityPost.PostBottomBar
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.component.Carousel
@@ -82,6 +85,7 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+    val context = LocalContext.current;
     Scaffold(
         topBar = {
             TopAppBarWithBack(
@@ -89,9 +93,57 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                     onClick
                 },
             )
-        }, backgroundColor = lightgraybg,
-        floatingActionButton = {
-            float(coroutineScope, bottomSheetScaffoldState, sheetState)
+        },
+//        backgroundColor = lightgraybg,
+//        floatingActionButton = {
+//            float(coroutineScope, bottomSheetScaffoldState, sheetState)
+//        },
+        bottomBar = {
+//            PostBottomBar(360, 65, 14)
+            Row(){
+                Button(
+                    onClick = {
+//                          context.startActivity(paymentActivity.newIntent(context))
+                    },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = yellow),
+                    modifier = Modifier
+                        .width(200.dp),
+//                        .padding(
+//                            top = 30.dp,
+//                            bottom = 34.dp
+//                        )
+//                        ,
+//                    shape = RoundedCornerShape(14.dp)
+                ) {
+                    Text(
+                        text = "立即购买",
+                        color = white,
+                        style = MaterialTheme.typography.button,
+                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                    )
+                }
+
+                Button(
+                    onClick = {
+                    },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = orange),
+                    modifier = Modifier
+                        .width(200.dp),
+//                        .padding(
+//                            top = 30.dp,
+//                            bottom = 34.dp
+//                        ),
+//                    shape = RoundedCornerShape(14.dp)
+                ) {
+                    Text(
+                        text = "加入购物车",
+                        color = white,
+                        style = MaterialTheme.typography.button,
+                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                    )
+                }
+            }
+
         },
         content = {
             Box(
@@ -121,11 +173,11 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                     }
                     Surface(
                         color = white,
-                        shape = RoundedCornerShape(40.dp)
-                            .copy(
-                                bottomStart = ZeroCornerSize,
-                                bottomEnd = ZeroCornerSize
-                            ),
+//                        shape = RoundedCornerShape(40.dp)
+//                            .copy(
+//                                bottomStart = ZeroCornerSize,
+//                                bottomEnd = ZeroCornerSize
+//                            ),
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(top = 300.dp)

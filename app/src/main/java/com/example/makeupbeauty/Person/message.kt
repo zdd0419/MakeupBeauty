@@ -39,7 +39,7 @@ class Message : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            message()
+//            message()
         }
     }
 }

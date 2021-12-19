@@ -5,18 +5,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.KeyboardArrowLeft
-import androidx.compose.material.icons.outlined.List
-import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,39 +34,41 @@ import com.example.makeupbeauty.ui.theme.orange
 fun TopAppBarWithBack(onBackClick: () -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth()
-            .padding(10.dp),
+            .padding(3.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
     ) {
-        Card(
-            modifier = Modifier.width(50.dp),
-            shape = RoundedCornerShape(12.dp),
-            elevation = 5.dp
-        ) {
+
             IconButton(onClick = { onBackClick() }) {
                 Icon(
-                    imageVector = Icons.Outlined.KeyboardArrowLeft,
+                    imageVector = Icons.Outlined.ArrowBack,
                     contentDescription = ""
                 )
             }
 
-        }
-
-        Card(
-            modifier = Modifier.width(50.dp),
-            shape = RoundedCornerShape(12.dp),
-            elevation = 5.dp
+        val isFavourite = remember { mutableStateOf(true) }
+        IconToggleButton(
+            checked = isFavourite.value,
+            onCheckedChange = { isFavourite.value = !isFavourite.value }
         ) {
-            IconButton(onClick = { }) {
+            if (isFavourite.value) {
                 Icon(
+//                imageVector = Icons.Filled.Favorite,
                     imageVector = Icons.Outlined.Favorite,
-                    contentDescription = "",
+                    contentDescription = null,
+//                    modifier = modifier,
                     tint = orange
                 )
+            } else {
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = null,
+//                    modifier = modifier
+                )
             }
+        }
 
         }
-    }
 }
 
 

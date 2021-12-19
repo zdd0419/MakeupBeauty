@@ -26,6 +26,7 @@ fun GridListItem(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current;
+
     Material3Card(
         shape = androidx.compose.material.MaterialTheme.shapes.medium,
         modifier = modifier
