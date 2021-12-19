@@ -1,4 +1,4 @@
-package com.example.makeup
+package com.example.makeupbeauty.Screens
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState

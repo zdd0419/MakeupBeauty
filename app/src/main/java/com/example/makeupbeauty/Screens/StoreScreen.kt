@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.Search.Catagory
 import com.example.makeupbeauty.VerticalGrid.StoryItem
 import com.example.makeupbeauty.VerticalGrid.VerticalGrid
 import com.example.makeupbeauty.component.Carousel
@@ -31,6 +32,7 @@ import com.example.makeupbeauty.data.DemoDataProvider.item
 import com.example.makeupbeauty.data.model.storeItem
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
+import java.util.*
 
 @ExperimentalPagerApi
 @InternalCoroutinesApi
@@ -71,6 +73,7 @@ fun StoreScreen() {
 
 @Composable
 fun GridListView() {
+    val context = LocalContext.current;
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
     val posts = remember { DemoDataProvider.tweetList }
@@ -82,7 +85,7 @@ fun GridListView() {
                     profileName = it.author,
                     isMe = it.id == 1,
                     modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
-                    onClick = {}
+                    onClick = {context.startActivity(Catagory.newIntent(context))}
                 )
             }
         }

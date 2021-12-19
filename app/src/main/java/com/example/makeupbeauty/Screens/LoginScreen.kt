@@ -1,4 +1,4 @@
-package com.example.makeupbeauty.Login
+package com.example.makeupbeauty.Screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

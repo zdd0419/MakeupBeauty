@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.Search
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,8 +28,16 @@ import com.example.makeupbeauty.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.Search.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.data.DemoDataProvider
 
+
+
 class Catagory : ComponentActivity() {
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, Catagory::class.java).apply { putExtra("category",true) }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContent {
             MakeupBeautyTheme {
@@ -35,9 +45,18 @@ class Catagory : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                     Scaffold(
                         topBar = {
-                            categoryTopBar(
-                                category = "口红",
-                                onClick = {onBackPressed()})
+                            TopAppBar(
+                                title = {
+                                    Text(text = "category")
+                                },
+                                elevation = 0.dp,
+                                navigationIcon = {
+                                    IconButton(onClick = { onBackPressed() }) {
+                                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                                    }
+                                },
+                                backgroundColor = Color.White
+                            )
                         }
 
                     ){
