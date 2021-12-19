@@ -28,6 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.Screens.SettingScreen
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.commodityDetail.MyoderActivity
+import com.example.makeupbeauty.notes.MynotesActivity
+import com.example.makeupbeauty.notes.collectActivity
 
 @Composable
 fun ProfileScreen() {
@@ -71,9 +74,9 @@ fun List() {
             .fillMaxWidth()
             .height(8.dp)
     )
-    MeListItem(R.drawable.icon, "我发布的帖子")
+    MeListItem(R.drawable.icon, "我的发布")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
-    MeListItem(R.drawable.icon, "我喜欢的帖子")
+    MeListItem(R.drawable.icon, "我的收藏")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
     MeListItem(R.drawable.icon, "我的消息")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
@@ -127,11 +130,15 @@ fun MeListItem(
     badge: @Composable (() -> Unit)? = null,
     endBadge: @Composable (() -> Unit)? = null
 ) {
+    val context = LocalContext.current;
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White),
-        verticalAlignment = Alignment.CenterVertically
+            .background(Color.White)
+            .clickable{if(title == "订单"){context.startActivity(MyoderActivity.newIntent(context))}
+                if(title == "我的发布"){context.startActivity(MynotesActivity.newIntent(context))}
+                if(title == "我的收藏"){context.startActivity(collectActivity.newIntent(context))}},
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painterResource(icon), "title", Modifier
@@ -143,6 +150,7 @@ fun MeListItem(
             title,
             fontSize = 20.sp
         )
+
         badge?.invoke()
         Spacer(Modifier.weight(1f))
         endBadge?.invoke()

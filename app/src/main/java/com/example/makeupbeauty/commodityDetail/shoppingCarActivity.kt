@@ -1,5 +1,14 @@
 package com.example.makeupbeauty.commodityDetail
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
@@ -38,17 +48,35 @@ import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
 import androidx.compose.material.Icon as Icon
 
+class shoppingCarActivity : ComponentActivity() {
+    companion object {
+        fun newIntent(context: Context) =
+            Intent(context, shoppingCarActivity::class.java).apply { putExtra("chopCar", true) }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MakeupBeautyTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    AddToCartScren({ onBackPressed() })
+                }
+            }
+        }
+    }
+}
 
-@Preview(showBackground = true)
+
+
 @Composable
-fun AddToCartScren() {
+fun AddToCartScren(onBackClick: () -> Unit) {
     MakeupBeautyTheme {
         Scaffold(
             topBar = {
                 CarWithBack(
                     title = "购物车",
                     onBackClick = {
-
+                                  onBackClick
                     },
                 )
             }, backgroundColor = cottonBall,
@@ -294,6 +322,7 @@ fun ProductCartItems(
 
 @Composable
 fun NextButtonWithTotalItems() {
+    val context = LocalContext.current;
     Column(modifier = Modifier.fillMaxWidth()) {
         Divider(color = lightGrey, thickness = 2.dp)
         Spacer(modifier = Modifier.padding(8.dp))
@@ -318,6 +347,7 @@ fun NextButtonWithTotalItems() {
 
         Button(
             onClick = {
+                   context.startActivity(paymentActivity.newIntent(context))
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = orange),
             modifier = Modifier
