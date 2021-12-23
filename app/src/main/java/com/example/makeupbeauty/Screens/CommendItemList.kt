@@ -22,6 +22,7 @@ import com.example.makeupbeauty.CommunityPost.PostActivity
 import com.example.makeupbeauty.component.models.ConcernItem
 
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.notes.MynotesActivity
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
@@ -66,7 +67,8 @@ fun CommendItem(item: ConcernItem, modifier: Modifier = Modifier, onClick:()->Un
                     contentDescription = "avatar",
                     modifier = Modifier
                         .clip(CircleShape)
-                        .size(25.dp))
+                        .size(25.dp)
+                        .clickable { context.startActivity(PublicProfile.newIntent(context)) })
 
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(

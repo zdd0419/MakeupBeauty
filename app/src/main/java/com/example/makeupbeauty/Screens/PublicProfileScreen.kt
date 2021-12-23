@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.Screens
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,22 +37,27 @@ import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 import kotlinx.coroutines.InternalCoroutinesApi
 
-//class PublicProfile : ComponentActivity(){
-//    override fun onCreate(savedInstanceState: Bundle?){
-//        super.onCreate(savedInstanceState)
-//        setContent{
-//            MakeupBeautyTheme{
-//                Surface(color = MaterialTheme.colors.background){
-//                    PublicProfileScreen()
-//                }
-//            }
-//        }
-//
-//    }
-//}
+class PublicProfile : ComponentActivity(){
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, PublicProfile::class.java).apply { putExtra("PublicProfile",true) }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContent{
+            MakeupBeautyTheme{
+                Surface(color = MaterialTheme.colors.background){
+                    Public_ProfileScreen()
+                }
+            }
+        }
+
+    }
+}
 
 @Composable
-fun PublicProfileScreen() {
+fun Public_ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -255,9 +262,10 @@ fun profileItem(item: ConcernItem, modifier: Modifier = Modifier, onClick:()->Un
                             val checkedState = remember { mutableStateOf(false) }
 
                             IconToggleButton(
-                                modifier = Modifier.size(30.dp)
-                                            .padding(4.dp)
-                                            .align(alignment = Alignment.CenterEnd),
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .padding(4.dp)
+                                    .align(alignment = Alignment.CenterEnd),
                                 checked = checkedState.value,
                                 onCheckedChange = {
                                     checkedState.value = it
@@ -289,5 +297,5 @@ fun profileItem(item: ConcernItem, modifier: Modifier = Modifier, onClick:()->Un
 @Preview(showBackground = true)
 @Composable
 fun PublicProfileScreenPreview() {
-    PublicProfileScreen()
+    Public_ProfileScreen()
 }

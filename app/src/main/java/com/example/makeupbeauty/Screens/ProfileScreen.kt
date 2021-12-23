@@ -85,7 +85,7 @@ fun List() {
 //头像部分
 @Composable
 fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
-
+    val context = LocalContext.current;
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(4.dp,24.dp,0.dp,8.dp)
@@ -97,7 +97,8 @@ fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
                 modifier = Modifier
                     .padding(12.dp)
                     .clip(CircleShape)
-                    .size(80.dp))
+                    .size(80.dp)
+                    .clickable { context.startActivity(PublicProfile.newIntent(context)) })
 
             Column() {
                 Spacer(
@@ -137,7 +138,8 @@ fun MeListItem(
             .background(Color.White)
             .clickable{if(title == "订单"){context.startActivity(MyoderActivity.newIntent(context))}
                 if(title == "我的发布"){context.startActivity(MynotesActivity.newIntent(context))}
-                if(title == "我的收藏"){context.startActivity(collectActivity.newIntent(context))}},
+                if(title == "我的收藏"){context.startActivity(collectActivity.newIntent(context))}
+                if(title == "我的消息"){context.startActivity(ChatListScreen.newIntent(context))}},
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
