@@ -44,6 +44,7 @@ class ChatListScreen : ComponentActivity(){
                 val viewModel: ChatViewModel = viewModel()
                 Surface(color = MaterialTheme.colors.background){
                     ChatList(viewModel.chats)
+                    ChatPage()
                 }
             }
         }
