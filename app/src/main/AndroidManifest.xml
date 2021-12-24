@@ -66,6 +66,31 @@
             android:label="SettingScreen"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
+
+        <activity
+            android:name="com.example.makeupbeauty.ui.Screens.ChatListScreen"
+            android:exported="true"
+            android:label="ChatListScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
+        <activity
+            android:name="com.example.makeupbeauty.ui.Screens.LoginScreen"
+            android:exported="true"
+            android:label="LoginScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
+        <activity
+            android:name="com.example.makeupbeauty.ui.Screens.RegisterScreen"
+            android:exported="true"
+            android:label="LoginScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
+        <activity
+            android:name="com.example.makeupbeauty.ui.Screens.PublicProfileScreen"
+            android:exported="true"
+            android:label="PublicProfileScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

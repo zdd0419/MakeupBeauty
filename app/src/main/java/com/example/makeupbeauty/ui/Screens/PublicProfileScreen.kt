@@ -1,5 +1,10 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,23 +30,28 @@ import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.ConcernItem
 import com.example.makeupbeauty.data.ConcernDataProvider
+import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-//class PublicProfile : ComponentActivity(){
-//    override fun onCreate(savedInstanceState: Bundle?){
-//        super.onCreate(savedInstanceState)
-//        setContent{
-//            MakeupBeautyTheme{
-//                Surface(color = MaterialTheme.colors.background){
-//                    PublicProfileScreen()
-//                }
-//            }
-//        }
-//
-//    }
-//}
+class PublicProfileScreen : ComponentActivity(){
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, PublicProfileScreen::class.java).apply { putExtra("PublicProfileScreen",true) }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContent{
+            MakeupBeautyTheme{
+                Surface(color = MaterialTheme.colors.background){
+                    Public_ProfileScreen()
+                }
+            }
+        }
+    }
+}
 
 @Composable
-fun PublicProfileScreen() {
+fun Public_ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
