@@ -73,6 +73,7 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Community.id) {
             CommunityScreen()
             notes()
+
 //            AddToCartScren()
         }
         composable(NavigationItem.Profile.id) {
