@@ -66,18 +66,6 @@
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
         <activity
-            android:name=".Screens.ChatListScreen"
-            android:exported="true"
-            android:label="ChatListScreen"
-            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
-
-        <activity
-            android:name=".Screens.PublicProfile"
-            android:exported="true"
-            android:label="PublicProfile"
-            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
-
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
