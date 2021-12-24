@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +25,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -39,6 +42,10 @@ import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
 
 class LoginScreen : ComponentActivity() {
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, LoginScreen::class.java).apply { putExtra("LoginScreen",true) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +54,7 @@ class LoginScreen : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     LoginPage()
+                    val context = LocalContext.current;
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         //add Card
 //                        Card(
@@ -198,7 +206,7 @@ class LoginScreen : ComponentActivity() {
                                                     //contentDescription = "",
                                                     modifier = Modifier
                                                         .size(30.dp)
-                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                        .clickable(onClick = { showPwd = !showPwd })
                                                 )
                                             } else {
                                                 Icon(
@@ -207,7 +215,7 @@ class LoginScreen : ComponentActivity() {
                                                     contentDescription = "",
                                                     modifier = Modifier
                                                         .size(30.dp)
-                                                        .clickable(onClick = {showPwd = !showPwd})
+                                                        .clickable(onClick = { showPwd = !showPwd })
                                                 )
                                             }
 //                                                    Icon(Icons.Default.Lock,
@@ -289,6 +297,7 @@ class LoginScreen : ComponentActivity() {
 //                                    )
                                     }
                                 }
+
                                 item{
                                     Text(
                                         text = annotatedString.toAnnotatedString(),
@@ -296,7 +305,7 @@ class LoginScreen : ComponentActivity() {
                                             .fillMaxWidth()
                                             .align(Alignment.BottomCenter)
                                             .padding(vertical = 16.dp)
-                                            .clickable(onClick = {}),
+                                            .clickable { context.startActivity(RegisterScreen.newIntent(context)) },
                                         textAlign = TextAlign.Center
                                     )
                                 }
@@ -352,14 +361,17 @@ fun LoginPage() {
             bitmap = imageBitmap,
             contentDescription = "",
             contentScale=ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth().height(230.dp).clip(QureytoImageShapes(160f))
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(230.dp)
+                .clip(QureytoImageShapes(160f))
         )
         Box(
             contentAlignment=Alignment.Center,
             modifier = Modifier
                 .padding(0.dp)
                 .clip(CircleShape)
-                .background(Color(206, 236, 250,121))
+                .background(Color(206, 236, 250, 121))
                 .width(130.dp)
                 .height(130.dp)
         ){

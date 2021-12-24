@@ -1,6 +1,11 @@
 package com.example.makeupbeauty.ui.Screens
 
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,24 +22,31 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import com.example.makeupbeauty.component.AnimatedButton
+import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-//class Register: ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContent {
-//            MakeupBeautyTheme {
-//                // A surface container using the 'background' color from the theme
-//                RegisterScreen()
-//            }
-//        }
-//    }
-//}
+class RegisterScreen: ComponentActivity() {
+    companion object{
+        fun newIntent(context: Context) =
+            Intent(context, RegisterScreen::class.java).apply { putExtra("RegisterScreen",true) }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MakeupBeautyTheme {
+                // A surface container using the 'background' color from the theme
+                Register()
+            }
+        }
+    }
+}
 
 @Composable
-fun RegisterScreen(){
+fun Register(){
     Surface(color = MaterialTheme.colors.background) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             //add Card
