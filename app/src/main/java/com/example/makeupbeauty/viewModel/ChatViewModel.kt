@@ -1,4 +1,4 @@
-package com.example.makeupbeauty.data
+package com.example.makeupbeauty.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf

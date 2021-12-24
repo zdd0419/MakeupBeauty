@@ -3,6 +3,7 @@
     package="com.example.makeupbeauty">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -66,6 +67,12 @@
             android:label="SettingScreen"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
+
+        <activity
+            android:name="com.example.makeupbeauty.ui.CustomerService.CustomerServiceActivity"
+            android:exported="true"
+            android:label="CustomerServiceScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
         <activity
             android:name="com.example.makeupbeauty.ui.Screens.ChatListScreen"

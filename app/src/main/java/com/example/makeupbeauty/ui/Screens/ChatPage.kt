@@ -32,7 +32,7 @@ import com.example.makeupbeauty.ui.Topbars.ChatTopBar
 import com.example.makeupbeauty.component.models.Chat
 import com.example.makeupbeauty.component.models.ChatUser
 import com.example.makeupbeauty.component.models.Msg
-import com.example.makeupbeauty.data.ChatViewModel
+import com.example.makeupbeauty.viewModel.ChatViewModel
 import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 
