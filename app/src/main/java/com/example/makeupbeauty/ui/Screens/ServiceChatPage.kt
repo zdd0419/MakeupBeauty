@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Context
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -29,8 +30,8 @@ import com.example.makeupbeauty.viewModel.ChatViewModel
 import com.example.makeupbeauty.viewModel.ServiceChatViewModel
 
 @Composable
-fun ServiceChatPage(modifier: Modifier = Modifier, finish: (() -> Unit)? = null) {
-    val viewModel: ServiceChatViewModel = ServiceChatViewModel()
+fun ServiceChatPage(modifier: Modifier = Modifier, finish: (() -> Unit)? = null, context: Context) {
+    val viewModel: ServiceChatViewModel = ServiceChatViewModel(context)
         Column(
             modifier
                 .background(Color.White)
