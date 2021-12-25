@@ -13,7 +13,8 @@ object DemoDataProvider {
         storeItem(
             1,
             "3CE眼影盘",
-            R.drawable.ce
+//            R.drawable.ce
+           R.drawable.ce
         ),
         storeItem(
             2,
@@ -40,6 +41,7 @@ object DemoDataProvider {
             "moddy新品美瞳",
             R.drawable.moody
         ),
+
     )
 
     val itemList = listOf(
