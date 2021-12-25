@@ -40,7 +40,7 @@ fun GridListItem(
 
         })) {
             Image(
-                painter = painterResource(item.imageId),
+                painter = painterResource(item.imageid),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
