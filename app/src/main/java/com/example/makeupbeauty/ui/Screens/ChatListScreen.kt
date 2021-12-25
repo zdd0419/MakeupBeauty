@@ -29,7 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.Topbars.ChatTopBar
 import com.example.makeupbeauty.component.models.Chat
-import com.example.makeupbeauty.data.ChatViewModel
+import com.example.makeupbeauty.viewModel.ChatViewModel
 import com.example.makeupbeauty.ui.AttentionScreen
 import com.example.makeupbeauty.ui.CommentScreen
 import com.example.makeupbeauty.ui.LikeAndFavorites
