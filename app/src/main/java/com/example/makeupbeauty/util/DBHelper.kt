@@ -19,7 +19,6 @@ class DBHelper(var context: Context?, name: String, version: Int) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         db?.execSQL("drop table if exists Book")
         onCreate(db)
     }
