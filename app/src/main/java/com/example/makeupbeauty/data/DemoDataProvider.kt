@@ -1,4 +1,9 @@
 package com.example.makeupbeauty.data
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.CarouselItem
 import com.example.makeupbeauty.component.models.Goods
@@ -45,75 +50,153 @@ object DemoDataProvider {
     )
 
     val itemList = listOf(
+//        Item(
+//            1,
+//            "美妆1",
+//            "好看的妆容",
+//            R.drawable.face1,
+//        ),
+//        Item(
+//            2,
+//            "美妆2",
+//            "好看的妆容",
+//            R.drawable.face2,
+//        ),
+//        Item(
+//            3,
+//            "美妆3",
+//            "好看的妆容",
+//            R.drawable.face3,
+//        ),
+//        Item(
+//            4,
+//            "发色1",
+//            "好看的发色",
+//            R.drawable.hair1,
+//        ),
+//        Item(
+//            5,
+//            "发色2",
+//            "好看的发色",
+//            R.drawable.hair2,
+//        ),
+//        Item(
+//            6,
+//            "发色3",
+//            "好看的发色",
+//            R.drawable.hair3,
+//        ),
+//        Item(
+//            7,
+//            "美甲1",
+//            "好看的美甲",
+//            R.drawable.hand1,
+//        ),
+//        Item(
+//            8,
+//            "美甲2",
+//            "好看的美甲",
+//            R.drawable.hand2,
+//        ),
+//        Item(
+//            9,
+//            "美甲3",
+//            "好看的美甲",
+//            R.drawable.hand3,
+//        ),
+//        Item(
+//            10,
+//            "美甲4",
+//            "好看的美甲g",
+//            R.drawable.hand4
+//        ) ,
         Item(
-            1,
-            "美妆1",
-            "好看的妆容",
-            R.drawable.face1
-        ),
-        Item(
-            2,
-            "美妆2",
-            "好看的妆容",
-            R.drawable.face2
-        ),
-        Item(
-            3,
-            "美妆3",
-            "好看的妆容",
-            R.drawable.face3
-        ),
-        Item(
-            4,
-            "发色1",
-            "好看的发色",
-            R.drawable.hair1
-        ),
-        Item(
-            5,
-            "发色2",
-            "好看的发色",
-            R.drawable.hair2
-        ),
-        Item(
-            6,
-            "发色3",
-            "好看的发色",
-            R.drawable.hair3
-        ),
-        Item(
-            7,
-            "美甲1",
-            "好看的美甲",
-            R.drawable.hand1
-        ),
-        Item(
-            8,
-            "美甲2",
-            "好看的美甲",
-            R.drawable.hand2
-        ),
-        Item(
-            9,
-            "美甲3",
-            "好看的美甲",
-            R.drawable.hand3
-        ),
-        Item(
-            10,
-            "美甲4",
-            "好看的美甲g",
-            R.drawable.hand4
+            11,
+            "nyx16色眼妆|高级奶杏",
+            "给姐妹们解锁一下NYX16色眼影盘教程",
+            "https://s2.loli.net/2021/12/24/Q6HRzi7yUM81Fhp.jpg"
         ) ,
-
-        )
-
-    val item = Item(
-        1,
-        "Awesome List Item",
-        "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.hair3
+        Item(
+            12,
+            "创意妆容",
+            "我的美妆分享",
+            "https://s2.loli.net/2021/12/24/vAE8csN41KJfeGw.jpg",
+        ) ,
+        Item(
+            13,
+            "爱上我的新发色",
+            "感觉这个发色超显白的，特别温柔喔！分享给姐妹们～",
+            "https://s2.loli.net/2021/12/24/lwhVTWevHmu24Po.jpg",
+        ) ,
+        Item(
+            14,
+            "单眼皮泰式轻混血妆容",
+            "今天的妆容有点泰",
+            "https://s2.loli.net/2021/12/24/3CkMgPEOsjaXW2n.jpg",
+        ) ,
+        Item(
+            15,
+            "圣诞氛围的诱惑",
+            "圣诞派对季当然要染个新发色",
+            "https://s2.loli.net/2021/12/24/sMhdw4rCRVJP7xq.jpg",
+        ) ,
+        Item(
+            16,
+            "做了好看美甲",
+            "#美甲分享 #可爱美甲",
+            "https://s2.loli.net/2021/12/24/OlvbU5BL3yZf9Hd.jpg",
+        ) ,
+        Item(
+            17,
+            "新发色太适配秋冬啦～",
+            "太适合秋冬啦～还小小的整了个挂耳染嘻嘻",
+            "https://s2.loli.net/2021/12/24/oHNTCJY6snleKdX.jpg",
+        ) ,
+        Item(
+            18,
+            "超可爱的短甲美甲",
+            "#手绘美甲 #短甲美甲 #可爱美甲",
+            "https://s2.loli.net/2021/12/24/1ng5L4xRQdtTVfH.jpg",
+        ) ,
+        Item(
+            19,
+            "清纯萝莉的锁神婴儿瞳~妈生幼态感满分",
+            "这是什么小甜心\n" +
+                    "吃可爱多长大的吗？",
+            "https://s2.loli.net/2021/12/24/F3Hrm7YSWKq2hz1.jpg",
+        ) ,
+        Item(
+            20,
+            "90%的人都用错了！新手正确刷酸 |保姆级教程",
+            "今天就来给大家出一篇详细的刷酸笔记，包教会！！",
+            "https://s2.loli.net/2021/12/24/H1ERZvyPmpSjAs7.jpg",
+        ) ,
+        Item(
+            21,
+            "还有人不知道我的真命美瞳吗？",
+            "被问了一万次的olens someday brown",
+            "https://s2.loli.net/2021/12/24/PMlDvXNo9IBSEQY.jpg",
+        ) ,
+        Item(
+            22,
+            "每天敲爱的洗脸环节！",
+            "这个泡泡也太舒服了",
+            "https://s2.loli.net/2021/12/24/9xSh1B2dzEQguVI.jpg",
+        ) ,
+        Item(
+            23,
+            "别瞎买了！锁si兰蔻菁纯！提亮嘭弹刹不住车",
+            "兰蔻菁纯必拥有姓名",
+            "https://s2.loli.net/2021/12/24/RojYUlJfcSG2mKz.jpg",
+        ) ,
     )
+
+//    val item = Item(
+//        1,
+//        "Awesome List Item",
+//        "Very awesome list item has very awesome subtitle. This is bit long",
+//        R.drawable.hair3
+//    )
 
 
     val tweet = Tweet(
