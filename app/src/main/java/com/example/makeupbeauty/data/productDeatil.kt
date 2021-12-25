@@ -15,4 +15,5 @@ data class productDeatil(
     val catogory2:String,
     val catogory3:String,
     val catogory4:String,
+
 )

@@ -17,6 +17,7 @@ object productDetailData {
          "银冀红棕",
          "液体玫瑰",
          "麋鹿棕"
+
      )
  )
 }
