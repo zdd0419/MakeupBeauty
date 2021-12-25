@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +30,9 @@ import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.Topbars.ChatTopBar
 import com.example.makeupbeauty.component.models.Chat
 import com.example.makeupbeauty.viewModel.ChatViewModel
+import com.example.makeupbeauty.ui.AttentionScreen
+import com.example.makeupbeauty.ui.CommentScreen
+import com.example.makeupbeauty.ui.LikeAndFavorites
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
 class ChatListScreen : ComponentActivity(){
@@ -98,6 +102,7 @@ fun Modifier.unread(show: Boolean, color: Color): Modifier = this.drawWithConten
 
 @Composable
 fun ChatCard(){
+    val context = LocalContext.current;
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         modifier = Modifier
@@ -105,7 +110,7 @@ fun ChatCard(){
             .padding(horizontal = 32.dp, vertical = 16.dp)
     ) {
         Column(
-            modifier = Modifier.clickable {  }
+            modifier = Modifier.clickable { context.startActivity(LikeAndFavorites.newIntent(context)) }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.heart),
@@ -129,6 +134,7 @@ fun ChatCard(){
                 painter = painterResource(id = R.drawable.attention),
                 contentDescription = "",
                 modifier = Modifier.size(70.dp)
+                    .clickable { context.startActivity(AttentionScreen.newIntent(context)) }
             )
             Spacer(modifier = Modifier.height(3.dp))
             Text(
@@ -147,10 +153,11 @@ fun ChatCard(){
                 painter = painterResource(id = R.drawable.message),
                 contentDescription = "",
                 modifier = Modifier.size(70.dp)
+                    .clickable { context.startActivity(CommentScreen.newIntent(context)) }
             )
             Spacer(modifier = Modifier.height(3.dp))
             Text(
-                text = "  评论和@",
+                text = " 评论和@",
                 color = Color.Gray,
                 fontSize = 15.sp
             )

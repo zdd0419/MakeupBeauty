@@ -21,6 +21,21 @@
             android:label="@string/title_activity_collect"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
         <activity
+            android:name=".ui.LikeAndFavorites"
+            android:exported="false"
+            android:label="LikeAndFavorites"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".ui.AttentionScreen"
+            android:exported="false"
+            android:label="AttentionScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".ui.CommentScreen"
+            android:exported="false"
+            android:label="CommentScreen"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
             android:name=".ui.MynotesActivity"
             android:exported="false"
             android:label="@string/title_activity_mynotes"
@@ -114,5 +129,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
