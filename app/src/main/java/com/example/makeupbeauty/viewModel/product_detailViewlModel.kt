@@ -2136,6 +2136,7 @@ class product_detailViewlModel: ViewModel() {
     }
 
     fun getItem(): detail{
+
         return currentList[index]
     }
 

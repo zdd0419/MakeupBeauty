@@ -99,6 +99,7 @@ fun GridListView() {
 
 @Composable
 fun productList(){
+
     val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
     product_detailViewlmodel.changeCategory("special")
     val list1 = product_detailViewlmodel.getList()

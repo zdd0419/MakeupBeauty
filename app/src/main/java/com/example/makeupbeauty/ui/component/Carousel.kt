@@ -82,6 +82,7 @@ fun Carousel(modifier: Modifier = Modifier, imagesList: List<String>) {
         ) { page ->
             Image(
                 painter =rememberCoilPainter(imagesList[page]),
+
                 contentDescription = "slider",
                 modifier = Modifier
                     .fillMaxWidth()
