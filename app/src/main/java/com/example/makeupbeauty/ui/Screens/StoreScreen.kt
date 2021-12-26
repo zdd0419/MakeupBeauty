@@ -1,6 +1,7 @@
 package com.example.makeupbeauty.ui.Screens
 
 import android.util.Log
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -9,6 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -36,6 +38,7 @@ fun StoreScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
+            .verticalScroll(rememberScrollState())
 //            .wrapContentSize(Alignment.Center)
     ) {
 //       item(){
@@ -49,17 +52,17 @@ fun StoreScreen() {
 
 
            GridListView()
+       Spacer(modifier = Modifier.height(32.dp))
        Text(text="-精品库新品-",
-           fontSize = 12.sp,
+           fontSize = 24.sp,
            fontWeight = FontWeight.Bold,
-           color = Color.Gray,
+           color = Color(0xFFEC8AA4),
            textAlign = TextAlign.Center,
-           modifier = Modifier.padding(146.dp,4.dp,8.dp,0.dp)
+           modifier = Modifier.align(Alignment.CenterHorizontally)
        )
 
        productList()
-//       }
-
+       Spacer(modifier = Modifier.height(48.dp))
     }
 }
 
@@ -72,7 +75,7 @@ fun GridListView() {
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
     val posts = remember { DemoDataProvider.tweetList }
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Column() {
         VerticalGrid(columns = 4) {
             posts.forEach {
                 StoryItem(
@@ -93,7 +96,7 @@ fun GridListView() {
 @Composable
 fun productList(){
     val list = remember { DemoDataProvider.storeItemlist.take(6) }
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Column() {
             VerticalGrid(columns = 3) {
                 list.forEach {
                     GridListItem(item = it)

@@ -27,6 +27,10 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import com.example.makeupbeauty.component.AnimatedButton
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
+import okhttp3.*
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.io.IOException
 
 class RegisterScreen: ComponentActivity() {
     companion object{
@@ -249,7 +253,9 @@ fun Register(){
                     }
 
                     item{
-                        AnimatedButton("注册", emailText, passwordText)
+                        AnimatedButton("注册", emailText, passwordText, onClick = {
+                            RegisterApi("register", emailText.value, passwordText.value)
+                        })
                     }
 
                     item{
@@ -280,4 +286,59 @@ fun Register(){
             }
         }
     }
+}
+
+fun RegisterApi(type:String, email: String, password: String){
+
+//    var params:MutableMap<String,Any> = mutableMapOf<String,Any>()
+//    params.set("cellphone","0001211")
+//    params.set("country_code","+63")
+//    params.set("verification_code","334455")
+    val baseUrl = "http://zrp.cool:8000"
+    val url = "$baseUrl/register/"
+
+    print(email)
+    print(password)
+
+    val json = JSONObject()
+    json.put("type", type)
+    json.put("name", email)
+    json.put("password", password)
+//        body 里添加参数
+    val requestBody: RequestBody = json.toString().toRequestBody(JSON)
+    // 以前是这样的
+//        val requestBody: RequestBody = RequestBody.create(JSON, json.toString())
+//        RequestBody.create()
+
+
+    var builder = Request.Builder()
+    builder.url(url)
+    builder.addHeader("Content-Type","application/json")
+//        .addHeader("参数1","value")
+//        .addHeader("参数2","value")
+        .post(requestBody)
+
+
+    client.newCall(builder.build()).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            println("————失败了$e")
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+
+
+
+            var stA = response.body!!.string()
+            println("————成功 $stA")
+
+//
+//            runOnUiThread(){
+//                // 回到主线程刷新UI吧
+//                textView22!!.text = stA
+//            }
+
+        }
+
+    })
+
 }

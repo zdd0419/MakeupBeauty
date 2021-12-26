@@ -21,16 +21,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.ConcernItem
+import com.example.makeupbeauty.component.models.PublicProfileItem
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
+import com.example.makeupbeauty.viewModel.ChatViewModel
+import com.example.makeupbeauty.viewModel.PublicProfileViewModel
 
 class PublicProfileScreen : ComponentActivity(){
     companion object{
@@ -97,11 +102,11 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 
                     }
                 }
-
+                val context = LocalContext.current;
                 Column() {
                     Row(modifier = Modifier.fillMaxWidth()){
                         OutlinedButton(
-                            onClick = { /*TODO*/ },
+                            onClick = { context.startActivity(ChatListScreen.newIntent(context)) },
                             shape = RoundedCornerShape(//圆角
                                 topStart = 10.dp,
                                 topEnd = 10.dp,
@@ -163,7 +168,8 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 
 @Composable
 fun getUserPost() {
-    val list = remember { ConcernDataProvider.CommendItemList }
+    val ProfileViewModel: PublicProfileViewModel = viewModel()
+    val list = ProfileViewModel.PublicProfileItemList
 
     Card {
         LazyColumn(
@@ -187,7 +193,7 @@ fun getUserPost() {
 
             item {
                 list.forEach {
-                    profileItem(item = it)
+                    PublicProfileItem(item = it)
                 }
             }
         }
@@ -196,7 +202,7 @@ fun getUserPost() {
 
 
 @Composable
-fun profileItem(item: ConcernItem, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
+fun PublicProfileItem(item: PublicProfileItem, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
 //    val typography = MaterialTheme.typography
     Card(modifier = Modifier
         .clickable { onClick }

@@ -71,7 +71,7 @@ fun SearchSection() {
             .background(Color(0xFFD0D0D0), shape = CircleShape),
         shape = CircleShape,
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color(0xFFDDDDDD),
+            backgroundColor = Color(245,245,245),
             cursorColor = Color.Black,
             disabledLabelColor = Color(0xFFDDDDDD),
             focusedIndicatorColor = Color.Transparent,

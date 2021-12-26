@@ -90,9 +90,10 @@ fun RecommendTitle(text: String, modifier: Modifier = Modifier){
         text = text,
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
-        color = Color.Blue,
+        color = Color(0xFFec8aa4),
         textAlign = TextAlign.Center,
-        modifier = modifier.padding(10.dp,4.dp,8.dp,0.dp)
+        modifier = modifier.padding(10.dp,4.dp,8.dp,0.dp),
+//        fontStyle =
     )
 }
 

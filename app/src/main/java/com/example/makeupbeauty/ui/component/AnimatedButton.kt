@@ -23,7 +23,7 @@ enum class ButtonState{
 }
 
 @Composable
-fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordText: MutableState<String>){
+fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordText: MutableState<String>, onClick: () -> Unit){
     val buttonState = remember {
         mutableStateOf(ButtonState.Normal)
     }
@@ -74,6 +74,7 @@ fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordTex
             } else{
                 ButtonState.Normal
             }
+            onClick()
         },
         colors = ButtonDefaults.buttonColors(
             backgroundColor = buttonBackgroundColor,

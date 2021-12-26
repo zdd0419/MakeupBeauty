@@ -14,7 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MakeupBeauty">
+        android:theme="@style/Theme.MakeupBeauty"
+        android:usesCleartextTraffic="true"
+        android:name=".MyApp">
         <activity
             android:name=".ui.collectActivity"
             android:exported="false"

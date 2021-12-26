@@ -18,6 +18,7 @@ import com.example.makeupbeauty.ui.Screens.*
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
+import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
@@ -97,7 +98,8 @@ fun showGoods() {
 @InternalCoroutinesApi
 @Composable
 fun showPost() {
-    val list = remember { ConcernDataProvider.CommendItemList }
+    val postViewModel: PostViewModel = viewModel()
+    val list = postViewModel.notes_detail
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
