@@ -93,5 +93,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation 'com.github.0xZhangKe:WebSocketDemo:3.1'
+    implementation "com.google.accompanist:accompanist-coil:0.13.0"
+    implementation "com.androidisland.arch:vita:1.0.0"
 
 }

@@ -4,7 +4,7 @@ import android.text.format.Time
 import java.text.SimpleDateFormat
 
 data class Comment(
-    val image: Int,          //评论者头像
+    val image: String,          //评论者头像
     val title: String,
     val content: String,
     val time: String,
