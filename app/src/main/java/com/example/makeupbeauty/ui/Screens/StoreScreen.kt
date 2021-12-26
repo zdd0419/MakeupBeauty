@@ -96,8 +96,6 @@ fun productList(){
                 }
             }
     }
-
-
 }
 
 @InternalCoroutinesApi
