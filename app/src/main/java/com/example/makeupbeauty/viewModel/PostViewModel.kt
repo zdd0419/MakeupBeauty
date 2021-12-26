@@ -4,12 +4,17 @@ import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.Comment
 import com.example.makeupbeauty.data.notesData
 
 class PostViewModel: ViewModel() {
+    val concernData = MutableLiveData<MutableList<notesData>>()
+    val recommendData = MutableLiveData<MutableList<notesData>>()
     val my_concern= mutableListOf(
         notesData(
             1,
@@ -170,6 +175,12 @@ class PostViewModel: ViewModel() {
     val myAvatar = "https://img.zrp.cool/2021/12/26/3ae3b54bc4c12.jpg" //本人头像
     var index by mutableStateOf(0)
     var option by mutableStateOf(0)    //0:concern, 1:recommend
+    var isFavorited by mutableStateOf(3)   //3表示没有修改过
+
+    fun init() {
+        concernData.postValue(my_concern)
+        recommendData.postValue(notes_detail)
+    }
 
     fun changeConcern(i: Int) {
         index = i;
@@ -191,13 +202,62 @@ class PostViewModel: ViewModel() {
     }
 
     fun clicklike(id: Int) {
-        Log.e("id",id.toString())
-        Log.e("liked",my_concern[id-1].isliked.toString())
-        var former = my_concern[id-1].isliked
         if(option == 0) {
-            my_concern[id-1].isliked = 1-former;
+            var concernlist = concernData.value
+            var former = concernlist?.get(id-1)?.isliked
+            var temp = concernlist?.get(id-1)
+            if (temp != null) {
+                temp.isliked = 1- former!!
+            }
+            if (concernlist != null) {
+                if (temp != null) {
+                    concernlist[id-1] = temp
+                    concernData.postValue(concernlist!!)
+                };
+            }
         } else{
-            notes_detail[id-1].isliked = 1-former;
+            var commendlist = recommendData.value
+            var former = commendlist?.get(id-1)?.isliked
+            var temp = commendlist?.get(id-1)
+            if (temp != null) {
+                temp.isliked = 1- former!!
+            }
+            if (commendlist != null) {
+                if (temp != null) {
+                    commendlist[id-1] = temp
+                    recommendData.postValue(commendlist!!)
+                };
+            }
+        }
+    }
+
+    fun clickcollect(id: Int) {
+        if(option == 0) {
+            var concernlist = concernData.value
+            var former = concernlist?.get(id-1)?.iscollected
+            var temp = concernlist?.get(id-1)
+            if (temp != null) {
+                temp.iscollected = 1- former!!
+            }
+            if (concernlist != null) {
+                if (temp != null) {
+                    concernlist[id-1] = temp
+                    concernData.postValue(concernlist!!)
+                };
+            }
+        } else{
+            var commendlist = recommendData.value
+            var former = commendlist?.get(id-1)?.iscollected
+            var temp = commendlist?.get(id-1)
+            if (temp != null) {
+                temp.iscollected = 1- former!!
+            }
+            if (commendlist != null) {
+                if (temp != null) {
+                    commendlist[id-1] = temp
+                    recommendData.postValue(commendlist!!)
+                };
+            }
         }
     }
 }

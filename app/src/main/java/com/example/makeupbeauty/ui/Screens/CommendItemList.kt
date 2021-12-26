@@ -15,6 +15,8 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,9 +52,15 @@ fun turnActivity() {
 @InternalCoroutinesApi
 @Composable
 fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
+    val isFavourite = remember { mutableStateOf(item.isliked) }
     val context = LocalContext.current;
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-//    val typography = MaterialTheme.typography
+
+    if(postViewModel.isFavorited != 3)
+    {
+        isFavourite.value = postViewModel.isFavorited
+        postViewModel.isFavorited = 3
+    }
     Card(modifier = Modifier
         .clickable {
             postViewModel.changeRecommend(item.id-1)
@@ -104,15 +112,17 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
 
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Icon(
-                        imageVector = if(item.isliked==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
+                        imageVector = if(isFavourite.value==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
                         contentDescription = "like",
                         modifier = Modifier
                             .size(25.dp)
                             .padding(4.dp)
                             .align(alignment = Alignment.CenterEnd)
-                            .clickable { postViewModel.clicklike(item.id) }
+                            .clickable {
+                                isFavourite.value = 1-isFavourite.value
+                                postViewModel.clicklike(item.id) }
                         ,
-                        tint = Color.Unspecified)
+                        tint = if(isFavourite.value==0) Color.Unspecified else Color.Red)
 //                    Icon(
 //                        painter = painterResource(id = R.drawable.like),
 //                        contentDescription = "like",
