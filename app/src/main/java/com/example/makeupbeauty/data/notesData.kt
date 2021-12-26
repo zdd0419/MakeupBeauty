@@ -9,7 +9,7 @@ data class notesData(
     val author:String,
     val avator:String,
     var isliked: Int,
-    val iscollected: Int,
+    var iscollected: Int,
     val imagelist:List<String>,
     val commentlist:List<Comment>,
     val time:String

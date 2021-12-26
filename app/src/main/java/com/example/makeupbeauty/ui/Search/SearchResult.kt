@@ -8,13 +8,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.CommunityPost.UserItem
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.ui.Screens.*
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -75,12 +78,17 @@ fun SearchResult() {
 
 @Composable
 fun showGoods() {
-    val list = remember { DemoDataProvider.goodsList }
+    val product_detailViewlmodel: product_detailViewlModel = viewModel()
+    val list1 = product_detailViewlmodel.getList()
+    val context = LocalContext.current;
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list.forEach {
-                    GoodsItem(item = it)
+                list1.forEach {
+                    GoodsItem(item = it,
+                        onClick = {context.startActivity(productDetailActivity.newIntent(context))}
+                    )
+
                 }
             }
         }

@@ -13,8 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.makeupbeauty.component.models.CarouselItem
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
+import com.google.accompanist.coil.rememberCoilPainter
 //import com.carouseljc.models.CarouselItem
 //import com.carouseljc.utils.AppConstants
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -31,7 +34,7 @@ private const val TAG = "CarouselTest"
 @InternalCoroutinesApi
 @ExperimentalPagerApi
 @Composable
-fun Carousel(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
+fun Carousel(modifier: Modifier = Modifier, imagesList: List<String>) {
     if (imagesList.isEmpty())
         return
     val pagerState = rememberPagerState()
@@ -39,6 +42,8 @@ fun Carousel(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
     val handler by remember {
         mutableStateOf(Handler(Looper.getMainLooper()))
     }
+
+
 
     val runnable by remember {
         mutableStateOf(Runnable {
@@ -76,7 +81,8 @@ fun Carousel(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
                 .fillMaxSize()
         ) { page ->
             Image(
-                painter = painterResource(imagesList[page].id),
+                painter =rememberCoilPainter(imagesList[page]),
+
                 contentDescription = "slider",
                 modifier = Modifier
                     .fillMaxWidth()
