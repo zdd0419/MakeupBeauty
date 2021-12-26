@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
@@ -26,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -36,6 +38,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.TopBarWithBack
+import com.example.makeupbeauty.ui.Screens.ChatListScreen
+import com.example.makeupbeauty.ui.Screens.ShowDialog
 import com.example.makeupbeauty.ui.theme.*
 
 
@@ -126,6 +130,8 @@ fun oderItems(
     count: String = "",
     backgroundColor: Color = Color.Transparent
 ) {
+    val context = LocalContext.current;
+    val alertDialog = remember { mutableStateOf(false) }
     val isChoose = remember { mutableStateOf(true) }
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
@@ -214,6 +220,7 @@ fun oderItems(
 
                 Button(
                     onClick = {
+                        alertDialog.value = true
                     },
                     colors = ButtonDefaults.buttonColors(backgroundColor = orange),
                     modifier = Modifier
@@ -242,4 +249,5 @@ fun oderItems(
         }
 
     }
+    ShowDialog(alertDialog)
 }
