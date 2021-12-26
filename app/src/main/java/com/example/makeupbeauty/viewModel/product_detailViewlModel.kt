@@ -2121,8 +2121,10 @@ class product_detailViewlModel: ViewModel() {
             currentList = Beautiful_pupils
         else if(newCatagory=="卸妆")
             currentList = remover
-        else
+        else if(newCatagory=="底妆")
             currentList = dizhuang
+        else
+            currentList=featured
     }
     fun getList():List<detail> {
         return currentList

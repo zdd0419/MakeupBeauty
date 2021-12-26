@@ -25,6 +25,7 @@ import com.androidisland.vita.vita
 import com.example.makeupbeauty.Search.Catagory
 import com.example.makeupbeauty.VerticalGrid.StoryItem
 import com.example.makeupbeauty.VerticalGrid.VerticalGrid
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.GridListItem
 import com.example.makeupbeauty.data.DemoDataProvider
@@ -98,11 +99,20 @@ fun GridListView() {
 
 @Composable
 fun productList(){
-    val list = remember { DemoDataProvider.storeItemlist.take(6) }
+    val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+    product_detailViewlmodel.changeCategory("special")
+    val list1 = product_detailViewlmodel.getList()
+    val context = LocalContext.current;
     Column() {
             VerticalGrid(columns = 3) {
-                list.forEach {
-                    GridListItem(item = it)
+                list1.forEach {
+                    GridListItem(item = it,
+                        onClick = {
+                            print("idididid:"+it.id)
+                             product_detailViewlmodel.setId(it.id)
+                            context.startActivity(productDetailActivity.newIntent(context))}
+                        )
+
 //                    when(it){
 //                        storeItem(4,"迪奥迷你唇膏口红",R.drawable.dior2) ->ProductDetailsScreen()
 //                    }

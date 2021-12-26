@@ -76,6 +76,7 @@ fun showGoodsInCategory() {
                 list1.forEach {
                     GoodsItem(item = it,
                         onClick = {
+                            print(it.id)
                             product_detailViewlmodel.setId(it.id)
                             context.startActivity(productDetailActivity.newIntent(context))}
                         )

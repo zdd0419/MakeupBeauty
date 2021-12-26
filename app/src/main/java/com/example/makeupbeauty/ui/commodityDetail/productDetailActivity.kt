@@ -85,24 +85,8 @@ class productDetailActivity : ComponentActivity() {
 @ExperimentalMaterialApi
 
 @Composable
-fun ProductDetailsScreen(expand: suspend () -> Unit) {
-//    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-//        bottomSheetState = rememberBottomSheetState(
-//            initialValue = BottomSheetValue.Collapsed
-//        )
-//    )
-//
-//    BottomSheetScaffold(
-//        sheetContent = {
-//            // The content you want to show in your bottom sheet
-//            ProductDetailsScreen()
-//        },
-//        scaffoldState = bottomSheetScaffoldState) {
-//        // The content you want to show in your screen
-//        chooseProduct()
-//
-//    }
-
+fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
+    val context = LocalContext.current;
     Scaffold(
         topBar = {
             TopAppBarWithBack(
@@ -135,7 +119,15 @@ fun ProductDetailsScreen(expand: suspend () -> Unit) {
                         text = "立即购买",
                         color = white,
                         style = MaterialTheme.typography.button,
-                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp).clickable (
+                            onClick={
+
+                                context.startActivity(MyoderActivity.newIntent(context))}
+                                )
+
+
+
+
                     )
                 }
 
@@ -697,7 +689,7 @@ fun productDetail(
 fun productCatagory(
     onClick:()->Unit = {}
 ){
-    val choose = remember {mutableStateOf("")}
+    val choose = remember {mutableStateOf(0)}
     Card(
         modifier = Modifier
             .padding(1.dp) // 外边距
@@ -718,14 +710,16 @@ fun productCatagory(
                 Card(
                     modifier = Modifier
                         .padding(10.dp) // 外边距
-                        .clickable(onClick = onClick,
-
+                        .clickable(onClick = {
+                                choose.value = item
+                            }
                         )
                         .fillMaxWidth(),
 
                     // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
                     // 将无法显示波纹效果
 
+                    backgroundColor = if(item != choose.value) Color(0xFFDDDDDD) else Color(0xFFF56040),
                     elevation = 6.dp // 设置阴影
                 ) {
 
