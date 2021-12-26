@@ -116,6 +116,7 @@ fun OderItemList() {
             pricetag = "$",
             count = "x1",
             backgroundColor = lightsilverbox
+
         )
 
     }

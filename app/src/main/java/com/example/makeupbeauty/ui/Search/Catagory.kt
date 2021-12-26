@@ -67,6 +67,7 @@ class Catagory : ComponentActivity() {
 
 @Composable
 fun showGoodsInCategory() {
+
     val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
     val list1 = product_detailViewlmodel.getList()
     val context = LocalContext.current;
