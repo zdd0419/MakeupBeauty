@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -186,6 +187,17 @@ class PostViewModel: ViewModel() {
             return my_concern.elementAt(index)
         } else{
             return notes_detail.elementAt(index)
+        }
+    }
+
+    fun clicklike(id: Int) {
+        Log.e("id",id.toString())
+        Log.e("liked",my_concern[id-1].isliked.toString())
+        var former = my_concern[id-1].isliked
+        if(option == 0) {
+            my_concern[id-1].isliked = 1-former;
+        } else{
+            notes_detail[id-1].isliked = 1-former;
         }
     }
 }

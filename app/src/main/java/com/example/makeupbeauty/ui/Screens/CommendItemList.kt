@@ -10,6 +10,9 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -101,13 +104,23 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
 
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Icon(
-                        painter = painterResource(id = R.drawable.like),
+                        imageVector = if(item.isliked==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
                         contentDescription = "like",
                         modifier = Modifier
                             .size(25.dp)
                             .padding(4.dp)
-                            .align(alignment = Alignment.CenterEnd),
+                            .align(alignment = Alignment.CenterEnd)
+                            .clickable { postViewModel.clicklike(item.id) }
+                        ,
                         tint = Color.Unspecified)
+//                    Icon(
+//                        painter = painterResource(id = R.drawable.like),
+//                        contentDescription = "like",
+//                        modifier = Modifier
+//                            .size(25.dp)
+//                            .padding(4.dp)
+//                            .align(alignment = Alignment.CenterEnd),
+//                        tint = Color.Unspecified)
                 }
 
             }
@@ -115,4 +128,6 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
         }
     }
 }
+
+
 

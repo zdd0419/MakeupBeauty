@@ -18,10 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
+import com.example.makeupbeauty.viewModel.PostViewModel
 
 
 @Composable
 fun PostBottomBar(like:Int, collect: Int, comment: Int) {
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     var newComment = ""
     BottomAppBar (
         backgroundColor = Color.White
@@ -48,7 +52,7 @@ fun PostBottomBar(like:Int, collect: Int, comment: Int) {
 
         //点赞
         Spacer(Modifier.weight(1f, true))
-        IconButton(onClick = { }) {
+        IconButton(onClick = {  }) {
             Icon(Icons.Filled.FavoriteBorder, contentDescription = null)
         }
         Text(text = like.toString())

@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
@@ -18,9 +19,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.TryOn.TryOn
+import com.example.makeupbeauty.ui.Notes
 import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -160,5 +164,14 @@ fun AddMultiFab(){
     FloatingAddButton(srcIcon = Icons.Filled.Add, showLabels = true,items = expandFbItemList) {
         //弹出来的item被点击了
         Toast.makeText(context.applicationContext,"点击了:${it.label}",Toast.LENGTH_SHORT).show()
+        if (it.label == "图片")
+        {
+            val intent = Intent(context, Notes::class.java)
+            startActivity(context, intent, null
+             //   Notes.newIntent(context)
+            )
+        }else {
+
+        }
     }
 }
