@@ -439,5 +439,4 @@ object ProductDetailData2 {
             ""
         )
     )
-
 }

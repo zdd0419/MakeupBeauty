@@ -191,13 +191,6 @@ object DemoDataProvider {
         ) ,
     )
 
-//    val item = Item(
-//        1,
-//        "Awesome List Item",
-//        "Very awesome list item has very awesome subtitle. This is bit long",
-//        R.drawable.hair3
-//    )
-
 
     val tweet = Tweet(
         1,

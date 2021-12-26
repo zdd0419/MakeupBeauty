@@ -39,6 +39,11 @@ import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.AnimatedButton
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.io.IOException
 
 
 class LoginScreen : ComponentActivity() {
@@ -251,22 +256,11 @@ class LoginScreen : ComponentActivity() {
                                     Spacer(modifier = Modifier.height(16.dp))
                                 }
                                 item{
-                                    //添加按钮
-//                                Button(
-//                                    onClick = { /*TODO*/ },
-//                                    colors = ButtonDefaults.buttonColors(
-//                                            backgroundColor = Color.Blue,
-//                                            disabledBackgroundColor = Color.Blue.copy(0.5f)
-//                                    ),
-//                                    modifier = Modifier
-//                                        .height(46.dp)
-//                                        .width(280.dp),
-//                                    enabled = emailText.value.isNotBlank() && passwordText.value.isNotBlank(),
-//                                    shape = MaterialTheme.shapes.medium
-//                                ) {
-//                                    Text(text = "登录", color = Color.White)
-//                                }
-                                    AnimatedButton("登录", emailText, passwordText)
+
+                                    AnimatedButton("登录", emailText, passwordText,
+                                                onClick = {
+                                                    loginApi("login", emailText.value, passwordText.value)
+                                                })
                                 }
 
                                 item{
@@ -287,14 +281,6 @@ class LoginScreen : ComponentActivity() {
                                                 .fillMaxWidth()
                                                 .background(Color.LightGray)
                                         )
-//                                    Text(
-//                                        text = "",
-//                                        color = Color.LightGray,
-//                                        modifier = Modifier
-//                                            .align(Alignment.Center)
-//                                            .background(MaterialTheme.colors.background)
-//                                            .padding(horizontal = 16.dp)
-//                                    )
                                     }
                                 }
 
@@ -305,7 +291,13 @@ class LoginScreen : ComponentActivity() {
                                             .fillMaxWidth()
                                             .align(Alignment.BottomCenter)
                                             .padding(vertical = 16.dp)
-                                            .clickable { context.startActivity(RegisterScreen.newIntent(context)) },
+                                            .clickable {
+                                                context.startActivity(
+                                                    RegisterScreen.newIntent(
+                                                        context
+                                                    )
+                                                )
+                                            },
                                         textAlign = TextAlign.Center
                                     )
                                 }
@@ -317,21 +309,6 @@ class LoginScreen : ComponentActivity() {
         }
     //}
 }
-
-//@Composable
-//fun LoginPage() {
-//    val imageBitmap: ImageBitmap = ImageBitmap.imageResource(R.drawable.head_god)
-//    //val delectedIcon: ImageBitmap = ImageBitmap.imageResource(R.drawable.eye_hide)
-//    Box(contentAlignment = Alignment.Center) {
-//        Image(
-//            bitmap = imageBitmap,
-//            contentDescription = "",
-//            contentScale= ContentScale.FillWidth,
-//            modifier = Modifier.fillMaxWidth().height(280.dp).clip(QureytoImageShapes(160f))
-//        )
-//        //Image(bitmap = delectedIcon, contentDescription = "")
-//    }
-//}
 
 @Stable
 class QureytoImageShapes(var hudu: Float = 100f) : Shape {
@@ -391,4 +368,49 @@ fun LoginPage() {
             )
         }
     }
+}
+
+val client = OkHttpClient()
+val JSON: MediaType = "application/json".toMediaType()
+
+fun loginApi(type:String, email: String, password: String){
+
+    val baseUrl = "http://zrp.cool:8000"
+    val url = "$baseUrl/login/"
+
+    print(email)
+    print(password)
+
+    val json = JSONObject()
+    json.put("type", type)
+    json.put("name", email)
+    json.put("password", password)
+//        body 里添加参数
+    val requestBody: RequestBody = json.toString().toRequestBody(JSON)
+    // 以前是这样的
+//        val requestBody: RequestBody = RequestBody.create(JSON, json.toString())
+//        RequestBody.create()
+
+
+    var builder = Request.Builder()
+    builder.url(url)
+    builder.addHeader("Content-Type","application/json")
+//        .addHeader("参数1","value")
+//        .addHeader("参数2","value")
+        .post(requestBody)
+
+
+    client.newCall(builder.build()).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            println("————失败了$e")
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+
+            var stA = response.body!!.string()
+            println("————成功 $stA")
+        }
+
+    })
+
 }

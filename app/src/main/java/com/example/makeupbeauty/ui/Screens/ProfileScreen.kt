@@ -34,7 +34,7 @@ fun ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray)
+            .background(Color(245,245,245))
     ) {
         Box(Modifier.background(Color.White)) {
             Icon(
@@ -66,7 +66,7 @@ fun List() {
     MeListItem(R.drawable.icon, "订单")
     Spacer(
         Modifier
-            .background(Color.LightGray)
+            .background(Color(245,245,245))
             .fillMaxWidth()
             .height(8.dp)
     )
