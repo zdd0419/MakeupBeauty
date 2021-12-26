@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Backup
+import androidx.compose.material.icons.filled.ChevronLeft
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +26,7 @@ fun ChatTopBar(title: String, onBack: (() -> Unit)? = null) {
         ) {
             if (onBack != null){
                 Icon(
-                    Icons.Default.Menu,
+                    Icons.Default.ChevronLeft,
                     contentDescription = "",
                     Modifier
                         .clickable ( onClick = onBack )
@@ -45,5 +47,4 @@ fun ChatTopBar(title: String, onBack: (() -> Unit)? = null) {
             Color.Black
         )
     }
-
 }
