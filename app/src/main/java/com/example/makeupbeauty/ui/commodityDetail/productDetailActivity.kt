@@ -121,7 +121,6 @@ fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
                         style = MaterialTheme.typography.button,
                         modifier = Modifier.padding(top = 8.dp, bottom = 8.dp).clickable (
                             onClick={
-
                                 context.startActivity(MyoderActivity.newIntent(context))}
                                 )
 

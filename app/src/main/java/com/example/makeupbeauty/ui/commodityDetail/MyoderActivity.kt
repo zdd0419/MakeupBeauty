@@ -138,6 +138,7 @@ fun oderItems(
                     .width(100.dp)
                     .height(200.dp)
                     .fillMaxWidth(0.2f)
+
                     .clip(RoundedCornerShape(20.dp))
                     .background(backgroundColor),
                 contentAlignment = Alignment.Center

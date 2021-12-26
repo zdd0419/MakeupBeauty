@@ -12,6 +12,7 @@ import com.example.makeupbeauty.component.models.PublicProfileItem
 
 class PublicProfileViewModel: ViewModel() {
     val PublicProfileItemList by mutableStateOf(
+
         listOf(
             PublicProfileItem(
                 1,

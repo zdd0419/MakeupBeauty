@@ -24,6 +24,7 @@ import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 fun GridListItem(
+
     item: detail,
     modifier: Modifier = Modifier,
     onClick:()->Unit = {}
