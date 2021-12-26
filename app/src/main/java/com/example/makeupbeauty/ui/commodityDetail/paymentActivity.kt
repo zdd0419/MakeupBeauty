@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -47,6 +48,7 @@ import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.TopAppBarWithBack
 import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
+import com.google.accompanist.coil.rememberCoilPainter
 
 
 class paymentActivity : ComponentActivity() {
@@ -56,11 +58,22 @@ class paymentActivity : ComponentActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var bundle:Bundle?=intent.extras
+        var title: String? = "123"
+        var price: Double = 0.0
+        var category:String? = ""
+        var photos:String? = ""
+        if(bundle!=null) {
+            title = bundle!!.getString("title")
+            price = bundle!!.getDouble("price")
+            category =bundle!!.getString("catagory")
+            photos =bundle!!.getString("photos")
+        }
         setContent {
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    PaymentView()
+                    PaymentView(title,price,category,photos)
                 }
             }
         }
@@ -70,9 +83,13 @@ class paymentActivity : ComponentActivity() {
 
 
 @Composable
-@Preview
-fun PaymentView() {
-
+fun PaymentView(title:String?,price:Double,category:String?,photos:String?) {
+    val intent = Intent(LocalContext.current, MyoderActivity::class.java)
+    intent.putExtra("price",price)
+    intent.putExtra("title", title)
+    intent.putExtra("catagory", category)
+    //intent.putExtra("product_id", product_detailViewlmodel.setId(item))
+    intent.putExtra("photos", photos)
     com.example.makeupbeauty.ui.theme.MakeupBeautyTheme {
         Scaffold(
             topBar = {
@@ -93,9 +110,9 @@ fun PaymentView() {
                             phoneNumber = "18907763271"
                         )
 
-                        ProductItemList()
+                        ProductItemList(title,price,category,photos)
                         pay()
-                        total(1, 350.00)
+                        total(1, 350.00,intent)
                     }
 
                 }
@@ -162,7 +179,7 @@ fun Owner(imageid: Int, name: String, address: String,phoneNumber:String) {
 fun product(
     imagePainter: Painter,
     title: String = "",
-    price: String = "",
+    price: Double = 0.0,
     pricetag: String = "",
     count: String = "",
     prodcutCatagory:String="",
@@ -178,8 +195,8 @@ fun product(
             item {
                 Box(
                     modifier = Modifier
-                        .width(100.dp)
-                        .height(100.dp)
+                        .width(40.dp)
+                        .height(50.dp)
                         .fillMaxWidth(0.2f)
                         .clip(RoundedCornerShape(20.dp))
                         .background(backgroundColor),
@@ -194,13 +211,13 @@ fun product(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
+                        .padding(horizontal = 14.dp),
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Text(
                         text = title,
-                        fontSize = 18.sp,
+                        fontSize = 10.sp,
                         color = titleTextColor,
                         fontWeight = FontWeight.Bold
                     )
@@ -228,7 +245,7 @@ fun product(
                                         titleTextColor
                                     )
                                 ) {
-                                    append(price)
+                                    append(price.toString())
                                 }
                             },
                             style = MaterialTheme.typography.subtitle1,
@@ -277,20 +294,23 @@ fun product(
 }
 
 @Composable
-fun ProductItemList() {
+fun ProductItemList(title:String?,price:Double,category:String?,photos:String?) {
+    val painter = rememberCoilPainter(photos)
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        product(
-            imagePainter = painterResource(id = R.drawable.product),
-            title = "YSL圣罗兰小金条细管口红",
-            price = "350.00",
-            pricetag = "$",
-            count = "x1",
-            prodcutCatagory="N19",
-            backgroundColor = lightsilverbox
-        )
+        if (title != null) {
+            product(
+                imagePainter = painter,
+                title = title,
+                price = price,
+                pricetag = "$",
+                count = "x1",
+                prodcutCatagory="N19",
+                backgroundColor = lightsilverbox
+            )
+        }
 
     }
 }
@@ -402,8 +422,10 @@ fun pay(){
 //总计
 @Composable
 fun total(totalCount:Int=0,
-          price:Double=0.00
+          price:Double=0.00,
+          intent:Intent
 ){
+    val context = LocalContext.current;
     Row(modifier = Modifier
         .fillMaxWidth()) {
         Row {
@@ -425,6 +447,7 @@ fun total(totalCount:Int=0,
 
         Button(
             onClick = {
+                context.startActivity(intent)
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = orange),
             modifier = Modifier

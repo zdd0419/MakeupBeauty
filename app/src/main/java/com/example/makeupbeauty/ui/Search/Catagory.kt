@@ -3,6 +3,7 @@ package com.example.makeupbeauty.Search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,23 +71,25 @@ class Catagory : ComponentActivity() {
 fun showGoodsInCategory() {
 
     val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
-    val list1 = product_detailViewlmodel.getList()
+    val list2 = remember{ product_detailViewlmodel.getList().toMutableStateList() }
     val context = LocalContext.current;
+    Log.e(list2[0].title,list2[0].title)
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list1.forEach {
+                list2.forEach {
                     GoodsItem(item = it,
                         onClick = {
-                            print(it.id)
+                            Log.e("title",it.title)
                             product_detailViewlmodel.setId(it.id)
                             context.startActivity(productDetailActivity.newIntent(context))}
-                        )
+                    )
+                }
+
                 }
             }
         }
     }
-}
 
 @Composable
 fun categoryTopBar(category: String, onClick:()->Unit = {}) {

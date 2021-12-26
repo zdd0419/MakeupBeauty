@@ -20,10 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.sharp.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,12 +37,11 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.R
-import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
+import com.google.accompanist.coil.rememberCoilPainter
 import androidx.compose.material.Icon as Icon
 
 class shoppingCarActivity : ComponentActivity() {
@@ -55,11 +51,25 @@ class shoppingCarActivity : ComponentActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var bundle:Bundle?=intent.extras
+        var title: String? = "123"
+        var price: Double = 0.0
+        var category:String? = ""
+        var photos:String? = ""
+        if(bundle!=null) {
+            title = bundle!!.getString("title")
+            price = bundle!!.getDouble("price")
+            category =bundle!!.getString("catagory")
+            photos =bundle!!.getString("photos")
+        }
         setContent {
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    AddToCartScren({ onBackPressed() })
+                    AddToCartScren(title,
+                        price,
+                        category,
+                        photos)
 
                 }
             }
@@ -70,14 +80,20 @@ class shoppingCarActivity : ComponentActivity() {
 
 
 @Composable
-fun AddToCartScren(onBackClick: () -> Unit) {
+fun AddToCartScren(title:String?,price:Double,category:String?,photos:String?) {
+    val intent = Intent(LocalContext.current, paymentActivity::class.java)
+    intent.putExtra("price",price)
+    intent.putExtra("title", title)
+    intent.putExtra("catagory", category)
+    //intent.putExtra("product_id", product_detailViewlmodel.setId(item))
+    intent.putExtra("photos", photos)
     MakeupBeautyTheme {
         Scaffold(
             topBar = {
                 CarWithBack(
                     title = "购物车",
                     onBackClick = {
-                                  onBackClick
+
                     },
                 )
             }, backgroundColor = cottonBall,
@@ -96,9 +112,12 @@ fun AddToCartScren(onBackClick: () -> Unit) {
 //                        Spacer(modifier = Modifier.padding(5.dp))
 //                        DeleteCart()
 //                        Spacer(modifier = Modifier.padding(20.dp))
-                        CartItemList()
+                        CartItemList(title,
+                            price,
+                            category,
+                            photos)
                         Spacer(modifier = Modifier.padding(20.dp))
-                        NextButtonWithTotalItems()
+                        NextButtonWithTotalItems(intent)
                     }
                 }
             })
@@ -175,23 +194,26 @@ fun CarWithBack(title: String, onBackClick: () -> Unit) {
 }
 
 @Composable
-fun CartItemList() {
+fun CartItemList(title:String?,price:Double,category:String?,photos:String?) {
+    val painter = rememberCoilPainter(photos)
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        ProductCartItems(
-            imagePainter = painterResource(id = R.drawable.product),
-            title = "YSL圣罗兰小金条细管口红",
-            price = "350.00",
-            pricetag = "$",
-            count = "x1",
-            backgroundColor = lightsilverbox
-        )
+        if (title != null) {
+            ProductCartItems(
+                imagePainter = painter,
+                title = title,
+                price = price,
+                pricetag = "$",
+                count = "x1",
+                backgroundColor = lightsilverbox
+            )
+        }
         ProductCartItems(
             imagePainter = painterResource(id = R.drawable.dior1),
             title = "迪奥精华水",
-            price = "600.00",
+            price = 600.00,
             pricetag = "$",
             count = "x1",
             backgroundColor = lightsilverbox
@@ -199,7 +221,7 @@ fun CartItemList() {
         ProductCartItems(
             imagePainter = painterResource(id = R.drawable.khcard),
             title = "迪奥口红",
-            price = "350.00",
+            price = 350.00,
             pricetag = "$",
             count = "x1",
             backgroundColor = lightsilverbox
@@ -212,7 +234,7 @@ fun CartItemList() {
 fun ProductCartItems(
     imagePainter: Painter,
     title: String = "",
-    price: String = "",
+    price: Double = 0.0,
     pricetag: String = "",
     count: String = "",
     backgroundColor: Color = Color.Transparent
@@ -292,7 +314,7 @@ fun ProductCartItems(
                                     titleTextColor
                                 )
                             ) {
-                                append(price)
+                                append(price.toString())
                             }
                         },
                         style = MaterialTheme.typography.subtitle1,
@@ -322,7 +344,7 @@ fun ProductCartItems(
 }
 
 @Composable
-fun NextButtonWithTotalItems() {
+fun NextButtonWithTotalItems(intent:Intent) {
     val context = LocalContext.current;
     Column(modifier = Modifier.fillMaxWidth()) {
         Divider(color = lightGrey, thickness = 2.dp)
@@ -348,7 +370,7 @@ fun NextButtonWithTotalItems() {
 
         Button(
             onClick = {
-                   context.startActivity(paymentActivity.newIntent(context))
+                context.startActivity(intent)
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = orange),
             modifier = Modifier
