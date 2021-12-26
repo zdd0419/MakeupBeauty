@@ -17,6 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.ui.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.Search.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.commodityDetail.productDetailActivity
@@ -65,7 +67,8 @@ class Catagory : ComponentActivity() {
 
 @Composable
 fun showGoodsInCategory() {
-    val product_detailViewlmodel: product_detailViewlModel = viewModel()
+
+    val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
     val list1 = product_detailViewlmodel.getList()
     val context = LocalContext.current;
     LazyColumn() {
@@ -74,6 +77,8 @@ fun showGoodsInCategory() {
                 list1.forEach {
                     GoodsItem(item = it,
                         onClick = {
+                            print(it.id)
+                            product_detailViewlmodel.setId(it.id)
                             context.startActivity(productDetailActivity.newIntent(context))}
                         )
                 }

@@ -2,8 +2,10 @@ package com.example.makeupbeauty.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.makeupbeauty.data.detail
+import com.example.makeupbeauty.data.notesData
 
 
 class product_detailViewlModel: ViewModel() {
@@ -12,7 +14,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        2,
+                        1,
                         "【圣诞礼物】完美日记软陶唇泥新品柔雾唇釉女秋冬显白口红丝绒",
                         109.00,
                         0,
@@ -40,7 +42,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        3,
+                        2,
                         "【圣诞礼物】完美日记名片唇纱新品唇釉持久显色丝绒口红显白雾面",
                         119.00,
                         0,
@@ -66,7 +68,7 @@ class product_detailViewlModel: ViewModel() {
 //
 //            product_detailData(
 //                mutableStateListOf(
-                    detail(4,
+                    detail(3,
                         "标题：【圣诞礼物】完美日记小细跟口红丝绒哑光唇膏唇釉正品显白学生",
                         129.00,
                         0,
@@ -95,7 +97,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        5,
+                        4,
                         "【圣诞礼物】完美日记名片唇釉女秋冬丝绒口红唇泥显白雾面哑光",
                         129.00,
                         0,
@@ -122,7 +124,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        6,
+                        5,
                         "【圣诞礼物】完美日记水光名片唇露镜面唇釉显白滋润口红唇彩唇蜜",
                         119.00,
                         0,
@@ -150,7 +152,7 @@ class product_detailViewlModel: ViewModel() {
 //
 //            product_detailData(
 //                mutableStateListOf(
-                    detail(       7,
+                    detail(       6,
                         "【圣诞礼物】完美日记天鹅绒唇釉莫奈红丝绒金丝绒口红女雾面哑光",
                         119.00,
                         0,
@@ -178,7 +180,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        8,
+                        7,
                         "【官方正品】3CE丝绒唇釉唇泥 雾面显白保湿哑光慕斯口红唇泥",
                         110.00,
                         0,
@@ -205,7 +207,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        9,
+                        8,
                         "【官方正品】3CE水雾唇露 新品水光雾面唇露唇釉滋润持久红栗色",
                         110.00,
                         0,
@@ -234,7 +236,7 @@ class product_detailViewlModel: ViewModel() {
 //                mutableStateListOf(
                     detail(
 
-                        10,
+                        9,
                         "【官方正品】3CE三熹玉云朵唇釉 哑光雾面口红唇膏晚霞色铁锈红",
                         110.00,
                         0,
@@ -261,7 +263,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        11,
+                        10,
                         "【官方正品】3CE/三熹玉圣诞新品镜面银管口红滋润水玫瑰Overload",
                         129.00,
                         0,
@@ -276,7 +278,7 @@ class product_detailViewlModel: ViewModel() {
                         arrayListOf(
                             "【热卖色】水玫瑰",
                             "冰糖番茄",
-                            " 杨梅茶",
+                            "杨梅茶",
                             "荔枝草莓"
                         )
 
@@ -289,7 +291,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        12,
+                        11,
                         "【官方正品】3CE哑光口红 吃土南瓜胡萝卜220脏橘 辣椒红唇膏",
                         129.00,
                         0,
@@ -304,7 +306,7 @@ class product_detailViewlModel: ViewModel() {
                         arrayListOf(
                             "南瓜色",
                             "DRY TANGERINE",
-                            " BACKED ORANGE,红棕色",
+                            "BACKED ORANGE,红棕色",
                             "辣椒红",
                         )
 
@@ -316,7 +318,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        13,
+                        12,
                         "【官方正品】3CE三熹玉柔雾哑光透明口红 SPEAKTOME豆沙雾面",
                         129.00,
                         0,
@@ -344,7 +346,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        14,
+                        13,
                         "12.【官方正品】3CE细管唇膏 哑光丝绒雾面烟管口红plain铁锈红",
                         125.00,
                         0,
@@ -371,9 +373,9 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        15,
+                        14,
                         "【圣诞礼物】Dior迪奥烈艳蓝金唇膏口红 丝绒999 720 哑光 礼盒",
-                        125.00,
+                        350.00,
                         0,
                         arrayListOf(
                             "https://s2.loli.net/2021/12/24/YzlgoVS9nAQdXBp.jpg",
@@ -397,7 +399,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        16,
+                        15,
                         "【圣诞礼物】Dior迪奥烈艳蓝金唇膏口红花境梦工坊限量版999 速达",
                         370.00,
                         0,
@@ -423,7 +425,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        17,
+                        16,
                         "【圣诞礼物速达】Dior迪奥烈艳蓝金锁色唇釉999 626轻盈持妆 口红",
                         350.00,
                         0,
@@ -449,7 +451,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        18,
+                        17,
                         "【圣诞礼物速达】Dior迪奥烈艳蓝金挚红唇膏红管999 641半哑光",
                         350.00,
                         0,
@@ -476,7 +478,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        19,
+                        18,
                         "【圣诞礼物】Dior迪奥金艳幻彩唇膏口红花境梦工坊限量版显色持妆",
                         350.00,
                         0,
@@ -503,7 +505,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        20,
+                        19,
                         "YSL圣罗兰方管口红 1966红棕色157赤豆沙正红色1缎光持久滋润",
                         335.00,
                         0,
@@ -530,7 +532,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                    mutableStateListOf(
                         detail(
-                            21,
+                            20,
                             "YSL圣罗兰小金条细管口红 哑光新色1966红棕色复古红21持久显色",
                             350.00,
                             0,
@@ -556,7 +558,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        22,
+                        21,
                         "YSL圣罗兰黑管唇釉 镜面滋润持久显色416番茄色409",
                         335.00,
                         0,
@@ -578,7 +580,7 @@ class product_detailViewlModel: ViewModel() {
 
 
                     detail(
-                        23,
+                        22,
                         "鞠婧祎推荐色】INTO YOU女主角唇泥雾面哑光唇釉唇彩不拔干显白",
                         59.00,
                         0,
@@ -606,7 +608,7 @@ class product_detailViewlModel: ViewModel() {
             ),
 //            product_detailData(
 //                mutableStateListOf(
-                    detail(24,
+                    detail(23,
                         "INTO YOU水感唇釉秋冬哑光口红唇彩水雾唇釉平价学生女官方正品女",
                         108.00,
                         0,
@@ -636,7 +638,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        25,
+                        24,
                         "INTO YOU糖浆唇蜜甜漾唇蜜水光口红小众品牌唇彩显白平价学生女",
                         108.00,
                         0,
@@ -666,7 +668,7 @@ class product_detailViewlModel: ViewModel() {
 
 
                     detail(
-                        26,
+                        25,
                         "【直播专享】MAC/魅可丘比特唇釉唇彩唇油哑光显白 486脏橘色",
                         210.00,
                         0,
@@ -697,7 +699,7 @@ class product_detailViewlModel: ViewModel() {
 //            product_detailData(
 //                mutableStateListOf(
                     detail(
-                        27,
+                        26,
                         "【直播专享-热门唇膏合集】MAC/魅可水漾子弹头尤雾弹口红316/544",
                         210.00,
                         0,
@@ -825,7 +827,7 @@ class product_detailViewlModel: ViewModel() {
 //                mutableStateListOf(
                     detail(
                         4,
-                        "【圣诞礼物】完美日记动物眼影赤狐盘王者荣耀联名限定红棕",
+                        "【圣诞礼物】3CE眼影盘，打造自然裸妆",
                         230.00,
                         0,
                         arrayListOf("https://s2.loli.net/2021/12/25/Qxtp2g8RaiXPSVN.jpg",
@@ -900,7 +902,8 @@ class product_detailViewlModel: ViewModel() {
                       ),
 
 
-                      arrayListOf(  "复古玫瑰粉",
+                      arrayListOf(
+                          "复古玫瑰粉",
                           "脏橘",
                           "深玫瑰红",
                           "焦糖色" ,
@@ -1832,43 +1835,310 @@ class product_detailViewlModel: ViewModel() {
         )
     )
 
-var catagory=""
+
+    val dizhuang by mutableStateOf(
+        listOf(
+//            product_detailData(
+//                mutableStateListOf(
+            detail(
+                1,
+                "【圣诞礼物】Armani/阿玛尼权力无痕持妆粉底液权利轻薄控油遮瑕",
+                600.00,
+                0,
+                arrayListOf(
+                    "https://s2.loli.net/2021/12/25/ZnzUOfF6RAbSXpD.jpg",
+                    "https://s2.loli.net/2021/12/25/EIa7pUh5N1cutoR.jpg",
+                    "https://s2.loli.net/2021/12/25/8XoAxq2TpJZnklS.jpg",
+                    "https://s2.loli.net/2021/12/25/6BbuDJL2APpYE9z.jpg",
+                    "https://s2.loli.net/2021/12/25/sWXMLPOpKcEu6NB.jpg",
+                    "https://s2.loli.net/2021/12/25/ZnzUOfF6RAbSXpD.jpg",
+                ),
+                arrayListOf(
+                    "1.5",
+                    "2",
+                    "3",
+                    "3.5"
+                )
+
+//                    )
+//                )
+
+            ),
+//            product_detailData(
+//                mutableStateListOf(
+            detail(
+                2,
+                "YSL圣罗兰明彩精萃水粉霜 超模精华粉底霜滋润干皮持久遮瑕服帖",
+                630.00,
+                0,
+                arrayListOf(
+                    "https://s2.loli.net/2021/12/25/q8DG7zFpMAkvCNy.jpg",
+                    "https://s2.loli.net/2021/12/25/1V7jJrxP5uLTo2m.jpg",
+                    "https://s2.loli.net/2021/12/25/LlrmzbPNAk8UXBG.jpg",
+                    "https://s2.loli.net/2021/12/25/Z6YxmrzkShiEG1P.jpg",
+                    "https://s2.loli.net/2021/12/25/BbWYJmirS8xL1fh.jpg",
+                    "https://s2.loli.net/2021/12/25/q8DG7zFpMAkvCNy.jpg",
+                ),
+                arrayListOf(
+                    "B10",
+                    "B20",
+                    "B25",
+                    "B30"
+                )
+
+
+//                    )
+//                )
+
+            ),
+//            product_detailData(
+//                mutableStateListOf(
+            detail(3,
+                "【圣诞礼物】兰蔻菁纯粉底液 秋冬滋润养肤遮瑕 持久控油底妆自然",
+                950.00,
+                0,
+                arrayListOf(
+                    "https://s2.loli.net/2021/12/25/OIxjsv3XTzbyWr8.jpg",
+                    "https://s2.loli.net/2021/12/25/OIxjsv3XTzbyWr8.jpg",
+                    "https://s2.loli.net/2021/12/25/7DEWChKTpUFLkjq.jpg",
+                    "https://s2.loli.net/2021/12/25/dezDYNf5HuZVJ7C.jpg",
+                    "https://s2.loli.net/2021/12/25/OQA9e2aHBltcwTL.jpg",
+                    "https://s2.loli.net/2021/12/25/OIxjsv3XTzbyWr8.jpg",
+
+                    ),
+                arrayListOf(
+
+                    "100ml",
+                    "110ml",
+                    "120ml",
+                    "130ml"
+                ),
+
+//                    )
+//                )
+
+            ),
+//            product_detailData(
+//                mutableStateListOf(
+            detail(
+                4,
+                "【圣诞礼物】Dior迪奥凝脂恒久亮泽粉底液 超长持妆 细腻水润",
+                580.00,
+                0,
+                arrayListOf(
+                    "https://s2.loli.net/2021/12/25/FuVfJgKHUDC9NmL.jpg",
+                    "https://s2.loli.net/2021/12/25/b8LYM5Bi7U31vpI.jpg",
+                    "https://s2.loli.net/2021/12/25/mEWSXokgG7w16HI.jpg",
+                    "https://s2.loli.net/2021/12/25/Bj6osdUEuVMYitl.jpg",
+                    "https://s2.loli.net/2021/12/25/uEM5aRNpSLzv7sA.jpg",
+                    "https://s2.loli.net/2021/12/25/FuVfJgKHUDC9NmL.jpg",
+                ),
+                arrayListOf(
+                    "0N",
+                    "0.5N",
+                    "1N",
+                    "1.5N"
+                )
+
+
+//                    )
+//                )
+
+            ),
+//            product_detailData(
+//                mutableStateListOf(
+            detail(
+                5,
+                "植村秀新品小方瓶羽纱持妆粉底液控油自然遮瑕抗氧化持色",
+                430.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/b33f24df9a7dc.jpg",
+                    "https://img.zrp.cool/2021/12/25/4c6e6e1e1f3ac.jpg",
+                    "https://img.zrp.cool/2021/12/25/921b975837cd1.jpg",
+                    "https://img.zrp.cool/2021/12/25/b4d366683d579.jpg",
+                    "https://img.zrp.cool/2021/12/25/6b9ccbef1d3d6.jpg",
+                    "https://img.zrp.cool/2021/12/25/b33f24df9a7dc.jpg",
+                ),
+                arrayListOf(
+                    "674",
+                    "458",
+                    "774",
+                    "574"
+                )
+
+
+//                    )
+//                )
+
+            ),
+//            product_detailData(
+//                mutableStateListOf(
+            detail(
+                6,
+                "【圣诞礼物】雅诗兰黛DW持妆粉底液 油皮亲妈持久不脱妆遮瑕防晒",
+                410.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/fb2edf9984753.jpg",
+                    "https://img.zrp.cool/2021/12/25/6c2c466af2506.jpg",
+                    "https://img.zrp.cool/2021/12/25/f8de317b9dbaf.jpg",
+                    "https://img.zrp.cool/2021/12/25/4698200b3d263.jpg",
+                    "https://img.zrp.cool/2021/12/25/ca5d9d5f97f9e.jpg",
+                    "https://img.zrp.cool/2021/12/25/fb2edf9984753.jpg",
+                ),
+                arrayListOf(
+                    "2C0 自然色",
+                    "1W1 象牙白",
+                    "1C1 陶瓷白",
+                    "2W0 柔沙色"
+                )
+
+
+//                    )
+//                )
+
+            ),
+
+            detail(
+                7,
+                "【圣诞礼物】Givenchy纪梵希明星柔光粉底液 暗皮救星养肤不卡粉",
+                530.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/9c0d05d207d7c.jpg",
+                    "https://img.zrp.cool/2021/12/25/f052f87e49d83.jpg",
+                    "https://img.zrp.cool/2021/12/25/b93df8e0df468.jpg",
+                    "https://img.zrp.cool/2021/12/25/a1cc7fac01581.jpg",
+                    "https://img.zrp.cool/2021/12/25/168d76d7fc21f.jpg",
+                    "https://img.zrp.cool/2021/12/25/77a5abfb0e696.jpg",
+                ),
+                arrayListOf("N80",
+                    "N95",
+                    "1-W100",
+                    "1-C105",
+                )
+
+
+//                    )
+//                )
+
+            ),
+
+            detail(
+                8,
+                "【直播专享】MAC/魅可定制无瑕粉底液遮瑕保湿持久不脱妆 混油皮",
+                340.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/50716d9cf5ad0.jpg",
+                    "https://img.zrp.cool/2021/12/25/28196a0175301.jpg",
+                    "https://img.zrp.cool/2021/12/25/fd449a54e5db0.jpg",
+                    "https://img.zrp.cool/2021/12/25/bd48e624adcea.jpg",
+                    "https://img.zrp.cool/2021/12/25/54538247954a8.jpg",
+                    "https://img.zrp.cool/2021/12/25/2387521fdae21.jpg",
+                ),
+                arrayListOf(
+                    "N12",
+                    "N18",
+                    "NC15",
+                    "NC20"
+                )
+
+
+//                    )
+//                )
+
+            ),
+            detail(
+                9,
+                "【圣诞礼物速达】CHANEL 香奈儿柔光持妆粉底液小磨方遮瑕控油",
+                600.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/7b1470c5c7739.jpg",
+                    "https://img.zrp.cool/2021/12/25/d1d11c59a988c.jpg",
+                    "https://img.zrp.cool/2021/12/25/ec2ac22e79935.jpg",
+                    "https://img.zrp.cool/2021/12/25/4c421135ae540.jpg",
+                    "https://img.zrp.cool/2021/12/25/54e7830147d35.jpg",
+                    "https://img.zrp.cool/2021/12/25/6ce9c7cfe07cc.jpg",
+                ),
+                arrayListOf(
+                    "BD01",
+                    "B10",
+                    "BD11",
+                    "BR12"
+                )
+
+
+//                    )
+//                )
+
+            ),
+            detail(
+                10,
+                "【圣诞礼物】BOBBI BROWN芭比波朗虫草粉底液 持妆滋润 干皮粉底",
+                620.00,
+                0,
+                arrayListOf(
+                    "https://img.zrp.cool/2021/12/25/ec80428307ff3.jpg",
+                    "https://img.zrp.cool/2021/12/25/55deb9d4a6a7c.jpg",
+                    "https://img.zrp.cool/2021/12/25/ae17c8fbf204d.jpg",
+                    "https://img.zrp.cool/2021/12/25/adbac96d56cdd.jpg",
+                    "https://img.zrp.cool/2021/12/25/1a64263d676f3.jpg",
+                    "https://img.zrp.cool/2021/12/25/8e6c75a4adf3e.jpg",
+                ),
+                arrayListOf(
+                    "1",
+                    "0",
+                    "0.5",
+                    "00"
+                )
+
+
+//                    )
+//                )
+
+            ),
+        )
+    )
+
+    var currentList by mutableStateOf(kh)
+
     fun changeCategory(newCatagory:String){
 //        catagory = newCatagory
         if(newCatagory.equals("口红") )
-            catagory="kh"
+            currentList = kh
         else if(newCatagory=="眼影")
-            catagory="eye"
+            currentList = eye
         else if(newCatagory=="染发")
-            catagory="hair"
+            currentList = hair
         else if(newCatagory=="护肤")
-            catagory="hufu"
+            currentList = hufu
         else if(newCatagory=="美甲")
-            catagory="nail"
+            currentList = nail
         else if(newCatagory=="美瞳")
-            catagory="Beautiful_pupils"
+            currentList = Beautiful_pupils
         else if(newCatagory=="卸妆")
-            catagory="remover"
+            currentList = remover
+        else if(newCatagory=="底妆")
+            currentList = dizhuang
         else
-            catagory="hufu"
+            currentList=featured
     }
     fun getList():List<detail> {
-        if(catagory == "kh")
-            return kh;
-        else if(catagory=="eye")
-            return eye;
-        else if(catagory=="hair")
-            return hair;
-        else if(catagory=="hufu")
-            return hufu;
-        else if(catagory=="nail")
-            return nail;
-        else if(catagory=="Beautiful_pupils")
-            return Beautiful_pupils;
-        else if(catagory=="remover")
-            return remover;
-        else
-            return hufu;
+        return currentList
     }
+    var index by mutableStateOf(0)
+
+    fun setId(id:Int){
+        index=id-1
+    }
+
+    fun getItem(): detail{
+
+        return currentList[index]
+    }
+
 
 }

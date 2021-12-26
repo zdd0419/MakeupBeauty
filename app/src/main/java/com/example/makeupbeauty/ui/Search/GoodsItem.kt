@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.Search
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -25,6 +26,7 @@ import com.google.accompanist.coil.rememberCoilPainter
 fun GoodsItem(item: detail, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
     val context = LocalContext.current;
     val painter = rememberCoilPainter(item.allimage[0])
+
     Card(modifier = Modifier
         .clickable { }
         .padding(4.dp))

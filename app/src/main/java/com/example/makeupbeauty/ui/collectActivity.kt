@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.runtime.livedata.observeAsState
 
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -27,11 +28,17 @@ import androidx.compose.ui.text.font.FontWeight
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.notes.data.NotesDateProvoder
 import com.example.makeupbeauty.notes.data.newAttention
+import com.example.makeupbeauty.ui.Screens.CommendItem
+import com.example.makeupbeauty.ui.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.PostViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
 
 
 class collectActivity : ComponentActivity() {
@@ -39,6 +46,7 @@ class collectActivity : ComponentActivity() {
         fun newIntent(context: Context) =
             Intent(context, collectActivity::class.java).apply { putExtra("collect", true) }
     }
+    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -53,6 +61,7 @@ class collectActivity : ComponentActivity() {
 }
 
 
+@InternalCoroutinesApi
 @Preview
 @Composable
 fun Collect() {
@@ -77,15 +86,29 @@ fun Collect() {
     }
 }
 
+@InternalCoroutinesApi
 @Composable
 fun cardCollect(){
-    val list = remember { NotesDateProvoder.newatten }
-    LazyColumn {
-        items(
-            items = list,
-            itemContent = { item -> ListCollectItem(item = item)
+//    val list = remember { NotesDateProvoder.newatten }
+//    LazyColumn {
+//        items(
+//            items = list,
+//            itemContent = { item -> ListCollectItem(item = item)
+//            }
+//        )
+//    }
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    val list = postViewModel.recommendData.observeAsState(listOf())
+    //Log.e("", list.toString())
+    LazyColumn() {
+        item {
+            StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
+                list.value?.forEach {
+                    if(it.iscollected==1)
+                        CommendItem(item = it)
+                }
             }
-        )
+        }
     }
 }
 

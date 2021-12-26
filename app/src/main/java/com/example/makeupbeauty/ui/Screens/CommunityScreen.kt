@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
@@ -8,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -18,9 +21,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.TryOn.TryOn
+import com.example.makeupbeauty.data.notesData
+import com.example.makeupbeauty.ui.Notes
 import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -34,7 +44,8 @@ private enum class DemoTabs(val value: String) {
 @ExperimentalFoundationApi
 @Composable
 fun CommunityScreen() {
-    val postViewModel: PostViewModel = viewModel()
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    postViewModel.init()
     val tabsName = remember { DemoTabs.values().map { it.value } }
     val selectedIndex = remember { mutableStateOf(DemoTabs.COMMEND.ordinal) }
 
@@ -81,8 +92,9 @@ fun CommunityScreen() {
 @InternalCoroutinesApi
 @Composable
 fun getConcern() {
-    val postViewModel: PostViewModel = viewModel()
-    val list = postViewModel.my_concern
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    val list = postViewModel.concernData.observeAsState(listOf())
+    //val list = postViewModel.my_concern
     //navController.navigate("PostActivity")
 
     LazyColumn {
@@ -90,7 +102,7 @@ fun getConcern() {
             //HomeHeader()
         }
         items(
-            items = list,
+            items = postViewModel.my_concern,
             itemContent = { item -> ConcernItem(item = item, modifier = Modifier)
                 ListItemDivider()
             }
@@ -110,12 +122,13 @@ private fun ListItemDivider() {
 @ExperimentalFoundationApi
 @Composable
 fun getCommend() {
-    val postViewModel: PostViewModel = viewModel()
-    val list = postViewModel.notes_detail
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    val list = postViewModel.recommendData.observeAsState(listOf())
+    //Log.e("", list.toString())
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list.forEach {
+                list.value?.forEach {
                     CommendItem(item = it)
                 }
             }
@@ -160,5 +173,14 @@ fun AddMultiFab(){
     FloatingAddButton(srcIcon = Icons.Filled.Add, showLabels = true,items = expandFbItemList) {
         //弹出来的item被点击了
         Toast.makeText(context.applicationContext,"点击了:${it.label}",Toast.LENGTH_SHORT).show()
+        if (it.label == "图片")
+        {
+            val intent = Intent(context, Notes::class.java)
+            startActivity(context, intent, null
+             //   Notes.newIntent(context)
+            )
+        }else {
+
+        }
     }
 }
