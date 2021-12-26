@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -101,11 +102,11 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 
                     }
                 }
-
+                val context = LocalContext.current;
                 Column() {
                     Row(modifier = Modifier.fillMaxWidth()){
                         OutlinedButton(
-                            onClick = { /*TODO*/ },
+                            onClick = { context.startActivity(ChatListScreen.newIntent(context)) },
                             shape = RoundedCornerShape(//圆角
                                 topStart = 10.dp,
                                 topEnd = 10.dp,
@@ -168,7 +169,7 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 @Composable
 fun getUserPost() {
     val ProfileViewModel: PublicProfileViewModel = viewModel()
-    val list = ProfileViewModel.PublicProfileCommendItemList
+    val list = ProfileViewModel.PublicProfileItemList
 
     Card {
         LazyColumn(
