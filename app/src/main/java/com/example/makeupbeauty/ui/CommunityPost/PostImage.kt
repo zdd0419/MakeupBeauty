@@ -12,6 +12,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.makeupbeauty.component.models.CarouselItem
+import com.example.makeupbeauty.ui.Screens.LoadImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
@@ -23,7 +24,7 @@ import kotlinx.coroutines.launch
 @InternalCoroutinesApi
 @ExperimentalPagerApi
 @Composable
-fun PostImage(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
+fun PostImage(modifier: Modifier = Modifier, imagesList: List<String>) {
     if (imagesList.isEmpty())
         return
     val pagerState = rememberPagerState()
@@ -68,13 +69,12 @@ fun PostImage(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
                 //.wrapContentHeight()
                 .fillMaxWidth()
         ) { page ->
-            Image(
-                painter = painterResource(imagesList[page].id),
-                contentDescription = "slider",
+            LoadImage(
+                url = imagesList[page],
                 modifier = Modifier
                     .fillMaxWidth(),
-                contentScale = ContentScale.FillBounds
-            )
+                contentScale = ContentScale.FillBounds)
+
         }
         coroutineScope.launch {
             pagerState.scrollToPage(0)

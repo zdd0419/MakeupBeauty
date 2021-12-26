@@ -22,7 +22,7 @@ import com.example.makeupbeauty.ui.Topbars.TopBarNavigation
 import com.example.makeupbeauty.R
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
-
+import com.androidisland.vita.startVita
 
 class MainActivity : ComponentActivity() {
     @ExperimentalFoundationApi

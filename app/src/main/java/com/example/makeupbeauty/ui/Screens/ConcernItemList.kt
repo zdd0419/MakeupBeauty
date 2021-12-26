@@ -19,20 +19,30 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.component.models.ConcernItem
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.CommunityPost.PostActivity
+import com.example.makeupbeauty.data.notesData
+import com.example.makeupbeauty.viewModel.PostViewModel
+import com.google.accompanist.coil.rememberCoilPainter
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
 @InternalCoroutinesApi
 @Composable
-fun ConcernItem(item: ConcernItem, modifier: Modifier = Modifier) {
+fun ConcernItem(item: notesData, modifier: Modifier = Modifier) {
 //    val typography = MaterialTheme.typography
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     val context = LocalContext.current;
     Card(modifier = Modifier
-        .clickable { context.startActivity(PostActivity.newIntent(context)) }
+        .clickable {
+            postViewModel.changeConcern(item.id-1)
+            context.startActivity(PostActivity.newIntent(context))
+        }
         .padding(4.dp))
     {
         Column(
@@ -42,14 +52,14 @@ fun ConcernItem(item: ConcernItem, modifier: Modifier = Modifier) {
 //            .testTag("${item.id}")
         ) {
             Row() {
-                Image(
-                    painter = painterResource(id = item.avatarId),
-                    contentDescription = "avatar",
+                LoadImage(
+                    url = item.avator,
                     modifier = Modifier
                         .clip(CircleShape)
-                        .size(45.dp))
+                        .size(45.dp),
+                    null)
 
-                Text(text = item.name, modifier = Modifier.padding(8.dp))
+                Text(text = item.author, modifier = Modifier.padding(8.dp))
             }
 
             Spacer(Modifier.height(16.dp))
@@ -59,11 +69,10 @@ fun ConcernItem(item: ConcernItem, modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .clip(shape = MaterialTheme.shapes.medium)
 
-            Image(
-                painter = painterResource(item.imageId),
+            LoadImage(
+                url = item.imagelist[0],
                 modifier = imageModifier,
-                contentDescription = null,
-                contentScale = ContentScale.Crop
+                ContentScale.Crop
             )
 
             Spacer(Modifier.height(16.dp))
@@ -97,7 +106,7 @@ fun ConcernItem(item: ConcernItem, modifier: Modifier = Modifier) {
 
 
             Spacer(Modifier.height(16.dp))
-            Text(text = item.source)
+            Text(text = item.title)
         }
     }
 
@@ -108,4 +117,24 @@ fun ConcernItem(item: ConcernItem, modifier: Modifier = Modifier) {
 fun toPost() {
     val navController = rememberNavController()
     navController.navigate("PostActivity")
+}
+
+
+@Composable
+fun LoadImage(url: String, modifier: Modifier, contentScale: ContentScale?) {
+    val painter = rememberCoilPainter(url)
+    if (contentScale != null) {
+        Image(
+            painter = painter,
+            contentDescription = "",
+            modifier = modifier,
+            contentScale = contentScale
+        )
+    } else {
+        Image(
+            painter = painter,
+            contentDescription = "",
+            modifier = modifier
+        )
+    }
 }

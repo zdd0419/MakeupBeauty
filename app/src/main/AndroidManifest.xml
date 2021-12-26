@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeupBeauty"
         android:usesCleartextTraffic="true"
-        >
+        android:name=".MyApp">
         <activity
             android:name=".ui.collectActivity"
             android:exported="false"

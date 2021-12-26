@@ -18,8 +18,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 
 private enum class DemoTabs(val value: String) {
@@ -32,6 +34,7 @@ private enum class DemoTabs(val value: String) {
 @ExperimentalFoundationApi
 @Composable
 fun CommunityScreen() {
+    val postViewModel: PostViewModel = viewModel()
     val tabsName = remember { DemoTabs.values().map { it.value } }
     val selectedIndex = remember { mutableStateOf(DemoTabs.COMMEND.ordinal) }
 
@@ -78,7 +81,8 @@ fun CommunityScreen() {
 @InternalCoroutinesApi
 @Composable
 fun getConcern() {
-    val list = remember { ConcernDataProvider.ConcernItemList }
+    val postViewModel: PostViewModel = viewModel()
+    val list = postViewModel.my_concern
     //navController.navigate("PostActivity")
 
     LazyColumn {
@@ -106,7 +110,8 @@ private fun ListItemDivider() {
 @ExperimentalFoundationApi
 @Composable
 fun getCommend() {
-    val list = remember { ConcernDataProvider.CommendItemList }
+    val postViewModel: PostViewModel = viewModel()
+    val list = postViewModel.notes_detail
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
