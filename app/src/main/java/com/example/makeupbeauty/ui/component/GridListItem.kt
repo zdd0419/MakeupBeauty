@@ -17,21 +17,24 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.makeupbeauty.commodityDetail.productDetailActivity
+import com.example.makeupbeauty.data.detail
 
 import com.example.makeupbeauty.data.model.storeItem
+import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 fun GridListItem(
-    item: storeItem,
-    modifier: Modifier = Modifier
+    item: detail,
+    modifier: Modifier = Modifier,
+    onClick:()->Unit = {}
 ) {
     val context = LocalContext.current;
-
+    val painter = rememberCoilPainter(item.allimage[0])
     Material3Card(
         shape = androidx.compose.material.MaterialTheme.shapes.medium,
         modifier = modifier
-            .width(180.dp)
-            .height(180.dp)
+            .width(280.dp)
+            .height(250.dp)
             .padding(8.dp)
 //            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
 
@@ -40,13 +43,13 @@ fun GridListItem(
 
         })) {
             Image(
-                painter = painterResource(item.imageid),
+                painter = painter,
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
                     .height(120.dp)
                     .width(120.dp)
-                    .clickable(onClick ={context.startActivity(productDetailActivity.newIntent(context))} )
+                    .clickable(onClick =onClick )
                     .align(Alignment.CenterHorizontally)
             )
             Column(modifier = Modifier.padding(1.dp)
