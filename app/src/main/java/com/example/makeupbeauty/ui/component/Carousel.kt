@@ -13,8 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.makeupbeauty.component.models.CarouselItem
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 //import com.carouseljc.models.CarouselItem
 //import com.carouseljc.utils.AppConstants
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -39,7 +41,8 @@ fun Carousel(modifier: Modifier = Modifier, imagesList: List<CarouselItem>) {
     val handler by remember {
         mutableStateOf(Handler(Looper.getMainLooper()))
     }
-
+    val product_detailViewlmodel: product_detailViewlModel = viewModel()
+    val list1 = product_detailViewlmodel.getList()
     val runnable by remember {
         mutableStateOf(Runnable {
             coroutineScope.launch {

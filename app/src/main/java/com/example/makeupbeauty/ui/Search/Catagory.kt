@@ -12,12 +12,16 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.ui.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.Search.ui.theme.MakeupBeautyTheme
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.data.DemoDataProvider
-
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 
 
 class Catagory : ComponentActivity() {
@@ -61,12 +65,17 @@ class Catagory : ComponentActivity() {
 
 @Composable
 fun showGoodsInCategory() {
-    val list = remember { DemoDataProvider.goodsList }
+    val product_detailViewlmodel: product_detailViewlModel = viewModel()
+    val list1 = product_detailViewlmodel.getList()
+    val context = LocalContext.current;
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list.forEach {
-                    GoodsItem(item = it)
+                list1.forEach {
+                    GoodsItem(item = it,
+                        onClick = {
+                            context.startActivity(productDetailActivity.newIntent(context))}
+                        )
                 }
             }
         }

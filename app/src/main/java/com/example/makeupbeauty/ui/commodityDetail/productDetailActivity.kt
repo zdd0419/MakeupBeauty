@@ -82,10 +82,6 @@ class productDetailActivity : ComponentActivity() {
 @Preview
 @Composable
 fun ProductDetailsScreen(onClick:()->Unit = {}) {
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
-    val coroutineScope = rememberCoroutineScope()
-    val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
-    val context = LocalContext.current;
     Scaffold(
         topBar = {
             TopAppBarWithBack(
@@ -215,99 +211,7 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
 
 }
 
-//悬浮
-@ExperimentalMaterialApi
-@Composable
-fun float(coroutineScope: CoroutineScope,
-          bottomSheetScaffoldState: BottomSheetScaffoldState,
-          sheetState: ModalBottomSheetState){
-    FloatingActionButton(
-        onClick = {
-            coroutineScope.launch {
-                bottomSheetScaffoldState.bottomSheetState.expand()
-            }
 
-        },
-        backgroundColor = orange
-    ) {
-        Icon(
-            imageVector = Icons.Default.ShoppingCart,
-            contentDescription = "Add To Cart",
-            tint = white
-        )
-    }
-
-}
-
-
-
-
-@Composable
-fun HeaderImagesSlider() {
-    val showThumbImagesList = listOf<Int>(
-        R.drawable.product,
-        R.drawable.ysl1,
-        R.drawable.ysl2,
-        R.drawable.ysl3
-    )
-
-    Column(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-    ) {
-//        Image(
-//            contentScale = ContentScale.Fit,
-//            painter = painterResource(id = R.drawable.product),
-//            contentDescription = "",
-//            modifier = Modifier
-//                .size(230.dp)
-//        )
-
-        headImage(imgid = R.drawable.product)
-
-        LazyRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            items(showThumbImagesList.size) { item ->
-                Box(
-                    modifier = Modifier
-                        .height(60.dp)
-                        .width(62.dp)
-                        .border(
-                            color = if (item == 0) orange else lightGrey,
-                            width = 2.dp,
-                            shape = RoundedCornerShape(16.dp)
-                        )
-                        .clickable {
-
-                        }) {
-                    Image(
-                        painter = painterResource(showThumbImagesList[item]),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(50.dp, 50.dp)
-                            .padding(
-                                start = 10.dp,
-                                end = 5.dp,
-                                top = 5.dp,
-                                bottom = 5.dp
-                            )
-                    )
-
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-            }
-        }
-    }
-
-
-}
 
 @Composable
 fun headImage(imgid:Int){

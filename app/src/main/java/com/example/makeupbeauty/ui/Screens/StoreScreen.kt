@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -16,12 +17,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.makeupbeauty.Search.Catagory
 import com.example.makeupbeauty.VerticalGrid.StoryItem
 import com.example.makeupbeauty.VerticalGrid.VerticalGrid
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.GridListItem
 import com.example.makeupbeauty.data.DemoDataProvider
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -64,6 +67,7 @@ fun StoreScreen() {
 
 @Composable
 fun GridListView() {
+    val product_detailViewlmodel: product_detailViewlModel = viewModel()
     val context = LocalContext.current;
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
@@ -76,7 +80,10 @@ fun GridListView() {
                     profileName = it.author,
                     isMe = it.id == 1,
                     modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
-                    onClick = {context.startActivity(Catagory.newIntent(context))}
+                    onClick = {
+                        product_detailViewlmodel.changeCategory(it.author)
+                        Log.e(it.author,it.author)
+                        context.startActivity(Catagory.newIntent(context))}
                 )
             }
         }
