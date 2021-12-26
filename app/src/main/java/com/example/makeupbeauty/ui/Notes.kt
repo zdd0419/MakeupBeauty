@@ -37,7 +37,7 @@ class Notes : AppCompatActivity() {
         setContentView(R.layout.activity_notes)
         setupScreen()
         supportActionBar?.hide()
-        showResultsFragment()
+        showCameraFragment()
     }
 
     private fun showCameraFragment() {

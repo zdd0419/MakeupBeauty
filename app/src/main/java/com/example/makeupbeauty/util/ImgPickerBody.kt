@@ -1,19 +1,19 @@
 package com.example.makeupbeauty.util
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
+import android.text.InputType
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.Space
+import android.widget.*
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import io.ak1.pix.helpers.toPx
 import com.example.makeupbeauty.R
+
 /**
  * Created By Akshay Sharma on 20,June,2021
  * https://ak1.io
@@ -24,60 +24,73 @@ fun ImgPickerBody(
     adapter: RecyclerView.Adapter<ImgPickerAdapter.ViewHolder>,
     clickCallback: View.OnClickListener
 ): View {
-    val layoutParams = FrameLayout.LayoutParams(
-        FrameLayout.LayoutParams.MATCH_PARENT,
-        FrameLayout.LayoutParams.MATCH_PARENT
-    ).apply {
-        this.gravity = Gravity.RIGHT or Gravity.BOTTOM
-    }
-    return FrameLayout(context).apply {
-        this.layoutParams = layoutParams
-        addView(RecyclerView(context).apply {
-            layoutManager = GridLayoutManager(context, 3)
-            setPadding(0, 100, 0, 0)
-            this.layoutParams = layoutParams
-            this.adapter = adapter
-        })
-        addView(FloatingActionButton(context).apply {
-            this.layoutParams = FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setMargins(32, 32, 32, 32)
-                this.gravity = Gravity.RIGHT or Gravity.BOTTOM
-            }
-            imageTintList = ColorStateList.valueOf(Color.WHITE)
-            setImageResource(R.drawable.ic_photo_camera)
-            setOnClickListener(clickCallback)
-        })
-    }
-}
-
-fun fragmentBody2(
-    context: Context,
-    adapter: RecyclerView.Adapter<ImgPickerAdapter.ViewHolder>,
-): View {
     val layoutParams = LinearLayout.LayoutParams(
-        FrameLayout.LayoutParams.MATCH_PARENT,
-        FrameLayout.LayoutParams.MATCH_PARENT
+        LinearLayout.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT
     ).apply {
         this.gravity = Gravity.RIGHT or Gravity.BOTTOM
-        weight = 1f
     }
     return LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
-        this.layoutParams = layoutParams
-        addView(Space(context).apply {
+        this.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        gravity = Gravity.CENTER
+        addView(EditText(context).apply {
             this.layoutParams = LinearLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                context.toPx(100f).toInt()
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
             )
+            hint = "分享一下你的生活吧！"
+            minLines = 5
+            maxLines = 10
+            gravity = top
+            inputType = InputType.TYPE_TEXT_FLAG_MULTI_LINE
+            minHeight = 500
+            setSingleLine(false)
+            setHorizontallyScrolling(false)
+            setPadding(40,200,40,20)
+            background = null
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                textCursorDrawable = ColorDrawable(Color(0xFFec8aa4).toArgb())
+            }
         })
-        addView(RecyclerView(context).apply {
-            layoutManager = GridLayoutManager(context, 3)
-            setPadding(0, 100, 0, 0)
-            this.layoutParams = layoutParams
-            this.adapter = adapter
+        addView(LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            this.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                0,
+                1F,
+            )
+            addView(RecyclerView(context).apply {
+                layoutManager = GridLayoutManager(context, 3)
+                setPadding(0, 20, 0, 0)
+                this.layoutParams = RecyclerView.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                )
+                this.adapter = adapter
+                minimumHeight = 300
+            })
+        })
+
+        addView(Button(context).apply {
+           this.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+
+            ).apply {
+            CornerRadius(100F,100F)
+
+//            setMargins(32, 32, 32, 32)
+//                this.gravity = Gravity.RIGHT or Gravity.BOTTOM
+            }
+            gravity = Gravity.CENTER
+            text = "发布"
+
+            background = ColorDrawable(Color(0xFFec8aa4).toArgb())
+            setTextColor(Color.White.toArgb())
         })
     }
 }
