@@ -45,7 +45,7 @@ private enum class DemoTabs(val value: String) {
 @Composable
 fun CommunityScreen() {
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    postViewModel.init()
+    //postViewModel.init()
     val tabsName = remember { DemoTabs.values().map { it.value } }
     val selectedIndex = remember { mutableStateOf(DemoTabs.COMMEND.ordinal) }
 
@@ -93,7 +93,8 @@ fun CommunityScreen() {
 @Composable
 fun getConcern() {
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val list = postViewModel.concernData.observeAsState(listOf())
+    val list = postViewModel.my_concern
+    postViewModel.changeConcern(0)
     //val list = postViewModel.my_concern
     //navController.navigate("PostActivity")
 
@@ -107,6 +108,16 @@ fun getConcern() {
                 ListItemDivider()
             }
         )
+        item {
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp)) {
+                Text(
+                    text = "- THE END -",
+                    color = Color.Gray,
+                    modifier = Modifier.align(Alignment.Center))
+            }
+        }
     }
 }
 
@@ -123,14 +134,24 @@ private fun ListItemDivider() {
 @Composable
 fun getCommend() {
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val list = postViewModel.recommendData.observeAsState(listOf())
+    val list = postViewModel.notes_detail
+    postViewModel.changeConcern(1)
     //Log.e("", list.toString())
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list.value?.forEach {
+                list.forEach {
                     CommendItem(item = it)
                 }
+            }
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)) {
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    text = "- THE END -",
+                    color = Color.Gray,
+                    modifier = Modifier.align(Alignment.TopCenter))
             }
         }
     }

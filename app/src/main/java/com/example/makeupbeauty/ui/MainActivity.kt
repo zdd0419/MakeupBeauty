@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-        postViewModel.init()
+        //postViewModel.init()
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.theme)
         setContent {
             val navController = rememberNavController()

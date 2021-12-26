@@ -98,12 +98,12 @@ fun cardCollect(){
 //        )
 //    }
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val list = postViewModel.recommendData.observeAsState(listOf())
+    val list = postViewModel.notes_detail
     //Log.e("", list.toString())
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                list.value?.forEach {
+                list.forEach {
                     if(it.iscollected==1)
                         CommendItem(item = it)
                 }

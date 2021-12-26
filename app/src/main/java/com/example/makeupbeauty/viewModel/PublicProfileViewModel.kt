@@ -1,10 +1,9 @@
 package com.example.makeupbeauty.viewModel
 
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.*
 import com.example.makeupbeauty.data.notesData
 
@@ -17,7 +16,7 @@ class PublicProfileViewModel: ViewModel() {
                     "优雅是唯一不会褪色的美。———奥黛丽.赫本\n "+"onchic 小心诗比较法式的一款,但是也没有很浮夸,平时约会带配裙子很赞",
             "小羊",
             "https://img.zrp.cool/2021/12/26/3ae3b54bc4c12.jpg",
-            0,
+            mutableStateOf(0),
             0,
             arrayListOf<String>(
                 "https://img.zrp.cool/2021/12/25/4880a230047c6.jpg",
@@ -28,9 +27,7 @@ class PublicProfileViewModel: ViewModel() {
                 "https://img.zrp.cool/2021/12/25/4880a230047c6.jpg"
             ),
 
-            arrayListOf<Comment> (
-                Comment("1", "1", "1", "1", 1)
-            ),
+            mutableStateListOf<Comment>(),
             "2021-12-26"
         ),
         notesData(
@@ -48,7 +45,7 @@ class PublicProfileViewModel: ViewModel() {
                     +"！！关注点起，别错过后续继续给大家科普的知识喔！！",
             "蛋蛋",
             "https://img.zrp.cool/2021/12/26/750681cb79503.jpg",
-            0,
+            mutableStateOf(0),
             0,
             arrayListOf<String>(
                 "https://img.zrp.cool/2021/12/25/a00efa3a82a8c.jpg",
@@ -59,9 +56,7 @@ class PublicProfileViewModel: ViewModel() {
                 "https://img.zrp.cool/2021/12/25/e42cd79ee3647.jpg"
             ),
 
-            arrayListOf<Comment> (
-                Comment("1", "1", "1", "1", 1)
-            ),
+            mutableStateListOf<Comment>(),
             "2021-12-26"
         ),
         notesData(
@@ -72,7 +67,7 @@ class PublicProfileViewModel: ViewModel() {
                     +"谢谢小羊粉丝的夸赞，我爱小羊一万年摄影：亦卷古月",
             "小熊",
             "https://img.zrp.cool/2021/12/26/57af322acf184.jpg",
-            0,
+            mutableStateOf(0),
             0,
             arrayListOf(
                 "https://img.zrp.cool/2021/12/25/de48e0908d87e.jpg",
@@ -83,9 +78,7 @@ class PublicProfileViewModel: ViewModel() {
                 "https://img.zrp.cool/2021/12/25/caae2cfc08ae7.jpg"
             ),
 
-            arrayListOf<Comment>(
-                Comment("1", "1", "1", "1", 1)
-            ),
+            mutableStateListOf<Comment>(),
             "2021-12-26"
         ),
         notesData(
@@ -94,7 +87,7 @@ class PublicProfileViewModel: ViewModel() {
             "来欣赏一下司藤小姐的美貌吧!从《大唐荣耀》认识景甜小姐姐这次的司藤真的美出天际啦!" ,
             "小猪",
             "https://img.zrp.cool/2021/12/26/f52bd498cc640.jpg",
-            0,
+            mutableStateOf(0),
             0,
             arrayListOf(
                 "https://img.zrp.cool/2021/12/25/927f664b9b52a.jpg",
@@ -105,9 +98,7 @@ class PublicProfileViewModel: ViewModel() {
                 "https://img.zrp.cool/2021/12/25/633eef2b3625c.jpg"
             )
             ,
-            arrayListOf(
-                Comment("1", "1", "1", "1", 1)
-            ),
+            mutableStateListOf<Comment>(),
             "2021-12-26"
         ),
 
@@ -120,7 +111,7 @@ class PublicProfileViewModel: ViewModel() {
                     +"每套写真都好绝！ 彻底沦为颜粉了",
             "超越妹妹粉丝",
             "https://img.zrp.cool/2021/12/26/57d6c864c707a.jpg",
-            0,
+            mutableStateOf(0),
             0,
             arrayListOf(
                 "https://img.zrp.cool/2021/12/25/5a4d1d5180571.jpg",
@@ -131,9 +122,7 @@ class PublicProfileViewModel: ViewModel() {
                 "https://img.zrp.cool/2021/12/25/f59516a9be270.jpg"
             )
             ,
-            arrayListOf(
-                Comment("1", "1", "1", "1", 1)
-            ),
+            mutableStateListOf<Comment>(),
             "2021-12-26"
         ),
     )

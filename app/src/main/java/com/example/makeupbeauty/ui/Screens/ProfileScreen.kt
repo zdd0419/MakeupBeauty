@@ -71,7 +71,7 @@ fun List() {
             .fillMaxWidth()
             .height(8.dp)
     )
-    MeListItem(Icons.Outlined.ListAlt, "我的发布")
+    MeListItem(Icons.Outlined.CameraAlt, "我的发布")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
     MeListItem(Icons.Outlined.LocalActivity, "我的收藏")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
