@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -54,6 +55,7 @@ class PostActivity : ComponentActivity() {
     @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         setContent {
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
@@ -136,6 +138,7 @@ fun imageHeader() {
     var newComment = ""
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     val item = postViewModel.getPost()
+    val isFavourite = remember { mutableStateOf(item.isliked) }
 
     Column() {
         PostImage(
