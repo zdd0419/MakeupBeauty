@@ -14,28 +14,34 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.makeupbeauty.CommunityPost.PostActivity
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.component.models.ConcernItem
 import com.example.makeupbeauty.component.models.Goods
+import com.example.makeupbeauty.data.detail
+import com.google.accompanist.coil.rememberCoilPainter
+
 
 @Composable
-fun GoodsItem(item: Goods, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
+fun GoodsItem(item: detail, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
     val context = LocalContext.current;
+    val painter = rememberCoilPainter(item.allimage[0])
     Card(modifier = Modifier
         .clickable { }
         .padding(4.dp))
     {
         Column {
             Image(
-                painter = painterResource(item.pic),
+                painter = painter,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.heightIn(100.dp, 300.dp)
+                modifier = Modifier.heightIn(100.dp, 300.dp).
+                clickable(onClick =onClick)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = item.name,
+                text = item.title,
                 fontWeight = FontWeight.Black
             )
 
