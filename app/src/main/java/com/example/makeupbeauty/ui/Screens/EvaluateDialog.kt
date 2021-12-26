@@ -216,7 +216,7 @@ fun ShowDialog(
                         text = "跳过，不评价",
                         Modifier
                             .height(10.dp)
-                            .clickable { },
+                            .clickable { alertDialog.value = false },
                         Color.Gray,
                         fontSize = 7.sp)
                 }

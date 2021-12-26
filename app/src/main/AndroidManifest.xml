@@ -81,6 +81,11 @@
             android:exported="true"
             android:label="@string/title_activity_posr"
             android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
+        <activity
+            android:name=".ui.CommunityPost.MyPostActivity"
+            android:exported="true"
+            android:label="MyPostActivity"
+            android:theme="@style/Theme.MakeupBeauty.NoActionBar" />
 
         <activity
             android:name="com.example.makeupbeauty.ui.Screens.SettingScreen"

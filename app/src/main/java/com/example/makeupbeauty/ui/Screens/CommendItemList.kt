@@ -109,9 +109,7 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
                             .align(alignment = Alignment.CenterEnd),
                         tint = Color.Unspecified)
                 }
-
             }
-
         }
     }
 }
