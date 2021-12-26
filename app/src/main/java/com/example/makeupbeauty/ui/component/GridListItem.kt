@@ -30,9 +30,9 @@ fun GridListItem(
     Material3Card(
         shape = androidx.compose.material.MaterialTheme.shapes.medium,
         modifier = modifier
-            .width(150.dp)
-            .height(130.dp)
-            .padding(25.dp)
+            .width(180.dp)
+            .height(180.dp)
+            .padding(8.dp)
 //            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
 
     ) {
@@ -44,19 +44,21 @@ fun GridListItem(
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
-                    .height(60.dp)
-                    .width(60.dp)
+                    .height(120.dp)
+                    .width(120.dp)
                     .clickable(onClick ={context.startActivity(productDetailActivity.newIntent(context))} )
+                    .align(Alignment.CenterHorizontally)
             )
             Column(modifier = Modifier.padding(1.dp)
+                .align(Alignment.CenterHorizontally)
                 ) {
                 Text(
                     text = item.title,
-                    style = MaterialTheme.typography.caption.copy(fontSize = 7.sp),
+                    style = MaterialTheme.typography.caption.copy(fontSize = 12.sp),
 //                    maxLines = 4,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(5.dp,0.dp,0.dp,0.dp)
-//                    textAlign = TextAlign.Center ,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    textAlign = TextAlign.Center
 //                    modifier = Modifier.padding(4.dp,1.dp,8.dp,0.dp)
 
                 )
