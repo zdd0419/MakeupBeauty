@@ -56,11 +56,12 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
     val context = LocalContext.current;
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
 
-    if(postViewModel.isFavorited != 3)
-    {
-        isFavourite.value = postViewModel.isFavorited
-        postViewModel.isFavorited = 3
-    }
+//    if(postViewModel.isFavorited != 3)
+//    {
+//        isFavourite.value = postViewModel.isFavorited
+//        postViewModel.isFavorited = 3
+//    }
+
     Card(modifier = Modifier
         .clickable {
             postViewModel.changeRecommend(item.id-1)
@@ -112,17 +113,17 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
 
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Icon(
-                        imageVector = if(isFavourite.value==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
+                        imageVector = if(isFavourite.value.value==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
                         contentDescription = "like",
                         modifier = Modifier
                             .size(25.dp)
                             .padding(4.dp)
                             .align(alignment = Alignment.CenterEnd)
                             .clickable {
-                                isFavourite.value = 1-isFavourite.value
+                                //isFavourite.value = 1-isFavourite.value
                                 postViewModel.clicklike(item.id) }
                         ,
-                        tint = if(isFavourite.value==0) Color.Unspecified else Color.Red)
+                        tint = if(isFavourite.value.value==0) Color.Unspecified else Color.Red)
 //                    Icon(
 //                        painter = painterResource(id = R.drawable.like),
 //                        contentDescription = "like",

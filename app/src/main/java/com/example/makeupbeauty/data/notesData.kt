@@ -1,5 +1,9 @@
 package com.example.makeupbeauty.data
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.MutableLiveData
 import com.example.makeupbeauty.component.models.Comment
 
 data class notesData(
@@ -8,10 +12,10 @@ data class notesData(
     val content:String,
     val author:String,
     val avator:String,
-    var isliked: Int,
+    var isliked: MutableState<Int>,
     var iscollected: Int,
-    val imagelist:List<String>,
-    val commentlist:List<Comment>,
+    val imagelist:MutableList<String>,
+    var commentlist: MutableList<Comment> = mutableStateListOf(),
     val time:String
 
 )

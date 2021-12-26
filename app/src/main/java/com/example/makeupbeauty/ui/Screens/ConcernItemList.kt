@@ -44,11 +44,11 @@ fun ConcernItem(item: notesData, modifier: Modifier = Modifier) {
     val isFavourite = remember { mutableStateOf(item.isliked) }
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     val context = LocalContext.current;
-    if(postViewModel.isFavorited != 3)
-    {
-        isFavourite.value = postViewModel.isFavorited
-        postViewModel.isFavorited = 3
-    }
+//    if(postViewModel.isFavorited != 3)
+//    {
+//        isFavourite.value = postV
+//        postViewModel.isFavorited = 3
+//    }
 
     Card(modifier = Modifier
         .clickable {
@@ -92,16 +92,16 @@ fun ConcernItem(item: notesData, modifier: Modifier = Modifier) {
             Box(modifier = Modifier.align(alignment = Alignment.End)) {
                 Row() {
                     Icon(
-                        imageVector = if(isFavourite.value==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
+                        imageVector = if(isFavourite.value.value==0) Icons.Outlined.FavoriteBorder else Icons.Outlined.Favorite,
                         contentDescription = "like",
                         modifier = Modifier
                             .size(30.dp)
                             .padding(4.dp)
                             .clickable {
-                                isFavourite.value = 1-isFavourite.value
-                                postViewModel.clicklike(item.id) }
+                                postViewModel.clicklike(item.id)
+                                       }
                             ,
-                        tint = if(isFavourite.value==0) Color.Unspecified else Color.Red)
+                        tint = if(isFavourite.value.value==0) Color.Unspecified else Color.Red)
                     Icon(
                         painter = painterResource(id = R.drawable.collect),
                         contentDescription = "collect",
