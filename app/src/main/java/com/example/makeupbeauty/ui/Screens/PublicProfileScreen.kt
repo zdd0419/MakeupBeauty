@@ -169,7 +169,7 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 @Composable
 fun getUserPost() {
     val ProfileViewModel: PublicProfileViewModel = viewModel()
-    val list = ProfileViewModel.PublicProfileItemList
+//    val list = ProfileViewModel.PublicProfileItemList
 
     Card {
         LazyColumn(
@@ -191,11 +191,11 @@ fun getUserPost() {
             }
 
 
-            item {
-                list.forEach {
-                    PublicProfileItem(item = it)
-                }
-            }
+//            item {
+//                list.forEach {
+//                    PublicProfileItem(item = it)
+//                }
+//            }
         }
     }
 }

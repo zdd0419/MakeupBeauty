@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,34 +25,38 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 
-class Evaluate : ComponentActivity(){
-    override fun onCreate(savedInstanceState: Bundle?){
-        super.onCreate(savedInstanceState)
-        setContent{
-            MakeupBeautyTheme{
-                Surface(color = MaterialTheme.colors.background){
-                    ShowDialog()
-                }
-            }
-        }
-
-    }
-
-}
+//class Evaluate : ComponentActivity(){
+//    companion object{
+//        fun newIntent(context: Context) =
+//            Intent(context, Evaluate::class.java).apply { putExtra("Evaluate",true) }
+//    }
+//    override fun onCreate(savedInstanceState: Bundle?){
+//        super.onCreate(savedInstanceState)
+//        setContent{
+//            MakeupBeautyTheme{
+//                Surface(color = MaterialTheme.colors.background){
+//                    ShowDialog()
+//                }
+//            }
+//        }
+//
+//    }
+//
+//}
 
 @Composable
 fun ShowDialog(
-//    alertDialog: MutableState<Boolean>,
+    alertDialog: MutableState<Boolean>,
 //    title: String,
 //    content: String,
 //    cancelString: String,
 //    confirmString: String,
 //    onConfirmListener: () -> Unit
 ) {
-//    if (!alertDialog.value) return
+    if (!alertDialog.value) return
     val buttonHeight = 45.dp
     Dialog(onDismissRequest = {
-//        alertDialog.value = false
+        alertDialog.value = false
     }) {
         Card(shape = RoundedCornerShape(10.dp)) {
             val emailText = remember{
@@ -198,7 +204,7 @@ fun ShowDialog(
                             .weight(1f)
                             .height(buttonHeight),
                         onClick = {
-//                            alertDialog.value = false
+                            alertDialog.value = false
                         }
                     ) {
                         Text(text = "确认发布", fontSize = 15.sp)
