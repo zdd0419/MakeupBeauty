@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.commodityDetail.shoppingCarActivity
+import com.example.makeupbeauty.ui.CustomerService.CustomerServiceActivity
 
 @Composable
 fun StoreTopbar() {
@@ -62,7 +63,7 @@ fun StoreTopbar() {
             }
             IconButton(
                 modifier = Modifier.padding(start = 2.dp, end = 8.dp),
-                onClick = { /*TODO*/ }) {
+                onClick = { context.startActivity(CustomerServiceActivity.newIntent(context))}) {
                 Icon(
                     painter = painterResource(R.drawable.ic_baseline_connect_without_contact_24),
                     tint = MaterialTheme.colors.primary,

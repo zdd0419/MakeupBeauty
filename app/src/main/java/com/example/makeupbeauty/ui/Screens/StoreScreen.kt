@@ -39,7 +39,7 @@ fun StoreScreen() {
            Carousel(
                modifier = Modifier
                    .fillMaxWidth()
-                   .height(160.dp)
+                   .height(200.dp)
                    .padding(10.dp),
                DemoDataProvider.adlist
            )
