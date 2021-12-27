@@ -30,7 +30,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -39,8 +38,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.makeupbeauty.R
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.CartViewModel
 import com.google.accompanist.coil.rememberCoilPainter
 import androidx.compose.material.Icon as Icon
 
@@ -150,7 +151,6 @@ fun DeleteCart() {
             }
         )
 
-
     }
 }
 
@@ -196,49 +196,64 @@ fun CarWithBack(title: String, onBackClick: () -> Unit) {
 @Composable
 fun CartItemList(title:String?,price:Double,category:String?,photos:String?) {
     val painter = rememberCoilPainter(photos)
+    val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
+    val list = cartViewmodel.cartItemList
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        if (title != null) {
+        list.forEach{
             ProductCartItems(
-                imagePainter = painter,
-                title = title,
-                price = price,
-                pricetag = "$",
-                count = "x1",
+                id = it.id,
+                imagePainter = rememberCoilPainter(it.imagePainter),
+                title = it.title,
+                price = it.price,
+                pricetag = it.pricetag,
+                count = it.count,
                 backgroundColor = lightsilverbox
             )
         }
-        ProductCartItems(
-            imagePainter = painterResource(id = R.drawable.dior1),
-            title = "迪奥精华水",
-            price = 600.00,
-            pricetag = "$",
-            count = "x1",
-            backgroundColor = lightsilverbox
-        )
-        ProductCartItems(
-            imagePainter = painterResource(id = R.drawable.khcard),
-            title = "迪奥口红",
-            price = 350.00,
-            pricetag = "$",
-            count = "x1",
-            backgroundColor = lightsilverbox
-        )
+//        if (title != null) {
+//            ProductCartItems(
+//                imagePainter = painter,
+//                title = title,
+//                price = price,
+//                pricetag = "￥",
+//                count = "x1",
+//                backgroundColor = lightsilverbox
+//            )
+//        }
+//        ProductCartItems(
+//            imagePainter = painterResource(id = R.drawable.dior1),
+//            title = "迪奥精华水",
+//            price = 600.00,
+//            pricetag = "￥",
+//            count = "x1",
+//            backgroundColor = lightsilverbox
+//        )
+//        ProductCartItems(
+//            imagePainter = painterResource(id = R.drawable.khcard),
+//            title = "迪奥口红",
+//            price = 350.00,
+//            pricetag = "￥",
+//            count = "x1",
+//            backgroundColor = lightsilverbox
+//        )
 
     }
 }
 
 @Composable
 fun ProductCartItems(
+    id:Int,
     imagePainter: Painter,
     title: String = "",
     price: Double = 0.0,
     pricetag: String = "",
-    count: String = "",
+    count: Int = 1,
     backgroundColor: Color = Color.Transparent
 ) {
+    val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
     val isChoose = remember { mutableStateOf(true) }
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
@@ -251,12 +266,15 @@ fun ProductCartItems(
                 onCheckedChange = { isChoose.value = !isChoose.value }
             ) {
                 if (isChoose.value) {
+                    cartViewmodel.removeFromPay(id)
+
                     Icon(
                         imageVector = Icons.Filled.Circle,
                         contentDescription = null,
                         tint = lightGrey
                     )
                 } else {
+                    cartViewmodel.addToPay(id)
                     Icon(
                         imageVector = Icons.Filled.Done,
                         contentDescription = "",
@@ -330,7 +348,7 @@ fun ProductCartItems(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = count,
+                            text = "x$count",
                             fontSize = 14.sp,
                             color = titleTextColor
                         )
@@ -346,6 +364,7 @@ fun ProductCartItems(
 @Composable
 fun NextButtonWithTotalItems(intent:Intent) {
     val context = LocalContext.current;
+    val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
     Column(modifier = Modifier.fillMaxWidth()) {
         Divider(color = lightGrey, thickness = 2.dp)
         Spacer(modifier = Modifier.padding(8.dp))
@@ -355,13 +374,13 @@ fun NextButtonWithTotalItems(intent:Intent) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "3 Items",
+                text = cartViewmodel.cartItemList.size.toString() + "Items",
                 fontSize = 14.sp,
                 color = lightGrey
             )
 
             Text(
-                text = "$1300.00",
+                text = "￥" + cartViewmodel.getTotalPriceInCart().toString(),
                 fontSize = 18.sp,
                 color = titleTextColor,
                 fontWeight = FontWeight.Bold

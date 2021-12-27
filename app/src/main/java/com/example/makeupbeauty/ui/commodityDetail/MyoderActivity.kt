@@ -50,6 +50,7 @@ import com.example.makeupbeauty.data.detail
 import com.example.makeupbeauty.ui.Screens.ChatListScreen
 import com.example.makeupbeauty.ui.Screens.ShowDialog
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.OrderViewModel
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.coil.rememberCoilPainter
 import com.zhangke.websocket.util.LogUtil
@@ -109,11 +110,6 @@ fun oderAc(title:String?,price:Double,category:String?,photos:String?) {
                 )
             }, backgroundColor = cottonBall,
             content = {
-//                LazyColumn() {
-//                    item {
-//
-//                    }
-//                }
                 OderItemList(title,price,category,photos)
             })
     }
@@ -122,40 +118,51 @@ fun oderAc(title:String?,price:Double,category:String?,photos:String?) {
 
 @Composable
 fun OderItemList(title:String?,price:Double,category:String?,photos:String?) {
-    val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
-    val painter = rememberCoilPainter(photos)
+    val orderViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<OrderViewModel>()
+    val unpaylist = orderViewModel.unPayorderlist
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
         item{
-            if (title != null) {
-                oderItems(
-                    imagePainter = painter,
-                    title = title,
-                    price = price,
-                    pricetag = "$",
-                    count = "x1",
+            unpaylist.forEach{
+                orderItems(
+                    imagePainter = rememberCoilPainter(it.image),
+                    title = it.title,
+                    price = it.price,
+                    pricetag = "￥",
+                    count = "x${it.count}",
                     backgroundColor = lightsilverbox
                 )
             }
-            oderItems(
-                imagePainter = painterResource(id = R.drawable.dior1),
-                title = "迪奥精华水",
-                price = 600.00,
-                pricetag = "$",
-                count = "x1",
-                backgroundColor = lightsilverbox
-            )
-            oderItems(
-                imagePainter = painterResource(id = R.drawable.khcard),
-                title = "迪奥口红",
-                price = 350.00,
-                pricetag = "$",
-                count = "x1",
-                backgroundColor = lightsilverbox
-
-            )
+            
+//            if (title != null) {
+//                oderItems(
+//                    imagePainter = painter,
+//                    title = title,
+//                    price = price,
+//                    pricetag = "$",
+//                    count = "x1",
+//                    backgroundColor = lightsilverbox
+//                )
+//            }
+//            oderItems(
+//                imagePainter = painterResource(id = R.drawable.dior1),
+//                title = "迪奥精华水",
+//                price = 600.00,
+//                pricetag = "$",
+//                count = "x1",
+//                backgroundColor = lightsilverbox
+//            )
+//            oderItems(
+//                imagePainter = painterResource(id = R.drawable.khcard),
+//                title = "迪奥口红",
+//                price = 350.00,
+//                pricetag = "$",
+//                count = "x1",
+//                backgroundColor = lightsilverbox
+//
+//            )
         }
 
 
@@ -165,7 +172,7 @@ fun OderItemList(title:String?,price:Double,category:String?,photos:String?) {
 data class ButtonState(var text: String, var textColor: Color, var buttonColor: Color)
 
 @Composable
-fun oderItems(
+fun orderItems(
     imagePainter: Painter,
     title: String = "",
     price: Double =0.00,

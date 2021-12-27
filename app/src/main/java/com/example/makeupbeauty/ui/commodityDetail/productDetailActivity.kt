@@ -48,6 +48,7 @@ import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.TopAppBarWithBack
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.CartViewModel
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -562,6 +563,7 @@ fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int,
 fun chooseProduct(){
     val context = LocalContext.current;
     val intent = Intent(LocalContext.current, shoppingCarActivity::class.java)
+    val cartViemmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
 
     Column(
         modifier = Modifier
@@ -580,9 +582,15 @@ fun chooseProduct(){
             productDetail(labTitle =  product_detailViewlmodel.getItem().price, imageid =  product_detailViewlmodel.getItem().allimage[0])
         }
         productCatagory(intent)
-        productNumber()
+        val number = productNumber()
         Button(
             onClick = {
+                cartViemmodel.addCartItem(
+                    product_detailViewlmodel.getItem().allimage[0],
+                    product_detailViewlmodel.getItem().title,
+                    product_detailViewlmodel.getItem().price,
+                    number,
+                )
                 context.startActivity(intent)
 //                      context.startActivity(paymentActivity.newIntent(context))
             },
@@ -610,7 +618,7 @@ fun chooseProduct(){
 }
 //添加购买数量
 @Composable
-fun productNumber(){
+fun productNumber():Int{
     val number = remember {mutableStateOf(1)}
     Row(
         modifier = Modifier
@@ -652,6 +660,7 @@ fun productNumber(){
 
         )
     }
+    return number.value
 }
 
 @Composable
@@ -733,9 +742,15 @@ fun productCatagory(
 
                             intent.putExtra("price", product_detailViewlmodel.getItem().price)
                             intent.putExtra("title", product_detailViewlmodel.getItem().title)
-                            intent.putExtra("catagory", product_detailViewlmodel.getItem().allcatagory[item])
+                            intent.putExtra(
+                                "catagory",
+                                product_detailViewlmodel.getItem().allcatagory[item]
+                            )
                             //intent.putExtra("product_id", product_detailViewlmodel.setId(item))
-                            intent.putExtra("photos", product_detailViewlmodel.getItem().allimage[item])
+                            intent.putExtra(
+                                "photos",
+                                product_detailViewlmodel.getItem().allimage[item]
+                            )
                         }
                         )
                         .fillMaxWidth(),

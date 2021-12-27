@@ -39,7 +39,6 @@ class PostViewModel: ViewModel() {
             ),
             mutableStateListOf<Comment>(),
 
-
             "2021-12-26"
         ),
                 notesData(
