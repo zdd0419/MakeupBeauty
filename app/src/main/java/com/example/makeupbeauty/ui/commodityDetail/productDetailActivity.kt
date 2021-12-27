@@ -223,7 +223,7 @@ fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
                             ProductTitle()
                             Spacer(modifier = Modifier.padding(5.dp))
 //                            Divider(color = lightGrey, thickness = 2.dp)
-                            ProductAvailableSize()
+//                            ProductAvailableSize()
                             Spacer(modifier = Modifier.padding(5.dp))
 //                            Divider(color = lightGrey, thickness = 2.dp)
                             ProductItemColorWithDesc()
