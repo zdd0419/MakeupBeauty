@@ -53,7 +53,7 @@ fun ConcernItem(item: notesData, modifier: Modifier = Modifier) {
 
     Card(modifier = Modifier
         .clickable {
-            postViewModel.changeConcern(item.id-1)
+            postViewModel.changeConcern(item.id)
             context.startActivity(PostActivity.newIntent(context))
         }
         .padding(4.dp))

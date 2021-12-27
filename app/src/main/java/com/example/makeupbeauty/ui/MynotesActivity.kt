@@ -41,6 +41,7 @@ import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.notes.data.NotesDateProvoder
 import com.example.makeupbeauty.notes.data.notes
 import com.example.makeupbeauty.ui.Screens.CommendItem
+import com.example.makeupbeauty.ui.Screens.NotesItem
 import com.example.makeupbeauty.ui.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.ui.theme.*
 import com.example.makeupbeauty.viewModel.PostViewModel
@@ -103,7 +104,7 @@ fun cardNotes(){
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
                     postViewModel.changePost(it.id)
-                    CommendItem(item = it)
+                    NotesItem(item = it)
                 }
             }
             Box(modifier = Modifier
