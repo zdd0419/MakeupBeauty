@@ -11,18 +11,15 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,27 +30,35 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.PopupProperties
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.makeupbeauty.CommunityPost.PostBottomBar
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.TopAppBarWithBack
-import com.example.makeupbeauty.data.DemoDataProvider
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.CartViewModel
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
+import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.pager.ExperimentalPagerApi
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
+val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
 class productDetailActivity : ComponentActivity() {
+
     companion object {
         fun newIntent(context: Context) =
             Intent(context, productDetailActivity::class.java).apply { putExtra("product", true) }
@@ -67,7 +72,8 @@ class productDetailActivity : ComponentActivity() {
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    ProductDetailsScreen({onBackPressed()})
+//                    ProductDetailsScreen({onBackPressed()})
+                    gotoShopCar()
                 }
             }
         }
@@ -79,14 +85,14 @@ class productDetailActivity : ComponentActivity() {
 @ExperimentalPagerApi
 @InternalCoroutinesApi
 @ExperimentalMaterialApi
-@Preview
+
 @Composable
-fun ProductDetailsScreen(onClick:()->Unit = {}) {
+fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
+    val context = LocalContext.current;
     Scaffold(
         topBar = {
             TopAppBarWithBack(
                 onBackClick = {
-                    onClick
                 },
             )
         },
@@ -96,7 +102,7 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
 //        },
         bottomBar = {
 //            PostBottomBar(360, 65, 14)
-            Row(){
+            Row {
                 Button(
                     onClick = {
 //                          context.startActivity(paymentActivity.newIntent(context))
@@ -115,16 +121,40 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                         text = "立即购买",
                         color = white,
                         style = MaterialTheme.typography.button,
-                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                        modifier = Modifier
+                            .padding(top = 8.dp, bottom = 8.dp)
+                            .clickable(
+                                onClick = {
+
+                                    context.startActivity(MyoderActivity.newIntent(context))
+                                }
+                            )
+
+
+
+
                     )
                 }
 
+
+                val coroutineScope = rememberCoroutineScope()
+                val expandSheet : () -> Unit = {
+                    coroutineScope.launch {
+                        expand()
+                    }
+                }
+
                 Button(
-                    onClick = {
-                    },
+                    onClick = expandSheet,
                     colors = ButtonDefaults.buttonColors(backgroundColor = orange),
                     modifier = Modifier
-                        .width(200.dp),
+                        .width(200.dp)
+                        .clickable(
+                            onClick = {
+
+                                context.startActivity(shoppingCarActivity.newIntent(context))
+                            }
+                        ),
 //                        .padding(
 //                            top = 30.dp,
 //                            bottom = 34.dp
@@ -150,7 +180,7 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                 ConstraintLayout {
                     val (imagesliderref, addtocartref) = createRefs()
                     Box(modifier = Modifier
-                        .height(300.dp)
+                        .height(350.dp)
                         .constrainAs(imagesliderref) {
                             top.linkTo(imagesliderref.top)
                             bottom.linkTo(imagesliderref.top)
@@ -161,9 +191,10 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                         Carousel(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(280.dp)
+                                .height(350.dp)
                                 .padding(10.dp),
-                            DemoDataProvider.productlist
+                            product_detailViewlmodel.getItem().allimage,
+
                         )
 
                     }
@@ -192,7 +223,7 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
                             ProductTitle()
                             Spacer(modifier = Modifier.padding(5.dp))
 //                            Divider(color = lightGrey, thickness = 2.dp)
-                            ProductAvailableSize()
+//                            ProductAvailableSize()
                             Spacer(modifier = Modifier.padding(5.dp))
 //                            Divider(color = lightGrey, thickness = 2.dp)
                             ProductItemColorWithDesc()
@@ -211,18 +242,32 @@ fun ProductDetailsScreen(onClick:()->Unit = {}) {
 
 }
 
-
-
+@InternalCoroutinesApi
+@ExperimentalPagerApi
+@ExperimentalMaterialApi
 @Composable
-fun headImage(imgid:Int){
-    Image(
-        contentScale = ContentScale.Fit,
-        painter = painterResource(id = imgid),
-        contentDescription = "",
-        modifier = Modifier
-            .size(230.dp)
+fun gotoShopCar(){
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = rememberBottomSheetState(
+            initialValue = BottomSheetValue.Collapsed
+        )
     )
+
+    BottomSheetScaffold(
+        sheetContent = {
+            // The content you want to show in your bottom sheet
+            chooseProduct()
+        },
+        scaffoldState = bottomSheetScaffoldState) {
+        // The content you want to show in your screen
+
+        ProductDetailsScreen(expand = suspend {
+            bottomSheetScaffoldState.bottomSheetState.collapse()
+        })
+    }
+
 }
+
 @Composable
 fun ProductTitle() {
     Column(
@@ -243,14 +288,14 @@ fun ProductTitle() {
 //            horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "$ 350 ",
+                    text = "$"+product_detailViewlmodel.getItem().price,
                     color = orange,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.subtitle1,
                 )
                 Text(
-                    text = "YSL圣罗兰小金条细管口红 ",
+                    text = product_detailViewlmodel.getItem().title,
                     color = titleTextColor,
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold,
@@ -265,7 +310,6 @@ fun ProductTitle() {
 
 @Composable
 fun ProductAvailableSize() {
-    val itemListavailablesize = listOf("N196", "N21", "N28", "N32")
     Column(modifier = Modifier.fillMaxWidth()) {
 
         Text(
@@ -279,28 +323,30 @@ fun ProductAvailableSize() {
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            items(itemListavailablesize.size) { item ->
+            items(product_detailViewlmodel.getItem().allcatagory.size) { item ->
                 Box(
                     modifier = Modifier
                         .height(40.dp)
                         .width(75.dp)
                         .border(
-                            color = if (item == 1) orange else lightGrey,
+                            color = orange,
                             width = 2.dp,
                             shape = RoundedCornerShape(10.dp)
                         )
-                        .clickable { }) {
+                        .clickable {
+                            product_detailViewlmodel.setId(item)
+                        }) {
                     Text(
                         modifier = Modifier
                             .padding(
                                 start = 20.dp,
                                 end = 16.dp,
                                 top = 10.dp,
-                                bottom = 8.dp
+                                bottom = 8.dp,
                             ),
-                        text = itemListavailablesize[item],
+                        text = product_detailViewlmodel.getItem().allcatagory[item],
                         fontWeight = FontWeight.Bold,
-                        color = if (item == 1) titleTextColor else Color.LightGray
+                        color =  titleTextColor  ,
                     )
 
 
@@ -330,8 +376,7 @@ fun ProductItemColorWithDesc() {
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                ,
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(15.dp),
                 verticalAlignment = Alignment.CenterVertically,
 
@@ -353,10 +398,10 @@ fun ProductItemColorWithDesc() {
                 Text(
                     text = "评论",
                     color = titleTextColor,
-                    fontSize = 18.sp
+                    fontSize = 24.sp
                 )
 
-                dropdownMenuTest()
+//                dropdownMenuTest()
             }
             Divider(color = lightGrey, thickness = 2.dp)
 
@@ -364,13 +409,13 @@ fun ProductItemColorWithDesc() {
             Column(modifier = Modifier
                 .fillMaxWidth()
             ) {
-                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
+                commentCard(R.drawable.profile4, "蛋蛋", "10", 0, 0,"这新上新的口红好棒！姐妹们快冲！")
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
+                commentCard(R.drawable.use1, "小羊", "1", 0, 0,"整体包装特别好看，口红不拔干，上嘴效果很好")
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
+                commentCard(R.drawable.profile2, "小熊", "2", 0, 0,"随便挑一个色号，都很好看！")
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
+                commentCard(R.drawable.profile3, "梦凝", "1", 0, 0,"第一次买口红，就被种草了！好好看！")
             }
 
         }
@@ -467,7 +512,7 @@ fun FavIcon(modifier: Modifier = Modifier) {
 
 //头像部分
 @Composable
-fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
+fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int,text:String) {
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(4.dp, 24.dp, 0.dp, 8.dp)
@@ -496,7 +541,7 @@ fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int)
                         .height(8.dp)
                 )
 
-                Text(text = "非常喜欢！ ",fontSize = 15.sp)
+                Text(text = text,fontSize = 15.sp)
             }
         }
     }
@@ -514,5 +559,221 @@ fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int)
 //    }
 //
 //}
+@Composable
+fun chooseProduct(){
+    val context = LocalContext.current;
+    val intent = Intent(LocalContext.current, shoppingCarActivity::class.java)
+    val cartViemmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.LightGray)
+    ) {
+        Box(Modifier.background(Color.White)) {
+            Icon(
+                imageVector = Icons.Outlined.Settings,
+                tint = MaterialTheme.colors.onSurface,
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(start = 12.dp, end = 12.dp, top = 18.dp, bottom = 12.dp)
+            )
+            productDetail(labTitle =  product_detailViewlmodel.getItem().price, imageid =  product_detailViewlmodel.getItem().allimage[0])
+        }
+        productCatagory(intent)
+        val number = productNumber()
+        Button(
+            onClick = {
+                cartViemmodel.addCartItem(
+                    product_detailViewlmodel.getItem().allimage[0],
+                    product_detailViewlmodel.getItem().title,
+                    product_detailViewlmodel.getItem().price,
+                    number,
+                )
+                context.startActivity(intent)
+//                      context.startActivity(paymentActivity.newIntent(context))
+            },
+
+            colors = ButtonDefaults.buttonColors(backgroundColor = orange),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = 30.dp,
+                    bottom = 34.dp
+                )
+                .align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(14.dp)
+        ) {
+            Text(
+                text = "确认",
+                color = white,
+                style = MaterialTheme.typography.button,
+                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+            )
+        }
+    }
+
+
+}
+//添加购买数量
+@Composable
+fun productNumber():Int{
+    val number = remember {mutableStateOf(1)}
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp)
+            .background(Color.White),
+        verticalAlignment = Alignment.CenterVertically,
+
+        ) {
+
+        Text(
+            text="购买数量",
+            fontSize = 20.sp
+        )
+        Icon(
+            imageVector = Icons.Default.RemoveCircle,
+            modifier = Modifier
+                .padding(220.dp, 0.dp, 0.dp, 0.dp)
+                .clickable { number.value-- },
+            contentDescription = null,
+            tint= grey
+        )
+        //这个购买数量默认为1
+        Text(
+            text=number.value.toString(),
+//            modifier = Modifier.padding(100.dp, 5.dp),
+            color = orange,
+            fontSize = 20.sp
+        )
+        //点击这个图标购买数量应该相应减少
+        Icon(
+            imageVector = Icons.Default.AddCircle,
+            contentDescription = null,
+            tint= grey,
+            modifier = Modifier.clickable {
+                number.value++
+
+            }
+
+        )
+    }
+    return number.value
+}
+
+@Composable
+fun productDetail(
+    labTitle:Double,
+    imageid: String,
+    onClick:()->Unit = {}
+){
+    Card(
+        modifier = Modifier
+            .padding(10.dp) // 外边距
+            .clickable(onClick = onClick)
+            .fillMaxWidth()
+        ,
+
+        // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
+        // 将无法显示波纹效果
+
+        elevation = 6.dp // 设置阴影
+    ) {
+        Row(
+            modifier = Modifier.padding(10.dp) // 内边距
+        ) {
+
+            Image(painter = rememberCoilPainter(imageid),
+                contentDescription =null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .height(60.dp)
+                    .width(60.dp)
+            )
+
+            Text(
+                buildAnnotatedString {
+                    withStyle(style = SpanStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.Red)
+                    ) {
+                        append(labTitle.toString())
+                    }
+                }
+            )
+//            Icon(
+//                imageVector = Icons.Default.ArrowDropDown,
+//                contentDescription = null,
+//            )
+        }
+    }
+}
+
+@Composable
+fun productCatagory(
+    intent: Intent,
+    onClick:()->Unit = {}
+){
+    val choose = remember {mutableStateOf(0)}
+
+    Card(
+        modifier = Modifier
+            .padding(1.dp) // 外边距
+            .clickable(onClick = onClick)
+            .fillMaxWidth()
+        ,
+
+        // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
+        // 将无法显示波纹效果
+
+        elevation = 6.dp // 设置阴影
+    ) {
+
+        LazyColumn(
+            modifier = Modifier.padding(10.dp) // 内边距
+        ) {
+            items(product_detailViewlmodel.getItem().allcatagory.size) { item ->
+                Card(
+                    modifier = Modifier
+                        .padding(10.dp) // 外边距
+                        .clickable(onClick = {
+                            choose.value = item
+//                            product_detailViewlmodel.setChoose(item)
+
+                            intent.putExtra("price", product_detailViewlmodel.getItem().price)
+                            intent.putExtra("title", product_detailViewlmodel.getItem().title)
+                            intent.putExtra(
+                                "catagory",
+                                product_detailViewlmodel.getItem().allcatagory[item]
+                            )
+                            //intent.putExtra("product_id", product_detailViewlmodel.setId(item))
+                            intent.putExtra(
+                                "photos",
+                                product_detailViewlmodel.getItem().allimage[item]
+                            )
+                        }
+                        )
+                        .fillMaxWidth(),
+
+                    // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
+                    // 将无法显示波纹效果
+
+                    backgroundColor = if(item != choose.value) Color(0xFFDDDDDD) else Color(0xFFF56040),
+                    elevation = 6.dp // 设置阴影
+                ) {
+
+                    Text(
+                        text = product_detailViewlmodel.getItem().allcatagory[item],
+                        fontSize = 20.sp
+                    )
+                }
+            }
+        }
+
+
+
+        }
+    }
+
 
 

@@ -22,9 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.SearchSection
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.searchText
+import com.example.makeupbeauty.viewModel.PostViewModel
 
 val searchTextInside = mutableStateOf("")
 
@@ -55,9 +58,13 @@ fun SearchTopBar(onClick:()->Unit = {}, navController: NavController) {
 
 @Composable
 fun SearchButton(navController: NavController) {
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     Box(modifier = Modifier.fillMaxWidth()){
         OutlinedButton(
-            onClick = { navController.navigate("result") },
+            onClick = {
+                postViewModel.searchtext = searchTextInside.value
+                navController.navigate("result")
+                      },
             shape = RoundedCornerShape(50),
             border = BorderStroke(1.dp, Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
@@ -65,7 +72,7 @@ fun SearchButton(navController: NavController) {
                 contentColor = Color.Red
             ),
             modifier = Modifier
-                .width(70.dp)
+                .width(80.dp)
                 .align(Alignment.Center)
                 .height(45.dp)
                 .clickable { navController.navigate("result") }

@@ -13,12 +13,13 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -76,20 +77,20 @@ fun ProfileScreenPreview() {
 @Composable
 fun List() {
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
-    MeListItem(R.drawable.icon, "历史")
+    MeListItem(Icons.Outlined.History, "历史")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
-    MeListItem(R.drawable.icon, "订单")
+    MeListItem(Icons.Outlined.ListAlt, "订单")
     Spacer(
         Modifier
             .background(Color(245, 245, 245))
             .fillMaxWidth()
             .height(8.dp)
     )
-    MeListItem(R.drawable.icon, "我的发布")
+    MeListItem(Icons.Outlined.CameraAlt, "我的发布")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
-    MeListItem(R.drawable.icon, "我的收藏")
+    MeListItem(Icons.Outlined.LocalActivity, "我的收藏")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
-    MeListItem(R.drawable.icon, "我的消息")
+    MeListItem(Icons.Outlined.Mail, "我的消息")
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
 }
 
@@ -172,7 +173,7 @@ fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
 
 @Composable
 fun MeListItem(
-    @DrawableRes icon: Int,
+    icon: ImageVector,
     title: String,
     badge: @Composable (() -> Unit)? = null,
     endBadge: @Composable (() -> Unit)? = null
@@ -199,7 +200,9 @@ fun MeListItem(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            painterResource(icon), "title", Modifier
+            imageVector = icon,
+            "title",
+            Modifier
                 .padding(12.dp, 8.dp, 8.dp, 8.dp)
                 .size(36.dp)
                 .padding(8.dp)

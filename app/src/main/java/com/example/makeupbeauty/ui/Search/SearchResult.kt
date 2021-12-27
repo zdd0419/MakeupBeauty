@@ -12,11 +12,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.CommunityPost.UserItem
 import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.ui.Screens.*
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider
+import com.example.makeupbeauty.searchText
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -78,16 +81,21 @@ fun SearchResult() {
 
 @Composable
 fun showGoods() {
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
     val product_detailViewlmodel: product_detailViewlModel = viewModel()
     val list1 = product_detailViewlmodel.getList()
     val context = LocalContext.current;
+    val search = postViewModel.searchtext
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list1.forEach {
-                    GoodsItem(item = it,
-                        onClick = {context.startActivity(productDetailActivity.newIntent(context))}
-                    )
+                    if (it.title.contains(search)) {
+                        GoodsItem(
+                            item = it,
+                            onClick = {context.startActivity(productDetailActivity.newIntent(context))}
+                        )
+                    }
 
                 }
             }
@@ -98,13 +106,15 @@ fun showGoods() {
 @InternalCoroutinesApi
 @Composable
 fun showPost() {
-    val postViewModel: PostViewModel = viewModel()
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    val search = postViewModel.searchtext
     val list = postViewModel.notes_detail
     LazyColumn() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
-                    CommendItem(item = it)
+                    if(it.title.contains(search) or it.content.contains(search))
+                        CommendItem(item = it)
                 }
             }
         }
@@ -113,7 +123,9 @@ fun showPost() {
 
 @Composable
 fun showUser() {
-    val list = remember { DemoDataProvider.userList }
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    val list = postViewModel.userList
+    val search = postViewModel.searchtext
     //navController.navigate("PostActivity")
 
     LazyColumn {
@@ -122,7 +134,8 @@ fun showUser() {
         }
         items(
             items = list,
-            itemContent = { item -> UserItem(item = item, modifier = Modifier)
+            itemContent = {
+                    item -> if(item.name.contains(search)) UserItem(item = item, modifier = Modifier)
                 Divider()
             }
         )

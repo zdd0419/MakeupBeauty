@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -35,7 +36,9 @@ import com.example.makeupbeauty.component.models.PublicProfileItem
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.viewModel.ChatViewModel
+import com.example.makeupbeauty.viewModel.PostViewModel
 import com.example.makeupbeauty.viewModel.PublicProfileViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
 
 class PublicProfileScreen : ComponentActivity(){
     companion object{
@@ -43,6 +46,7 @@ class PublicProfileScreen : ComponentActivity(){
             Intent(context, PublicProfileScreen::class.java).apply { putExtra("PublicProfileScreen",true) }
     }
 
+    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContent{
@@ -55,12 +59,13 @@ class PublicProfileScreen : ComponentActivity(){
     }
 }
 
+@InternalCoroutinesApi
 @Composable
 fun Public_ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray)
+            .background(Color.White)
     ) {
         Column(Modifier.background(Color.White)) {
             UserHead(R.drawable.user1, "test longest", "1", 0, 0)
@@ -166,127 +171,37 @@ fun UserHead(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
     }
 }
 
+
+@InternalCoroutinesApi
 @Composable
 fun getUserPost() {
-    val ProfileViewModel: PublicProfileViewModel = viewModel()
-    val list = ProfileViewModel.PublicProfileItemList
+    val publicProfileViewModel: PublicProfileViewModel = viewModel()
+    val list = publicProfileViewModel.My_Post
 
-    Card {
-        LazyColumn(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            item{
-                Divider()
-            }
-
-            item{
-                Spacer(modifier = Modifier.height(15.dp))
-                Text(text = "主页", fontSize = 20.sp, textAlign = TextAlign.Center)
-                Spacer(modifier = Modifier.height(15.dp))
-            }
-
-            item{
-                Divider()
-            }
-
-
-            item {
-                list.forEach {
-                    PublicProfileItem(item = it)
-                }
-            }
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        item{
+            UserHead(R.drawable.avatar, "test longest", "1", 0, 0)
         }
-    }
-}
+        item{
+            Divider()
+        }
 
+        item{
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(text = "主页", fontSize = 20.sp, textAlign = TextAlign.Center)
+            Spacer(modifier = Modifier.height(15.dp))
+        }
 
-@Composable
-fun PublicProfileItem(item: PublicProfileItem, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
-//    val typography = MaterialTheme.typography
-    Card(modifier = Modifier
-        .clickable { onClick }
-        .padding(4.dp))
-    {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-//            .testTag("${item.id}")
-        ) {
-            val imageModifier = Modifier
-                .height(100.dp)
-                .width(100.dp)
-//                .fillMaxWidth()
-                .clip(shape = MaterialTheme.shapes.medium)
+        item{
+            Divider()
+        }
 
-            Row() {
-                Column() {
-                    Image(
-                        painter = painterResource(item.imageId),
-                        modifier = imageModifier,
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop
-                    )
-                }
-
-                Column() {
-                    Row() {
-                        Text(
-                            text = item.source,
-                            modifier = Modifier
-                                .padding(8.dp))
-                    }
-
-                    Spacer(modifier = Modifier.height(25.dp))
-
-                    Row(modifier = Modifier
-                        .padding(8.dp)
-                        .height(25.dp)
-                    )
-                    {
-                        Image(
-                            painter = painterResource(id = item.avatarId),
-                            contentDescription = "avatar",
-                            modifier = Modifier
-                                .clip(CircleShape)
-                                .size(25.dp))
-
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = item.name,
-                            modifier = Modifier
-                                .align(alignment = Alignment.CenterVertically))
-
-                        Box(modifier = Modifier.fillMaxWidth()) {
-                            val checkedState = remember { mutableStateOf(false) }
-
-                            IconToggleButton(
-                                modifier = Modifier.size(30.dp)
-                                            .padding(4.dp)
-                                            .align(alignment = Alignment.CenterEnd),
-                                checked = checkedState.value,
-                                onCheckedChange = {
-                                    checkedState.value = it
-                                },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.Favorite,
-                                    contentDescription = "Favorite",
-                                    tint = if (checkedState.value) {
-                                        Color.Red
-                                    } else {
-                                        Color.Gray
-                                    }
-                                )
-                            }
-                        }
-
-                    }
-
-                }
-                //Spacer(Modifier.height(16.dp))
-
+        item {
+            list.forEach {
+                MyPostItem(item = it)
             }
         }
     }

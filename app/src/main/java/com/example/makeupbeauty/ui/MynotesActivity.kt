@@ -27,23 +27,32 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.commodityDetail.shoppingCarActivity
 import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.notes.data.NotesDateProvoder
 import com.example.makeupbeauty.notes.data.notes
+import com.example.makeupbeauty.ui.Screens.CommendItem
+import com.example.makeupbeauty.ui.Screens.NotesItem
+import com.example.makeupbeauty.ui.Screens.StaggeredVerticalGrid
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.PostViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
 
 class MynotesActivity : ComponentActivity() {
     companion object {
         fun newIntent(context: Context) =
             Intent(context, MynotesActivity::class.java).apply { putExtra("mYNOTES", true) }
     }
+    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -59,6 +68,7 @@ class MynotesActivity : ComponentActivity() {
 
 
 
+@InternalCoroutinesApi
 @Preview
 @Composable
 fun Mynotes() {
@@ -82,15 +92,31 @@ fun Mynotes() {
     }
 }
 
+@InternalCoroutinesApi
 @Composable
 fun cardNotes(){
-    val list = remember { NotesDateProvoder.Mnotes }
-    LazyColumn {
-        items(
-            items = list,
-            itemContent = { item -> MyNotesCard(item = item)
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+    postViewModel.changePost(1)
+    val list = postViewModel.my_post
+    //Log.e("", list.toString())
+    LazyColumn() {
+        item {
+            StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
+                list.forEach {
+                    postViewModel.changePost(it.id)
+                    NotesItem(item = it)
+                }
             }
-        )
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)) {
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    text = "- THE END -",
+                    color = Color.Gray,
+                    modifier = Modifier.align(Alignment.TopCenter))
+            }
+        }
     }
 }
 
