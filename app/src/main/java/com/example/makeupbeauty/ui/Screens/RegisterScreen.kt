@@ -1,11 +1,6 @@
 package com.example.makeupbeauty.ui.Screens
 
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -22,35 +17,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import com.example.makeupbeauty.component.AnimatedButton
-import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
+import com.example.makeupbeauty.viewModel.Page
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
 
-class RegisterScreen: ComponentActivity() {
-    companion object{
-        fun newIntent(context: Context) =
-            Intent(context, RegisterScreen::class.java).apply { putExtra("RegisterScreen",true) }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MakeupBeautyTheme {
-                // A surface container using the 'background' color from the theme
-                Register()
-            }
-        }
-    }
-}
-
 @Composable
-fun Register(){
+fun RegisterPage(
+    loading: Boolean = false,
+    onPageChange: (Page) -> Unit,
+    onDone: (String, String,String) -> Unit
+){
     Surface(color = MaterialTheme.colors.background) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             //add Card
@@ -59,13 +41,13 @@ fun Register(){
                 elevation = 8.dp ,
                 shape = MaterialTheme.shapes.medium
             ) {
-                val emailText = remember{
+                val nameText = remember{
                     mutableStateOf("")
                 }
                 val passwordText = remember{
                     mutableStateOf("")
                 }
-                val ConfirmpasswordText = remember{
+                val confirmpasswordText = remember{
                     mutableStateOf("")
                 }
                 var hasError by remember { mutableStateOf(false) }
@@ -90,14 +72,6 @@ fun Register(){
                 val ConfirmPasswordInteractionState = remember { MutableInteractionSource() }
 
                 val emailInteractionState = remember { MutableInteractionSource() }
-                val primaryColor = MaterialTheme.colors.primary
-//                            val annotatedString = remember {
-//                                AnnotatedString.Builder("Don't have an account? Register")
-//                                    .apply {
-//                                        addStyle(style = SpanStyle(color = primaryColor), 23, 31)
-//                                    }
-//                            }
-
                 // add Column
                 LazyColumn(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -105,21 +79,12 @@ fun Register(){
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) {
                     //添加文本框
-//                                item{
-//                                    Image(
-//                                        painter = painterResource(id = R.drawable.logotest),
-//                                        contentDescription = "",
-//                                        modifier = Modifier
-//                                            .size(100.dp)
-//                                            .clip(CircleShape)
-//                                    )
-//                                }
                     item{
                         Spacer(modifier = Modifier.height(60.dp))
                     }
                     item{
                         OutlinedTextField(
-                            value = emailText.value,
+                            value = nameText.value,
                             leadingIcon = {
                                 Icon(Icons.Default.Email,
                                     contentDescription = "",
@@ -133,10 +98,10 @@ fun Register(){
                                 keyboardType = KeyboardType.Text,
                                 imeAction = ImeAction.Next
                             ),
-                            label = { Text(text = "Email address") },
-                            placeholder = { Text(text = "abc@gmail.com") },
+                            label = { Text(text = "User name") },
+                            placeholder = { Text(text = "Jane") },
                             onValueChange = {
-                                emailText.value = it
+                                nameText.value = it
                             },
                             interactionSource = emailInteractionState,
                         )
@@ -185,7 +150,6 @@ fun Register(){
                                 imeAction = ImeAction.Done
                             ),
                             label = { Text(text = "Password") },
-                            placeholder = { Text(text = "12334444") },
                             onValueChange = {
                                 passwordText.value = it },
                             interactionSource = passwordInteractionState,
@@ -199,11 +163,10 @@ fun Register(){
 
                     item{
                         OutlinedTextField(
-                            value = ConfirmpasswordText.value,
+                            value = confirmpasswordText.value,
                             leadingIcon = {
                                 Icon(
                                     Icons.Default.Lock,
-                                    //ImageBitmap.imageResource(id = R.drawable.baseline_fingerprint_black_24dp)
                                     contentDescription = "",
                                     tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
                                 )
@@ -213,10 +176,7 @@ fun Register(){
                                     Icon(
                                         Icons.Filled.VisibilityOff,
                                         contentDescription = "Check fingerprint",
-                                        //tint = Color.Green,
-                                        //painter = painterResource(id = R.drawable.eye_hide),
                                         tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-                                        //contentDescription = "",
                                         modifier = Modifier
                                             .size(30.dp)
                                             .clickable(onClick = {ConfirmshowPwd = !ConfirmshowPwd})
@@ -240,9 +200,8 @@ fun Register(){
                                 imeAction = ImeAction.Done
                             ),
                             label = { Text(text = "Confirm Password") },
-                            placeholder = { Text(text = "12334444") },
                             onValueChange = {
-                                ConfirmpasswordText.value = it },
+                                confirmpasswordText.value = it },
                             interactionSource = ConfirmPasswordInteractionState,
                             visualTransformation = ConfirmPasswordVisualTransformation,
                         )
@@ -253,35 +212,14 @@ fun Register(){
                     }
 
                     item{
-                        AnimatedButton("注册", emailText, passwordText, onClick = {
-                            RegisterApi("register", emailText.value, passwordText.value)
+                        AnimatedButton("注册", nameText, passwordText, onClick = {
+                            onDone(nameText.value, passwordText.value,confirmpasswordText.value)
                         })
                     }
 
                     item{
                         Spacer(modifier = Modifier.height(60.dp))
                     }
-//                                item{
-//                                    Box(modifier = Modifier.padding(vertical = 10.dp)) {
-//                                        Spacer(
-//                                            modifier = Modifier
-//                                                .align(Alignment.Center)
-//                                                .height(1.dp)
-//                                                .fillMaxWidth()
-//                                                .background(Color.LightGray)
-//                                        )
-//                                    }
-//                                }
-//                                item{
-//                                    Text(
-//                                        text = annotatedString.toAnnotatedString(),
-//                                        modifier = Modifier
-//                                            .fillMaxWidth()
-//                                            .padding(vertical = 16.dp)
-//                                            .clickable(onClick = {}),
-//                                        textAlign = TextAlign.Center
-//                                    )
-//                                }
                 }
             }
         }
@@ -294,6 +232,8 @@ fun RegisterApi(type:String, email: String, password: String){
 //    params.set("cellphone","0001211")
 //    params.set("country_code","+63")
 //    params.set("verification_code","334455")
+    val client = OkHttpClient()
+    val JSON: MediaType = "application/json".toMediaType()
     val baseUrl = "http://zrp.cool:8000"
     val url = "$baseUrl/register/"
 
@@ -325,9 +265,6 @@ fun RegisterApi(type:String, email: String, password: String){
         }
 
         override fun onResponse(call: Call, response: Response) {
-
-
-
             var stA = response.body!!.string()
             println("————成功 $stA")
 

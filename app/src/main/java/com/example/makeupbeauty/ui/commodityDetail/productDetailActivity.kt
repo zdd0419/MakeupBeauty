@@ -364,13 +364,13 @@ fun ProductItemColorWithDesc() {
             Column(modifier = Modifier
                 .fillMaxWidth()
             ) {
-                commentCard(R.drawable.avatar, "test longest", "1", 0, 0)
+                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.avatar, "test longest", "1", 0, 0)
+                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.avatar, "test longest", "1", 0, 0)
+                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.avatar, "test longest", "1", 0, 0)
+                commentCard(R.drawable.user1, "test longest", "1", 0, 0)
             }
 
         }

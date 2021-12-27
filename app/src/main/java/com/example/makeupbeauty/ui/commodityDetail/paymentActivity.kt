@@ -87,7 +87,7 @@ fun PaymentView() {
                 LazyColumn() {
                     item {
                         Owner(
-                            imageid = R.drawable.avatar,
+                            imageid = R.drawable.user1,
                             name = "蛋蛋",
                             address = "北京交通大学南门",
                             phoneNumber = "18907763271"

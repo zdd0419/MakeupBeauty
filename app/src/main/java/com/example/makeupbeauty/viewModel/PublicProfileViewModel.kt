@@ -16,77 +16,77 @@ class PublicProfileViewModel: ViewModel() {
             PublicProfileItem(
                 1,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.hair,
                 ""
             ),
             PublicProfileItem(
                 2,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face,
                 ""
             ),
             PublicProfileItem(
                 3,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face1,
                 ""
             ),
             PublicProfileItem(
                 4,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face2,
                 ""
             ),
             PublicProfileItem(
                 5,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face3,
                 ""
             ),
             PublicProfileItem(
                 6,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.hand,
                 ""
             ),
             PublicProfileItem(
                 7,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.hand2,
                 ""
             ),
             PublicProfileItem(
                 6,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.hand,
                 ""
             ),
             PublicProfileItem(
                 6,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.hand,
                 ""
             ),
             PublicProfileItem(
                 4,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face2,
                 ""
             ),
             PublicProfileItem(
                 4,
                 "",
-                R.drawable.avatar,
+                R.drawable.user1,
                 R.drawable.face2,
                 ""
             )

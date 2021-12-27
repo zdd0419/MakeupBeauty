@@ -23,7 +23,12 @@ enum class ButtonState{
 }
 
 @Composable
-fun AnimatedButton(btnText: String, emailText: MutableState<String>, passwordText: MutableState<String>, onClick: () -> Unit){
+fun AnimatedButton(
+    btnText: String,
+    emailText: MutableState<String>,
+    passwordText: MutableState<String>,
+    onClick: () -> Unit
+){
     val buttonState = remember {
         mutableStateOf(ButtonState.Normal)
     }

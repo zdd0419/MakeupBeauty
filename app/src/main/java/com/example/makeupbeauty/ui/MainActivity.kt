@@ -1,6 +1,8 @@
 package com.example.makeupbeauty.ui
 
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,6 +27,12 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import com.androidisland.vita.startVita
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        fun newIntent(context: Context) =
+            Intent(context, MainActivity::class.java)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                .apply { putExtra("ReStart", true) }
+    }
     @ExperimentalFoundationApi
     @ExperimentalPagerApi
     @InternalCoroutinesApi
