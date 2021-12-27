@@ -2,6 +2,7 @@ package com.example.makeupbeauty.ui.Screens
 
 //import com.example.makeupbeauty.component.models.RecommendItem
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -138,7 +139,7 @@ fun toPost() {
 
 @Composable
 fun LoadImage(url: String, modifier: Modifier, contentScale: ContentScale?) {
-    val painter = rememberCoilPainter(url)
+    val painter = rememberCoilPainter(Uri.parse(url))
     if (contentScale != null) {
         Image(
             painter = painter,

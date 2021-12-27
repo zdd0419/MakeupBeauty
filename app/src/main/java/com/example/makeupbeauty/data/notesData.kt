@@ -14,7 +14,7 @@ data class notesData(
     val avator:String,
     var isliked: MutableState<Int>,
     var iscollected: Int,
-    val imagelist:MutableList<String>,
+    var imagelist:MutableList<String>,
     var commentlist: MutableList<Comment> = mutableStateListOf(),
     val time:String
 
