@@ -43,11 +43,14 @@ import androidx.compose.ui.text.withStyle
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.TopAppBarWithBack
 import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
+import com.example.makeupbeauty.viewModel.CartViewModel
 import com.google.accompanist.coil.rememberCoilPainter
 
 
@@ -85,6 +88,8 @@ class paymentActivity : ComponentActivity() {
 @Composable
 fun PaymentView(title:String?,price:Double,category:String?,photos:String?) {
     val intent = Intent(LocalContext.current, MyoderActivity::class.java)
+    val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
+    val payList = cartViewmodel.payItemList
     intent.putExtra("price",price)
     intent.putExtra("title", title)
     intent.putExtra("catagory", category)
@@ -109,14 +114,14 @@ fun PaymentView(title:String?,price:Double,category:String?,photos:String?) {
                             address = "北京交通大学南门",
                             phoneNumber = "18907763271"
                         )
-
                         ProductItemList(title,price,category,photos)
                         pay()
                         total(1, 350.00,intent)
                     }
-
+//                    item {
+//
+//                    }
                 }
-
             })
 
     }
