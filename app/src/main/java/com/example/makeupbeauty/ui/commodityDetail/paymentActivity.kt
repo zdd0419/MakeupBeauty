@@ -9,49 +9,40 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
 
 import com.example.makeupbeauty.R
-import com.example.makeupbeauty.component.TopAppBarWithBack
 import com.example.makeupbeauty.component.TopBarWithBack
 import com.example.makeupbeauty.ui.theme.*
 import com.example.makeupbeauty.viewModel.CartViewModel
+import com.example.makeupbeauty.viewModel.OrderViewModel
 import com.google.accompanist.coil.rememberCoilPainter
 
 
@@ -118,6 +109,7 @@ fun PaymentView(title:String?,price:Double,category:String?,photos:String?) {
                             )
                             payList.forEach {
                                 ProductItemList(it.title,it.price,it.count,it.imagePainter)
+                                cartViewmodel.removeFromCart(it.id)
                             }
                             pay()
                             total(payList.size, cartViewmodel.getTotalPriceInOrder(),intent)
@@ -289,7 +281,7 @@ fun product(
                             color = titleTextColor
                         )
                         Text(
-                            text = " ￥"+price,
+                            text = "￥$price",
                             fontSize = 14.sp,
                             modifier=Modifier.padding(20.dp,0.dp,0.dp,0.dp),
                             color = red
@@ -435,6 +427,9 @@ fun total(totalCount:Int=0,
           price:Double=0.00,
           intent:Intent
 ){
+    val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
+    val OrderViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<OrderViewModel>()
+    val payList = cartViewmodel.payItemList
     val context = LocalContext.current;
     Row(modifier = Modifier
         .fillMaxWidth()) {
@@ -457,6 +452,17 @@ fun total(totalCount:Int=0,
 
         Button(
             onClick = {
+                payList.forEach {
+                    OrderViewModel.addOrder(
+                        title = it.title,
+                        price = it.price,
+                        count = it.count,
+                        address = "收货地址:北京交通大学南门",
+                        status = "已发货",
+                        image = it.imagePainter
+                    )
+                }
+                payList.clear()
                 context.startActivity(intent)
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = orange),

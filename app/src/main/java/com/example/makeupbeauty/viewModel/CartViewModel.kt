@@ -19,17 +19,17 @@ class CartViewModel: ViewModel() {
                 count = count,
                 pricetag = "￥"
         ))
-//        payItemList.add(
-//            CartItemData(
-//                id = totalNum + 1,
-//                imagePainter = imageId,
-//                title = title,
-//                price = price,
-//                count = count,
-//                pricetag = "￥"
-//            )
-//        )
         totalNum += 1
+    }
+    fun removeFromCart(id:Int){
+        val iter = cartItemList.listIterator()
+
+        while (iter.hasNext()){
+            val item = iter.next()
+            if(item.id == id){
+                iter.remove()
+            }
+        }
     }
     fun getTotalPriceInCart():Double{
         var totalprice = 0.0
@@ -46,13 +46,20 @@ class CartViewModel: ViewModel() {
         return total
     }
     fun addToPay(id: Int){
-        payItemList.add(cartItemList[id-1])
+        cartItemList.forEach{
+            if (it.id == id){
+                payItemList.add(it)
+                return@forEach
+            }
+        }
     }
     fun removeFromPay(id:Int){
-        payItemList.forEach{
-            if (it.id == id){
-                payItemList.remove(it)
-                return@forEach
+        val iter = payItemList.listIterator()
+
+        while (iter.hasNext()){
+            val item = iter.next()
+            if(item.id == id){
+                iter.remove()
             }
         }
     }
