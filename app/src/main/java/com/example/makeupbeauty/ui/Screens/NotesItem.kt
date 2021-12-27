@@ -38,20 +38,10 @@ import com.example.makeupbeauty.viewModel.PostViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 import com.androidisland.vita.vita
 
-@InternalCoroutinesApi
-@Composable
-fun turnActivity() {
-    val context = LocalContext.current;
-    val postViewModel: PostViewModel = viewModel()
-    var intent: Intent = Intent(context, PostActivity::class.java)
-    //intent.putExtra("viewModel", postViewModel)
-    startActivity(context, intent, null)
-}
-
 
 @InternalCoroutinesApi
 @Composable
-fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
+fun NotesItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
     val isFavourite = remember { mutableStateOf(item.isliked) }
     val context = LocalContext.current;
     val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
@@ -64,14 +54,14 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
 
     Card(modifier = Modifier
         .clickable {
-            postViewModel.changeRecommend(item.id)
+            postViewModel.changePost(item.id)
             context.startActivity(PostActivity.newIntent(context)) }
         .padding(4.dp))
     {
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                //.padding(16.dp)
+            //.padding(16.dp)
 //            .testTag("${item.id}")
         ) {
             val imageModifier = Modifier
