@@ -104,7 +104,9 @@ fun getConcern() {
         }
         items(
             items = postViewModel.my_concern,
-            itemContent = { item -> ConcernItem(item = item, modifier = Modifier)
+            itemContent = { item ->
+                postViewModel.changeConcern(item.id)
+                ConcernItem(item = item, modifier = Modifier)
                 ListItemDivider()
             }
         )
@@ -141,7 +143,7 @@ fun getCommend() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
-                    postViewModel.changeRecommend(it.id-1)
+                    postViewModel.changeRecommend(it.id)
                     CommendItem(item = it)
                 }
             }

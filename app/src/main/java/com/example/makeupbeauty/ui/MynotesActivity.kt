@@ -102,7 +102,7 @@ fun cardNotes(){
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
-                    postViewModel.changePost(it.id-1)
+                    postViewModel.changePost(it.id)
                     CommendItem(item = it)
                 }
             }
