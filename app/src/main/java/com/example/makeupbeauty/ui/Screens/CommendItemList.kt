@@ -64,7 +64,6 @@ fun CommendItem(item: notesData, modifier: Modifier = Modifier, onClick:()->Unit
 
     Card(modifier = Modifier
         .clickable {
-            postViewModel.changeRecommend(item.id-1)
             //Log.e("debug", postViewModel.option.toString())
             context.startActivity(PostActivity.newIntent(context)) }
         .padding(4.dp))

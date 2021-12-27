@@ -5,10 +5,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.makeupbeauty.viewModel.PostViewModel
 import io.ak1.pix.utility.WIDTH
 
 /**
@@ -21,8 +24,12 @@ class ImgPickerAdapter : RecyclerView.Adapter<ImgPickerAdapter.ViewHolder>() {
     val options: RequestOptions =
         RequestOptions().override(350).transform(CenterCrop(), RoundedCorners(40))
 
+    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+
+
     inner class ViewHolder(private val imageView: ImageView) :
         RecyclerView.ViewHolder(imageView) {
+
         fun bind() {
             imageView.apply {
                 Glide.with(imageView.context).asBitmap()

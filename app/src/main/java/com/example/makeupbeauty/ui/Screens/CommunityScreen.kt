@@ -141,6 +141,7 @@ fun getCommend() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
+                    postViewModel.changeRecommend(it.id-1)
                     CommendItem(item = it)
                 }
             }

@@ -1,5 +1,6 @@
 package com.example.makeupbeauty.viewModel
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -126,33 +127,8 @@ class PublicProfileViewModel: ViewModel() {
             "2021-12-26"
         ),
     )
-//        notesData(
-//            3,
-//            "",
-//            ""
-//                    +""
-//                    +""
-//                    +""
-//                    +""
-//                    +""
-//                    +""
-//                    +""
-//                    +""
-//                    +"",
-//            "",
-//            "",
-//            0,
-//            0,
-//            arrayListOf<String>(
-//0
-//            ),
-//
-//            arrayListOf<Comment> (
-//                Comment("1", "1", "1", "1", 1)
-//            ),
-//            ""
-//        ),
-    )
+
+
 
     val myAvatar = "https://img.zrp.cool/2021/12/26/3ae3b54bc4c12.jpg" //本人头像
     var index by mutableStateOf(0)

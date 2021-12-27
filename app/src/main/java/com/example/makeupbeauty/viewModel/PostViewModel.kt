@@ -7,12 +7,15 @@ import androidx.lifecycle.ViewModel
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.Comment
 import com.example.makeupbeauty.component.models.User
+import com.example.makeupbeauty.data.comment
 import com.example.makeupbeauty.data.notesData
 import com.example.makeupbeauty.notes.data.notes
 
 class PostViewModel: ViewModel() {
     //val concernData = MutableLiveData<MutableList<notesData>>()
     //val recommendData = MutableLiveData<MutableList<notesData>>()
+    val my_post = mutableListOf<notesData>()
+    val img_uri_list = mutableListOf<String>()
     val my_concern= mutableListOf(
         notesData(
             1,
@@ -224,6 +227,25 @@ class PostViewModel: ViewModel() {
 //        recommendData.postValue(notes_detail)
 //    }
 
+
+    fun addPost(title:String, content: String, uri_list: ArrayList<String>) {
+        Log.e("post", my_post.size.toString())
+        var newPost = notesData(
+            my_post.size+1,
+            title,
+            content,
+            myName,
+            myAvatar,
+            mutableStateOf(0),
+            0,
+            uri_list,
+            mutableStateListOf<Comment>(),
+            "2021-12-28"
+        )
+        my_post.add(my_post.size, newPost)
+    }
+
+
     fun postComment(id: Int, comment: Comment) {
         if (option == 1) {
             for (i in 0 until notes_detail.size) {
@@ -232,10 +254,17 @@ class PostViewModel: ViewModel() {
                     break
                 }
             }
-        } else {
+        } else if(option == 2){
             for (i in 0 until my_concern.size) {
                 if (my_concern[i].id == id) {
                     my_concern[i].commentlist.add(comment)
+                    break
+                }
+            }
+        } else {
+            for (i in 0 until my_post.size) {
+                if (my_post[i].id == id) {
+                    my_post[i].commentlist.add(comment)
                     break
                 }
             }
@@ -245,47 +274,60 @@ class PostViewModel: ViewModel() {
 
     fun changeConcern(i: Int) {
         index = i;
-        option = 0;
+        option = 1;
     }
 
     fun changeRecommend(i: Int) {
         index = i;
-        option = 1;
+        option = 2;
     }
 
+    fun changePost(i: Int) {
+        index = i;
+        option = 3;
+    }
 
     fun getPost(): notesData {
-        if(option == 0) {
+        if(option == 1) {
             return my_concern.elementAt(index)
-        } else{
+        } else if(option == 2){
             return notes_detail.elementAt(index)
+        } else {
+            return my_post.elementAt(index)
         }
     }
 
     fun clicklike(id: Int) {
         Log.e("like",option.toString())
-        if(option == 0) {
+        if(option == 1) {
             if(my_concern[id - 1].isliked.value == 1) {
                 my_concern[id - 1].isliked.value = 0
             } else {
                 my_concern[id - 1].isliked.value = 1
             }
-        } else{
+        } else if(option == 2){
             notes_detail[id - 1].isliked.value = 1 - notes_detail[id - 1].isliked.value
+        } else {
+            my_post[id - 1].isliked.value = 1 - my_post[id - 1].isliked.value
         }
     }
 
     fun clickcollect(id: Int) {
-        if(option == 0) {
+        if(option == 1) {
             var former = my_concern[id-1].iscollected
             var temp = my_concern.get(id-1)
             temp.iscollected = 1 - former
             my_concern.set(id-1, temp)
-        } else{
+        } else if(option == 2){
             var former = notes_detail[id-1].iscollected
             var temp = notes_detail.get(id-1)
             temp.iscollected = 1- former
             notes_detail.set(id-1, temp)
+        } else{
+            var former = my_post[id-1].iscollected
+            var temp = my_post.get(id-1)
+            temp.iscollected = 1- former
+            my_post.set(id-1, temp)
         }
     }
 }

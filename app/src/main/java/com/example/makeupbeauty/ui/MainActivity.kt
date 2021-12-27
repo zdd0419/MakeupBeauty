@@ -34,12 +34,12 @@ class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val page = intent.getStringExtra("page")
         val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
         //postViewModel.init()
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.theme)
         setContent {
             val navController = rememberNavController()
-
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
@@ -50,7 +50,10 @@ class MainActivity : ComponentActivity() {
                         bottomBar = {
                             BottomNavigation(navController = navController)
                     }) {
-                        Navigation(navController)
+                        if (page != null) {
+                            Navigation(navController, page)
+                        } else
+                            Navigation(navController)
                     }
                 }
             }
@@ -63,8 +66,8 @@ class MainActivity : ComponentActivity() {
 @InternalCoroutinesApi
 @ExperimentalPagerApi
 @Composable
-fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = NavigationItem.Home.id) {
+fun Navigation(navController: NavHostController, page: String = NavigationItem.Home.id) {
+    NavHost(navController, startDestination = page) {
         composable(NavigationItem.Home.id) {
             HomeScreen()
         }
