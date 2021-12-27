@@ -41,8 +41,68 @@ class PostViewModel: ViewModel() {
 
 
             "2021-12-26"
-        )
-    )
+        ),
+                notesData(
+                2,
+        "0033 7788",
+        " ",
+        "白敬亭",
+        "https://img.zrp.cool/2021/12/26/4baaf5499915f.jpg",
+         mutableStateOf(0),
+        0,
+        mutableListOf<String>(
+            "https://img.zrp.cool/2021/12/27/d767b7a5ae55f.jpg",
+            "https://img.zrp.cool/2021/12/27/8d3230f2095a4.jpg",
+            "https://img.zrp.cool/2021/12/27/9927778b95634.jpg",
+            "https://img.zrp.cool/2021/12/27/fb1d616c4dd1f.jpg",
+            "https://img.zrp.cool/2021/12/27/56783993a8b5f.jpg",
+            "https://img.zrp.cool/2021/12/27/e604b08fb0192.jpg"
+        ),
+        mutableListOf<Comment> (
+            Comment("1", "1", "1", "1", 1)
+        ),
+        "2021-12-19"
+    ),notesData(
+    3,
+    "●_●.TD",
+    "卫衣：Dries Van Noten\n" +
+    "\n" +
+    "衬衫：ZEbySANKUANZ\n" +
+    "\n" +
+    "裤子：Anderssonbell\n" +
+    "\n" +
+    "鞋：GOODBAI",
+    "白敬亭",
+    "https://img.zrp.cool/2021/12/26/4baaf5499915f.jpg",
+            mutableStateOf(0),
+    0,
+    mutableListOf<String>(
+    "https://img.zrp.cool/2021/12/27/730b036e5989d.jpg",
+    "https://img.zrp.cool/2021/12/27/278121c697c31.jpg",
+    "https://img.zrp.cool/2021/12/27/6d06016326f64.jpg"
+    ),
+    mutableListOf<Comment> (
+    Comment("1", "1", "1", "1", 1)
+    ),
+    "2021-11-20"
+    ),notesData(
+    4,
+    "",
+    "",
+    "白敬亭",
+    "https://img.zrp.cool/2021/12/26/4baaf5499915f.jpg",
+            mutableStateOf(0),
+    0,
+    mutableListOf<String>(
+        "https://img.zrp.cool/2021/12/27/730b036e5989d.jpg",
+        "https://img.zrp.cool/2021/12/27/278121c697c31.jpg",
+        "https://img.zrp.cool/2021/12/27/6d06016326f64.jpg"
+    ),
+    mutableListOf<Comment> (
+    Comment("1", "1", "1", "1", 1)
+    ),
+    ""
+    ))
 
 
     val notes_detail= mutableListOf(
@@ -166,7 +226,247 @@ class PostViewModel: ViewModel() {
 
             "2021-12-26"
         ),
-        )
+        notesData(
+            5,
+            "6种圣诞节\uD83C\uDF84可爱眼线画法~简单好画！",
+            "\n" +
+                    "6种圣诞节\uD83C\uDF84可爱眼线画法~简单好画！\n" +
+                    "\uD83C\uDF4E提前祝姐妹们圣诞节快乐~\n" +
+                    "\n" +
+                    "六种很简单的圣诞节眼线画法\n" +
+                    "\n" +
+                    "画起来其实都很简单\n" +
+                    "\n" +
+                    "过节出门！拿出眼线笔画起来❄️\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "感谢@宇智脆啵啵 笔记内容的支持，笔记转载已获得原作者授权\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "✨圣诞惊喜看这里✨\n" +
+                    "\n" +
+                    "12月17日-12月25日期间，小红书在直播间为大家准备了限量圣诞礼盒大家可以1元进行抢购哦，具体信息大家可以搜索 #我的礼想圣诞 进入话题页查看直播日历参与活动。\n" +
+                    "\n" +
+                    "大家快快行动起来哟\n" +
+                    "\n" +
+                    "#圣诞节就这么扮 #圣诞妆容怎么画 #圣诞妆容 #眼线到底怎么画 #新手眼妆 #我的礼想圣诞",
+            "美妆情报局",
+            "https://img.zrp.cool/2021/12/27/4c68b0ab021d2.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/d2ffb41845e0e.jpg",
+                "https://img.zrp.cool/2021/12/27/2b0810e9642fe.jpg",
+                "https://img.zrp.cool/2021/12/27/4f790914fd3dc.jpg",
+                "https://img.zrp.cool/2021/12/27/a5e1398a4bc56.jpg",
+                "https://img.zrp.cool/2021/12/27/24c6f1c2c55d7.jpg",
+                "https://img.zrp.cool/2021/12/27/e36f5811813e5.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2021-12-24"
+        ),notesData(
+            6,
+            "Mac新色 \uD83C\uDF6C 这个圣诞就靠它撑场面了\uD83C\uDF1F",
+            "MAC圣诞新色 玫瑰波板糖,有被撩到！\uD83C\uDF6D\n" +
+                    "\n" +
+                    "是圣诞的新色 \uD83D\uDC84名字叫for my next trick\n" +
+                    "\n" +
+                    "薄涂晕开是比较嫩的玫瑰色\n" +
+                    "\n" +
+                    "厚涂是带一点点紫调的玫瑰豆沙色\n" +
+                    "\n" +
+                    "这支还是薄涂更好看哈\n" +
+                    "\n" +
+                    "我还叠涂了一个唇油,Y12璀璨时光\n" +
+                    "\n" +
+                    "像糖果纸一样的\n" +
+                    "\n" +
+                    "叠涂也好好看啊~\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "感谢@双下巴的凑凑 笔记内容的支持，笔记转载已获得原作者授权\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "✨圣诞惊喜看这里✨\n" +
+                    "\n" +
+                    "12月17日-12月25日期间，小红书在直播间为大家准备了限量圣诞礼盒大家可以1元进行抢购哦，具体信息大家可以搜索 #我的礼想圣诞 进入话题页查看直播日历参与活动。\n" +
+                    "\n" +
+                    "大家快快行动起来哟\n" +
+                    "\n" +
+                    "#我的口红日记 #口红 #无滤镜口红试色 #mac口红 #我的礼想圣诞 #圣诞",
+            "美妆情报局",
+            "https://img.zrp.cool/2021/12/27/4c68b0ab021d2.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/07b94dd7b6f53.jpg",
+                "https://img.zrp.cool/2021/12/27/f78360d989e48.jpg",
+                "https://img.zrp.cool/2021/12/27/df3ab3455a5af.jpg",
+                "https://img.zrp.cool/2021/12/27/78b7dc6fcf6a8.jpg",
+                "https://img.zrp.cool/2021/12/27/24d85f8b1abaa.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2021-12-23"
+        ),notesData(
+            7,
+            "这色能连涂一年不？？！",
+            "\n" +
+                    "这色能连涂一年不？？！\n" +
+                    "九敏这支也太绝了\n" +
+                    "\n" +
+                    "hin清透的质地一点都不油腻\n" +
+                    "\n" +
+                    "刚上嘴是慕斯质感\n" +
+                    "\n" +
+                    "用手晕开柔雾哑光质地\n" +
+                    "\n" +
+                    "上嘴显得嘴巴特别饱满\n" +
+                    "\n" +
+                    "黄皮可冲入股不亏\n" +
+                    "\n" +
+                    "\uD83D\uDC84：AVID03\n" +
+                    "\n" +
+                    "上嘴是冰润奶茶色\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "感谢@樱桃惠子 笔记内容的支持，笔记转载已获得原作者授权\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "✨专“薯”圣诞惊喜看这里✨\n" +
+                    "\n" +
+                    "12月17日-12月25日期间，小红书在直播间为大家准备了限量圣诞礼盒大家可以1元进行抢购哦，具体信息大家可以搜索#我的礼想圣诞 进入话题页查看直播日历参与活动。\n" +
+                    "\n" +
+                    "大家快快行动起来哟\n" +
+                    "\n" +
+                    "#我的口红日记 #无滤镜口红试色 #口红 #口红分享\n" +
+                    "\n" +
+                    "#我被口红控制了",
+            "美妆情报局",
+            "https://img.zrp.cool/2021/12/27/4c68b0ab021d2.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/43752b90f0dca.jpg",
+                "https://img.zrp.cool/2021/12/27/46fbdc25eeef5.jpg",
+                "https://img.zrp.cool/2021/12/27/8fd5f14cbb910.jpg",
+                "https://img.zrp.cool/2021/12/27/f8334a834d6e7.jpg",
+                "https://img.zrp.cool/2021/12/27/47533a583cfad.jpg",
+                "https://img.zrp.cool/2021/12/27/2c99c39cb03f1.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2021-12-17"
+        ),notesData(
+            8,
+            "jennie无辜小猫眼妆教程！上扬眼+下至绝惹~",
+            "煎妮的平行四边形眼妆泰适合新手内双了！有手就会\n" +
+                    "\n" +
+                    "简单又日常的上扬猫系眼妆~调整眼形大眼消肿\uD83D\uDC02！\n" +
+                    "\n" +
+                    "用的是uhue桃气电波腮红画哒~\n" +
+                    "\n" +
+                    "深冬快速出门妆就这样化！！\n" +
+                    "\n" +
+                    "眼妆教程写在图里了记得康康~姐妹们快试试！\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "感谢@小刀 笔记内容的支持，笔记转载已获得原作者授权\n" +
+                    "\n" +
+                    "-\n" +
+                    "\n" +
+                    "✨圣诞惊喜看这里✨\n" +
+                    "\n" +
+                    "12月17日-12月25日期间，小红书在直播间为大家准备了限量圣诞礼盒大家可以1元进行抢购哦，具体信息大家可以搜索 #我的礼想圣诞 进入话题页查看直播日历参与活动。\n" +
+                    "\n" +
+                    "大家快快行动起来哟\n" +
+                    "\n" +
+                    "#日常眼妆怎么画 #新手眼妆 #秋冬必学的早八妆 #我的礼想圣诞 #眼影试色 #jennie仿妆",
+            "美妆情报局",
+            "https://img.zrp.cool/2021/12/27/4c68b0ab021d2.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/6f06a13ec0e77.jpg",
+                "https://img.zrp.cool/2021/12/27/2b79cdc8a753e.jpg",
+                "https://img.zrp.cool/2021/12/27/981320a3b201c.jpg",
+                "https://img.zrp.cool/2021/12/27/e0d638f4a7c0e.jpg",
+                "https://img.zrp.cool/2021/12/27/81046742a4cea.jpg",
+                "https://img.zrp.cool/2021/12/27/407172aecbb51.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2021-12-22"
+        ),notesData(
+            9,
+            "富江仿妆❗️厌世感甜酷少女漫画眼妆！",
+            "川上富江仿妆又来啦~\n" +
+                    "\n" +
+                    "无意中发现这个川上富江的漫画图\n" +
+                    "\n" +
+                    "跟之前看到的不太一样，这张的眼妆甜丧又蛮日常~\n" +
+                    "\n" +
+                    "用到的是猫咪眼影，红棕大地色，消肿绝了！\n" +
+                    "\n" +
+                    "眼线是用眼线胶笔画滴，强调下眼线，一秒大眼！集美们快试试！",
+            "美妆情报局",
+            "https://img.zrp.cool/2021/12/27/4c68b0ab021d2.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/02303e39c089b.jpg",
+                "https://img.zrp.cool/2021/12/27/194705177a02f.jpg",
+                "https://img.zrp.cool/2021/12/27/cf4d39927bcf4.jpg",
+                "https://img.zrp.cool/2021/12/27/714c77bf31deb.jpg",
+                "https://img.zrp.cool/2021/12/27/a51766753f9ad.jpg",
+                "https://img.zrp.cool/2021/12/27/56b9807335ba5.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2020-12-19"
+        ),notesData(
+            10,
+            "铁丸的幼儿园生活",
+            "老师镜头下的贝贝也是可爱的\n" +
+                    "\n" +
+                    "虽然进去前哭的眼睛一单一双的\n" +
+                    "\n" +
+                    "进去了还是听老师话很乖的宝贝\n" +
+                    "\n" +
+                    "希望之后越来越顺利吧\n" +
+                    "\n" +
+                    "#人类幼崽成长记",
+            "SASA的丸子妹",
+            "https://img.zrp.cool/2021/12/27/e32433c556bb4.jpg",
+            mutableStateOf(0),
+            0,
+            mutableListOf<String>(
+                "https://img.zrp.cool/2021/12/27/d34da346602d5.jpg",
+                "https://img.zrp.cool/2021/12/27/2c38b4236217c.jpg",
+                "https://img.zrp.cool/2021/12/27/e15605bf05830.jpg",
+                "https://img.zrp.cool/2021/12/27/e32433c556bb4.jpg",
+                "https://img.zrp.cool/2021/12/27/72fbba1f87301.jpg",
+                "https://img.zrp.cool/2021/12/27/3b5ec79feeefd.jpg"
+            ),
+            mutableListOf<Comment> (
+                Comment("1", "1", "1", "1", 1)
+            ),
+            "2021-09-09"
+        ),
+    )
 
 
 
@@ -273,21 +573,23 @@ class PostViewModel: ViewModel() {
 
 
     fun changeConcern(i: Int) {
-        index = i;
+        index = i-1;
         option = 1;
     }
 
     fun changeRecommend(i: Int) {
-        index = i;
+        index = i-1;
         option = 2;
     }
 
     fun changePost(i: Int) {
-        index = i;
+        index = i-1;
         option = 3;
     }
 
     fun getPost(): notesData {
+        Log.e("option", option.toString())
+        Log.e("index", index.toString())
         if(option == 1) {
             return my_concern.elementAt(index)
         } else if(option == 2){
