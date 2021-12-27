@@ -43,6 +43,7 @@ import androidx.compose.ui.text.withStyle
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
 
@@ -106,21 +107,25 @@ fun PaymentView(title:String?,price:Double,category:String?,photos:String?) {
                 )
             }, backgroundColor = cottonBall,
             content = {
-                LazyColumn() {
-                    item {
-                        Owner(
-                            imageid = R.drawable.avatar,
-                            name = "蛋蛋",
-                            address = "北京交通大学南门",
-                            phoneNumber = "18907763271"
-                        )
-                        ProductItemList(title,price,category,photos)
-                        pay()
-                        total(1, 350.00,intent)
-                    }
+                Box() {
+                    LazyColumn() {
+                        item {
+                            Owner(
+                                imageid = R.drawable.avatar,
+                                name = "蛋蛋",
+                                address = "北京交通大学南门",
+                                phoneNumber = "18907763271"
+                            )
+                            payList.forEach {
+                                ProductItemList(it.title,it.price,it.count,it.imagePainter)
+                            }
+                            pay()
+                            total(payList.size, cartViewmodel.getTotalPriceInOrder(),intent)
+                        }
 //                    item {
 //
 //                    }
+                    }
                 }
             })
 
@@ -186,7 +191,7 @@ fun product(
     title: String = "",
     price: Double = 0.0,
     pricetag: String = "",
-    count: String = "",
+    count: Int = 1,
     prodcutCatagory:String="",
     backgroundColor: Color = Color.Transparent
 ) {
@@ -266,7 +271,7 @@ fun product(
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = count,
+                                text = "x$count",
                                 fontSize = 14.sp,
                                 color = titleTextColor
                             )
@@ -299,7 +304,7 @@ fun product(
 }
 
 @Composable
-fun ProductItemList(title:String?,price:Double,category:String?,photos:String?) {
+fun ProductItemList(title:String?,price:Double,count:Int,photos:String?) {
     val painter = rememberCoilPainter(photos)
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -310,9 +315,9 @@ fun ProductItemList(title:String?,price:Double,category:String?,photos:String?) 
                 imagePainter = painter,
                 title = title,
                 price = price,
-                pricetag = "$",
-                count = "x1",
-                prodcutCatagory="N19",
+                pricetag = "￥",
+                count = count,
+                prodcutCatagory="",
                 backgroundColor = lightsilverbox
             )
         }
@@ -324,7 +329,7 @@ fun ProductItemList(title:String?,price:Double,category:String?,photos:String?) 
 //添加购买数量
 @Composable
 fun productAddNumber(
-    buyNumber:String=""
+    buyNumber:Int=1
 ){
     Row(
         modifier = Modifier
@@ -347,7 +352,7 @@ fun productAddNumber(
         )
         //这个购买数量默认为1
         Text(
-            text=buyNumber,
+            text="x$buyNumber",
 //            modifier = Modifier.padding(100.dp, 5.dp),
             color = orange,
             fontSize = 14.sp
@@ -442,7 +447,7 @@ fun total(totalCount:Int=0,
                 modifier = Modifier.padding(start=30.dp,top = 20.dp, bottom = 8.dp)
             )
             Text(
-                text = " ￥"+price,
+                text = "￥$price",
                 fontSize = 20.sp,
                 modifier=Modifier.padding(10.dp,20.dp,8.dp,0.dp),
                 color = red

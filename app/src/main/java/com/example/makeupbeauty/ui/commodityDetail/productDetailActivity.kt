@@ -589,7 +589,7 @@ fun chooseProduct(){
                     product_detailViewlmodel.getItem().allimage[0],
                     product_detailViewlmodel.getItem().title,
                     product_detailViewlmodel.getItem().price,
-                    "x$number",
+                    number,
                 )
                 context.startActivity(intent)
 //                      context.startActivity(paymentActivity.newIntent(context))

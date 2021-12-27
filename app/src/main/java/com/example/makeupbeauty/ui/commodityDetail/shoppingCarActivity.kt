@@ -22,7 +22,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ProduceStateScope
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,7 +30,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -42,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
-import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.theme.*
 import com.example.makeupbeauty.viewModel.CartViewModel
 import com.google.accompanist.coil.rememberCoilPainter
@@ -253,7 +250,7 @@ fun ProductCartItems(
     title: String = "",
     price: Double = 0.0,
     pricetag: String = "",
-    count: String = "",
+    count: Int = 1,
     backgroundColor: Color = Color.Transparent
 ) {
     val cartViewmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<CartViewModel>()
@@ -269,14 +266,15 @@ fun ProductCartItems(
                 onCheckedChange = { isChoose.value = !isChoose.value }
             ) {
                 if (isChoose.value) {
-//                    cartViewmodel.addToPay(id)
+                    cartViewmodel.removeFromPay(id)
+
                     Icon(
                         imageVector = Icons.Filled.Circle,
                         contentDescription = null,
                         tint = lightGrey
                     )
                 } else {
-//                    cartViewmodel.removeFromPay(id)
+                    cartViewmodel.addToPay(id)
                     Icon(
                         imageVector = Icons.Filled.Done,
                         contentDescription = "",
@@ -350,7 +348,7 @@ fun ProductCartItems(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = count,
+                            text = "x$count",
                             fontSize = 14.sp,
                             color = titleTextColor
                         )
@@ -382,7 +380,7 @@ fun NextButtonWithTotalItems(intent:Intent) {
             )
 
             Text(
-                text = "￥" + cartViewmodel.getTotalPrice().toString(),
+                text = "￥" + cartViewmodel.getTotalPriceInCart().toString(),
                 fontSize = 18.sp,
                 color = titleTextColor,
                 fontWeight = FontWeight.Bold

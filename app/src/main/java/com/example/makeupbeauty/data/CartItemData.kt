@@ -8,5 +8,5 @@ data class CartItemData (
     val title: String,
     val price: Double,
     val pricetag: String,
-    val count: String,
+    val count: Int,
 )
