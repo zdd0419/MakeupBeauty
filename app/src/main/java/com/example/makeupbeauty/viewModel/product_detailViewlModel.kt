@@ -22,12 +22,12 @@ class product_detailViewlModel: ViewModel() {
                         109.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/uFkHI9ySnd4JRsr.jpg",
-                            "https://s2.loli.net/2021/12/24/2Rx5okVvUSz4pye.jpg",
-                            "https://s2.loli.net/2021/12/24/EYqdeBwjAsWxX5I.jpg",
-                            "https://s2.loli.net/2021/12/24/xp1vsbtHYkJMeK7.jpg",
-                            "https://s2.loli.net/2021/12/24/RMevXr1zEHW4xSY.jpg",
-                            "https://s2.loli.net/2021/12/24/Qe4VB57cld3oNwu.jpg"
+                            "https://img.zrp.cool/2021/12/27/13116ea3eead9.jpg",
+                            "https://img.zrp.cool/2021/12/27/23b7e2929d742.jpg",
+                            "https://img.zrp.cool/2021/12/27/668dc43747557.jpg",
+                            "https://img.zrp.cool/2021/12/27/6e15eaa2b0035.jpg",
+                            "https://img.zrp.cool/2021/12/27/31a34e26e13df.jpg",
+                            "https://img.zrp.cool/2021/12/27/56ad469dcccc0.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -50,12 +50,12 @@ class product_detailViewlModel: ViewModel() {
                         119.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/LaBkTejWXKiHGhA.jpg",
-                            "https://s2.loli.net/2021/12/24/2iypWEx5uAPRHLm.jpg",
-                            "https://s2.loli.net/2021/12/24/Za8OotWVAGuJLYH.jpg",
-                            "https://s2.loli.net/2021/12/24/SgDK3ZAM9cLHqYm.jpg",
-                            "https://s2.loli.net/2021/12/24/n9dyWiBNegTR3Ls.jpg",
-                            "https://s2.loli.net/2021/12/24/jYHLG4kDaJCq3Nx.jpg"
+                            "https://img.zrp.cool/2021/12/27/4b298c26b0061.jpg",
+                            "https://img.zrp.cool/2021/12/27/80a0c23e3dfeb.jpg",
+                            "https://img.zrp.cool/2021/12/27/390d7a2b4e68e.jpg",
+                            "https://img.zrp.cool/2021/12/27/220468fdff1dc.jpg",
+                            "https://img.zrp.cool/2021/12/27/ce79799b38c8f.jpg",
+                            "https://img.zrp.cool/2021/12/27/a17a43889eb93.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -76,12 +76,12 @@ class product_detailViewlModel: ViewModel() {
                         129.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/lN4BALHePiYKhFO.jpg",
-                            "https://s2.loli.net/2021/12/24/eFQJhibxKS2zsLC.jpg",
-                            "https://s2.loli.net/2021/12/24/yrwIaiO3NeC2jWf.jpg",
-                            "https://s2.loli.net/2021/12/24/MZWXAPl7yLDT5i6.jpg",
-                            "https://s2.loli.net/2021/12/24/vp1CZxFNVLRoPeD.jpg",
-                            "https://s2.loli.net/2021/12/24/1wHzxWLlTpGCYEJ.jpg"
+                            "https://img.zrp.cool/2021/12/27/005ac2407528a.jpg",
+                            "https://img.zrp.cool/2021/12/27/2d53197045064.jpg",
+                            "https://img.zrp.cool/2021/12/27/34c1e768e12be.jpg",
+                            "https://img.zrp.cool/2021/12/27/08a10b649d87c.jpg",
+                            "https://img.zrp.cool/2021/12/27/85e32fa69ba07.jpg",
+                            "https://img.zrp.cool/2021/12/27/af7431cb2301e.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -105,12 +105,12 @@ class product_detailViewlModel: ViewModel() {
                         129.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/uTkn1YxWaoVfU2A.jpg",
-                            "https://s2.loli.net/2021/12/24/wUsKQdzutO6qWG5.jpg",
-                            "https://s2.loli.net/2021/12/24/r7ZtG14uay9jWTf.jpg",
-                            "https://s2.loli.net/2021/12/24/FvxmGuIqin4twkf.jpg",
-                            "https://s2.loli.net/2021/12/24/fkpJPIzoxBWTlrd.jpg",
-                            "https://s2.loli.net/2021/12/24/ZFhB29LO6EGwKsr.jpg"
+                            "https://img.zrp.cool/2021/12/27/c7835297bebc8.jpg",
+                            "https://img.zrp.cool/2021/12/27/d9858fe89cf9e.jpg",
+                            "https://img.zrp.cool/2021/12/27/97494d4afedca.jpg",
+                            "https://img.zrp.cool/2021/12/27/90a760158529b.jpg",
+                            "https://img.zrp.cool/2021/12/27/c88c08bf347ed.jpg",
+                            "https://img.zrp.cool/2021/12/27/8f7600812487d.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -133,12 +133,12 @@ class product_detailViewlModel: ViewModel() {
                         0,
                         arrayListOf(
 
-                            "https://s2.loli.net/2021/12/24/rjCLZXo48QFgDPu.jpg",
-                            "https://s2.loli.net/2021/12/24/sRFG1xWlqJp79U2.jpg",
-                            "https://s2.loli.net/2021/12/24/nxp9hrYOgdGSVF1.jpg",
-                            "https://s2.loli.net/2021/12/24/qV4axWg9Mk2cXIK.jpg",
-                            "https://s2.loli.net/2021/12/24/GgVX84obOEtkDKL.jpg",
-                            "https://s2.loli.net/2021/12/24/umpn6WCzlZfJGea.jpg"
+                            "https://img.zrp.cool/2021/12/27/d313fb57c04e2.jpg",
+                            "https://img.zrp.cool/2021/12/27/d243191aa651f.jpg",
+                            "https://img.zrp.cool/2021/12/27/6a08c74d1dddc.jpg",
+                            "https://img.zrp.cool/2021/12/27/2299ad8aa3f78.jpg",
+                            "https://img.zrp.cool/2021/12/27/e0c0f6ede7787.jpg",
+                            "https://img.zrp.cool/2021/12/27/d7542a9fbfde8.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -160,12 +160,12 @@ class product_detailViewlModel: ViewModel() {
                         119.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/p5KJPvmnM7eRXsi.jpg",
-                            "https://s2.loli.net/2021/12/24/ItDJreNY3RCAFxl.jpg",
-                            "https://s2.loli.net/2021/12/24/7NcQdFWYxjaSJUL.jpg",
-                            "https://s2.loli.net/2021/12/24/qS1DMYbx8Ft3rvu.jpg",
-                            "https://s2.loli.net/2021/12/24/WhapMTPCIoeYqN8.jpg",
-                            "https://s2.loli.net/2021/12/24/vhWRJbAN1eZjqf8.jpg"
+                            "https://img.zrp.cool/2021/12/27/fcf688e653f9d.jpg",
+                            "https://img.zrp.cool/2021/12/27/4f7f3e64b54d1.jpg",
+                            "https://img.zrp.cool/2021/12/27/191f8942f48f6.jpg",
+                            "https://img.zrp.cool/2021/12/27/f6c5b919f09aa.jpg",
+                            "https://img.zrp.cool/2021/12/27/b54ec49e89876.jpg",
+                            "https://img.zrp.cool/2021/12/27/70c13816991cb.jpg"
                         ),
                         arrayListOf(
                             "苹果红",
@@ -188,12 +188,12 @@ class product_detailViewlModel: ViewModel() {
                         110.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/d75vgmAiLUPRXW8.jpg",
-                            "https://s2.loli.net/2021/12/24/QjRJUHua4EesnBC.jpg",
-                            "https://s2.loli.net/2021/12/24/MrHNPjZLSqD2wWE.jpg",
-                            "https://s2.loli.net/2021/12/24/YLcpwzuU2RFhDO6.jpg",
-                            "https://s2.loli.net/2021/12/24/Qi3Cs7x5V4aHMdO.jpg",
-                            "https://s2.loli.net/2021/12/24/Mxwd7Hmp8O6Qeun.jpg"
+                            "https://img.zrp.cool/2021/12/27/e2a7c85ddc88b.jpg",
+                            "https://img.zrp.cool/2021/12/27/f3a47051b187c.jpg",
+                            "https://img.zrp.cool/2021/12/27/e53f82e033ed4.jpg",
+                            "https://img.zrp.cool/2021/12/27/f75ee1ba40b0e.jpg",
+                            "https://img.zrp.cool/2021/12/27/8fadcb820305c.jpg",
+                            "https://img.zrp.cool/2021/12/27/65ff49ff72b96.jpg"
                         ),
                         arrayListOf(
                             "枯木赤陶",
@@ -215,12 +215,12 @@ class product_detailViewlModel: ViewModel() {
                         110.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/AFHBYdUSiOlKJhf.jpg",
-                            "https://s2.loli.net/2021/12/24/w6vLEQIuHlF9P2m.jpg",
-                            "https://s2.loli.net/2021/12/24/7cI6kT9NUPVXL8v.jpg",
-                            "https://s2.loli.net/2021/12/24/megHBh4xVUk7piz.jpg",
-                            "https://s2.loli.net/2021/12/24/9G1NEfWeixw8IRX.jpg",
-                            "https://s2.loli.net/2021/12/24/fW36TyoAqMUXFjb.jpg"
+                            "https://img.zrp.cool/2021/12/27/9ba99f99ca852.jpg",
+                            "https://img.zrp.cool/2021/12/27/2e88f61f7e444.jpg",
+                            "https://img.zrp.cool/2021/12/27/70f6a41f67686.jpg",
+                            "https://img.zrp.cool/2021/12/27/b876627154f66.jpg",
+                            "https://img.zrp.cool/2021/12/27/0e07b6ce9dce5.jpg",
+                            "https://img.zrp.cool/2021/12/27/8fadcb820305c.jpg"
                         ),
                         arrayListOf(
                             "乌龙奶茶色",
@@ -244,11 +244,11 @@ class product_detailViewlModel: ViewModel() {
                         110.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/K7GStefuvlq3Xhy.jpg",
-                            "https://s2.loli.net/2021/12/24/dAHi413LvYq7lpD.jpg",
-                            "https://s2.loli.net/2021/12/24/3z2jLnYEPgbf58c.jpg",
-                            "https://s2.loli.net/2021/12/24/U83winBfzJadlIv.jpg",
-                            "https://s2.loli.net/2021/12/24/DWMs4qeFp5rzB1Q.jpg",
+                            "https://img.zrp.cool/2021/12/27/18e5c33a34858.jpg",
+                            "https://img.zrp.cool/2021/12/27/2a4370279dc2b.jpg",
+                            "https://img.zrp.cool/2021/12/27/5f7db0c7ea05a.jpg",
+                            "https://img.zrp.cool/2021/12/27/d38f4c95ca155.jpg",
+                            "https://img.zrp.cool/2021/12/27/e0351e19ad522.jpg",
                             "https://s2.loli.net/2021/12/24/tLE41u2crHh8leB.jpg"
                             ),
                         arrayListOf(
@@ -271,12 +271,12 @@ class product_detailViewlModel: ViewModel() {
                         129.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/qQesElnjcyrzVOt.jpg",
-                            "https://s2.loli.net/2021/12/24/5XWoEASs1fF9Bjt.jpg",
-                            "https://s2.loli.net/2021/12/24/2QYj4vJIWlEwNr8.jpg",
-                            "https://s2.loli.net/2021/12/24/4QOUE8kKoqagX91.jpg",
-                            "https://s2.loli.net/2021/12/24/54UiGFPNm8p1aHJ.jpg",
-                            "https://s2.loli.net/2021/12/24/nVJAGHDB13puolt.jpg"
+                            "https://img.zrp.cool/2021/12/27/6ef14107d322c.jpg",
+                            "https://img.zrp.cool/2021/12/27/dc3051e0414e5.jpg",
+                            "https://img.zrp.cool/2021/12/27/9312c7359480f.jpg",
+                            "https://img.zrp.cool/2021/12/27/dc3051e0414e5.jpg",
+                            "https://img.zrp.cool/2021/12/27/ed05fcde14468.jpg",
+                            "https://img.zrp.cool/2021/12/27/c935ae5e42d98.jpg"
                         ),
                         arrayListOf(
                             "【热卖色】水玫瑰",
@@ -299,12 +299,12 @@ class product_detailViewlModel: ViewModel() {
                         129.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/ViWoGRcEQML8AZz.jpg",
-                            "https://s2.loli.net/2021/12/24/CkJnEpsXFuhBSQY.jpg",
-                            "https://s2.loli.net/2021/12/24/jNyQmDr6SO7pILu.jpg",
-                            "https://s2.loli.net/2021/12/24/6xB3vQit7Clsp4D.jpg",
-                            "https://s2.loli.net/2021/12/24/CGDfpgITdxcKLRN.jpg",
-                            "https://s2.loli.net/2021/12/24/melxv2HJjtLK4IF.jpg"
+                            "https://img.zrp.cool/2021/12/27/96af383e0c673.jpg",
+                            "https://img.zrp.cool/2021/12/27/b138b50f6442b.jpg",
+                            "https://img.zrp.cool/2021/12/27/44ecc1e65065a.jpg",
+                            "https://img.zrp.cool/2021/12/27/579386409a84f.jpg",
+                            "https://img.zrp.cool/2021/12/27/9d845b9c0715a.jpg",
+                            "https://img.zrp.cool/2021/12/27/24b85aea2c043.jpg"
                         ),
                         arrayListOf(
                             "南瓜色",
@@ -327,12 +327,12 @@ class product_detailViewlModel: ViewModel() {
                         0,
                         arrayListOf(
 
-                            "https://s2.loli.net/2021/12/24/jkaqpnYhZKETgIQ.jpg",
-                            "https://s2.loli.net/2021/12/24/vjmFrBG7knKqHUD.jpg",
-                            "https://s2.loli.net/2021/12/24/aUSljuLw2nbmpMh.jpg",
-                            "https://s2.loli.net/2021/12/24/PzFghXTaMsdZK2e.jpg",
-                            "https://s2.loli.net/2021/12/24/Fauf3oZj1WwdyEK.jpg",
-                            "https://s2.loli.net/2021/12/24/hUa7yWv2zFgiQjY.jpg"
+                            "https://img.zrp.cool/2021/12/27/767060c1948cc.jpg",
+                            "https://img.zrp.cool/2021/12/27/c833d747c0cf6.jpg",
+                            "https://img.zrp.cool/2021/12/27/f2de5be28b931.jpg",
+                            "https://img.zrp.cool/2021/12/27/79da2b7806fc0.jpg",
+                            "https://img.zrp.cool/2021/12/27/77ea2c93a8b13.jpg",
+                            "https://img.zrp.cool/2021/12/27/ab5cea5a46ac7.jpg"
                         ),
                         arrayListOf(
                             "【1M限定版】枣泥豆沙",
@@ -354,12 +354,12 @@ class product_detailViewlModel: ViewModel() {
                         125.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/tRJVGnxq1KaEbkP.jpg",
-                            "https://s2.loli.net/2021/12/24/c8pLe46XqTvfB5S.jpg",
-                            "https://s2.loli.net/2021/12/24/ZAlTY4w5phrf1HD.jpg",
-                            "https://s2.loli.net/2021/12/24/fp2MaAG4sQeyrzo.jpg",
-                            "https://s2.loli.net/2021/12/24/nLM8Kk7xJTNf6Fy.jpg",
-                            "https://s2.loli.net/2021/12/24/HQieAnUl2ZwtYfy.jpg"
+                            "https://img.zrp.cool/2021/12/27/3d3dc40e7280e.jpg",
+                            "https://img.zrp.cool/2021/12/27/16319958fdc56.jpg",
+                            "https://img.zrp.cool/2021/12/27/3537dfc549ba4.jpg",
+                            "https://img.zrp.cool/2021/12/27/c74bbb3678c17.jpg",
+                            "https://img.zrp.cool/2021/12/27/2766418ba7f8a.jpg",
+                            "https://img.zrp.cool/2021/12/27/9b9e2122a4a10.jpg"
                         ),
                         arrayListOf(
                             "【热卖色】红丝绒",
@@ -381,12 +381,12 @@ class product_detailViewlModel: ViewModel() {
                         350.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/YzlgoVS9nAQdXBp.jpg",
-                            "https://s2.loli.net/2021/12/24/lSsHtM9BrGpiTwn.jpg",
-                            "https://s2.loli.net/2021/12/24/7SDOXQ6ozWGyUKN.jpg",
-                            "https://s2.loli.net/2021/12/24/gzxtR5o79FedCKS.jpg",
-                            "https://s2.loli.net/2021/12/24/9ZvI2NWL6BTdAk7.jpg",
-                            "https://s2.loli.net/2021/12/24/r2FBUVaemczS8Kn.jpg"
+                            "https://img.zrp.cool/2021/12/27/7b9df8bfc1084.jpg",
+                            "https://img.zrp.cool/2021/12/27/d96bbd1d0c782.jpg",
+                            "https://img.zrp.cool/2021/12/27/c58b1df995aa3.jpg",
+                            "https://img.zrp.cool/2021/12/27/e96258f8f5dee.jpg",
+                            "https://img.zrp.cool/2021/12/27/d234b7cb9217e.jpg",
+                            "https://img.zrp.cool/2021/12/27/02e301e7643b9.jpg"
                         ),
                         arrayListOf(
                             "999 传奇红唇 哑光",
@@ -407,12 +407,12 @@ class product_detailViewlModel: ViewModel() {
                         370.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/O5pXBoJAjkF2xHh.jpg",
-                            "https://s2.loli.net/2021/12/25/O5pXBoJAjkF2xHh.jpg",
-                            "https://s2.loli.net/2021/12/25/sQ2b5EHZyCYO7Tc.jpg",
-                            "https://s2.loli.net/2021/12/25/fLnXFpRQH5y9143.jpg",
-                            "https://s2.loli.net/2021/12/25/KQIoCjFv9OGDZBq.jpg",
-                            "https://s2.loli.net/2021/12/25/lzQIwk6CSRZqBsp.jpg"
+                            "https://img.zrp.cool/2021/12/27/019ffb68fe340.jpg",
+                            "https://img.zrp.cool/2021/12/27/0f6155591b4ee.jpg",
+                            "https://img.zrp.cool/2021/12/27/02e301e7643b9.jpg",
+                            "https://img.zrp.cool/2021/12/27/4049503c0a8db.jpg",
+                            "https://img.zrp.cool/2021/12/27/5c4d8deaa81c1.jpg",
+                            "https://img.zrp.cool/2021/12/27/5c4d8deaa81c1.jpg"
                         ),
                         arrayListOf(
 
@@ -433,12 +433,12 @@ class product_detailViewlModel: ViewModel() {
                         350.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/e5JCS14PATai9bp.jpg",
-                            "https://s2.loli.net/2021/12/25/VAhxfLFHGs7SzIW.jpg",
-                            "https://s2.loli.net/2021/12/25/FxIk376nNbHQcSB.jpg",
-                            "https://s2.loli.net/2021/12/25/IcviewQLHJFPtDy.jpg",
-                            "https://s2.loli.net/2021/12/25/kLHYgNvPKbz7Alu.jpg",
-                            "https://s2.loli.net/2021/12/25/TcpFAPv2j8be1Gm.jpg"
+                            "https://img.zrp.cool/2021/12/27/19680d6a9aca1.jpg",
+                            "https://img.zrp.cool/2021/12/27/cb4a8c1082268.jpg",
+                            "https://img.zrp.cool/2021/12/27/511f44fee949e.jpg",
+                            "https://img.zrp.cool/2021/12/27/895d5589b8ee5.jpg",
+                            "https://img.zrp.cool/2021/12/27/fe73829577f01.jpg",
+                            "https://img.zrp.cool/2021/12/27/5821180242a02.jpg"
                         ),
                         arrayListOf(
                             "999 Forever Dior传奇红唇",
@@ -459,12 +459,12 @@ class product_detailViewlModel: ViewModel() {
                         350.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/7o1GsIziFBgRpvm.jpg",
-                            "https://s2.loli.net/2021/12/25/62D4Gl8BF7cAVQZ.jpg",
-                            "https://s2.loli.net/2021/12/25/oUeWhtwqCklMZuK.jpg",
-                            "https://s2.loli.net/2021/12/25/WFIzjAqtNZRHaUd.jpg",
-                            "https://s2.loli.net/2021/12/25/g8YmifJxvb4XLEs.jpg",
-                            "https://s2.loli.net/2021/12/25/Q1SOC5Htk2eIrfV.jpg"
+                            "https://img.zrp.cool/2021/12/27/ec58625bdf676.jpg",
+                            "https://img.zrp.cool/2021/12/27/af1ae8c36c850.jpg",
+                            "https://img.zrp.cool/2021/12/27/71e30e30aa8b6.jpg",
+                            "https://img.zrp.cool/2021/12/27/8b0a262ef7886.jpg",
+                            "https://img.zrp.cool/2021/12/27/96f0fa2748617.jpg",
+                            "https://img.zrp.cool/2021/12/27/e502943bdd7c2.jpg"
                             ),
 
                         arrayListOf(
@@ -487,12 +487,12 @@ class product_detailViewlModel: ViewModel() {
                         0,
                         arrayListOf(
 
-                            "https://s2.loli.net/2021/12/25/zUjWhRFwL5xerVf.jpg",
-                            "https://s2.loli.net/2021/12/25/l6HL4QeSXGuogjO.jpg",
-                            "https://s2.loli.net/2021/12/25/b4xZMhTP2Qzq8W6.jpg",
-                            "https://s2.loli.net/2021/12/25/a7D9MZA3qLKFrC4.jpg",
-                            "https://s2.loli.net/2021/12/25/Sq6Tev9swo7mxb3.jpg",
-                            "https://s2.loli.net/2021/12/25/iWKHt7ufZ9ldvIc.jpg"
+                            "https://img.zrp.cool/2021/12/27/c88b37a5df4ba.jpg",
+                            "https://img.zrp.cool/2021/12/27/c4b22cdc10761.jpg",
+                            "https://img.zrp.cool/2021/12/27/c9b4c55ea647a.jpg",
+                            "https://img.zrp.cool/2021/12/27/9fc02d9252752.jpg",
+                            "https://img.zrp.cool/2021/12/27/a5ee41c81e169.jpg",
+                            "https://img.zrp.cool/2021/12/27/bd533865ee20e.jpg"
                         ),
                         arrayListOf(
                             "074 冬日玫瑰",
@@ -513,12 +513,12 @@ class product_detailViewlModel: ViewModel() {
                         335.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/VTSNOxudzYsjMi3.jpg",
-                            "https://s2.loli.net/2021/12/25/YDAa8bhk6HndUjv.jpg",
-                            "https://s2.loli.net/2021/12/25/s985NMGidKr7eaF.jpg",
-                            "https://s2.loli.net/2021/12/25/dtTWRx2HZrqsiwU.jpg",
-                            "https://s2.loli.net/2021/12/25/lFzwVQMHJejri5u.jpg",
-                            "https://s2.loli.net/2021/12/25/hgCpvLJb6Zm3Fd2.jpg"
+                            "https://img.zrp.cool/2021/12/28/8ae3ec19392dd.jpg",
+                            "https://img.zrp.cool/2021/12/28/984fd39c3bb15.jpg",
+                            "https://img.zrp.cool/2021/12/28/7a5518224e492.jpg",
+                            "https://img.zrp.cool/2021/12/28/56510929b4a8b.jpg",
+                            "https://img.zrp.cool/2021/12/28/d4068461a27b3.jpg",
+                            "https://img.zrp.cool/2021/12/28/d56aca312e5db.jpg"
                         ),
                         arrayListOf(
                             "全新1966无法复刻的红棕",
@@ -540,12 +540,12 @@ class product_detailViewlModel: ViewModel() {
                             350.00,
                             0,
                             arrayListOf(
-                                "https://s2.loli.net/2021/12/25/XWrBAxvfEhbD5ka.jpg",
-                                "https://s2.loli.net/2021/12/25/yrbdVRKcaMjAvFh.jpg",
-                                "https://s2.loli.net/2021/12/25/6exn2WXAU5zT4pC.jpg",
-                                "https://s2.loli.net/2021/12/25/V5mZFYRDgxrS2Pc.jpg",
-                                "https://s2.loli.net/2021/12/25/4PhdtUaSiuHRqoK.jpg",
-                                "https://s2.loli.net/2021/12/25/NqlZfQGzMwoDXv3.jpg"
+                                "https://img.zrp.cool/2021/12/28/bf685b281922e.jpg",
+                                "https://img.zrp.cool/2021/12/28/002e3c97c0787.jpg",
+                                "https://img.zrp.cool/2021/12/28/fdca698328ab3.jpg",
+                                "https://img.zrp.cool/2021/12/28/bab6f8ccac013.jpg",
+                                "https://img.zrp.cool/2021/12/28/3526b3306628c.jpg",
+                                "https://img.zrp.cool/2021/12/28/d4b927e1fb1cd.jpg"
                             ),
                             arrayListOf(
                                 "【青春亲荐】不羁复古红",
@@ -566,12 +566,12 @@ class product_detailViewlModel: ViewModel() {
                         335.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/kVDjsbTJEM2gCyn.jpg",
-                            "https://s2.loli.net/2021/12/25/NTY7jRighqLk9CV.jpg",
-                            "https://s2.loli.net/2021/12/25/n5GRUJfqy7mDiXu.jpg",
-                            "https://s2.loli.net/2021/12/25/N2Z9Lonl3IdRcQx.jpg",
-                            "https://s2.loli.net/2021/12/25/fiRzeMQoqUGCkPB.jpg",
-                            "https://s2.loli.net/2021/12/25/rwPKFA2cQeW3LCd.jpg"
+                            "https://img.zrp.cool/2021/12/28/d89b287c16a99.jpg",
+                            "https://img.zrp.cool/2021/12/28/17ab4aa45917b.jpg",
+                            "https://img.zrp.cool/2021/12/28/d4760d15604af.jpg",
+                            "https://img.zrp.cool/2021/12/28/984fd39c3bb15.jpg",
+                            "https://img.zrp.cool/2021/12/28/5ae55814cdd9a.jpg",
+                            "https://img.zrp.cool/2021/12/28/87a27fcad5b9a.jpg"
                         ),
                         arrayListOf(
                             "416 烂番茄",
@@ -588,12 +588,12 @@ class product_detailViewlModel: ViewModel() {
                         59.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/H8UtAziWP7GxZEQ.jpg",
-                            "https://s2.loli.net/2021/12/25/g7vjiMyDJ8UFWC5.jpg",
-                            "https://s2.loli.net/2021/12/25/8tyZa9Pg3AvDc4W.jpg",
-                            "https://s2.loli.net/2021/12/25/wE9d1UsJShRMOA2.jpg",
-                            "https://s2.loli.net/2021/12/25/SVdfwgqbPC1L6aR.jpg",
-                            "https://s2.loli.net/2021/12/25/Qtjr7EydhTNwx6i.jpg"
+                            "https://img.zrp.cool/2021/12/28/6b3013190ef28.jpg",
+                            "https://img.zrp.cool/2021/12/28/3b4c8525a4ed8.jpg",
+                            "https://img.zrp.cool/2021/12/28/40a807ba7bfc8.jpg",
+                            "https://img.zrp.cool/2021/12/28/14d61ba840b43.jpg",
+                            "https://img.zrp.cool/2021/12/28/181fcc18b4204.jpg",
+                            "https://img.zrp.cool/2021/12/28/dc333ec3197c8.jpg"
                         ),
                         arrayListOf(
                             "EM01赤茶柑橘色",
@@ -616,12 +616,12 @@ class product_detailViewlModel: ViewModel() {
                         108.00,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/25/iQGfUj3L9CkZVP8.jpg",
-                            "https://s2.loli.net/2021/12/25/eQJdfp5LUBFxA6b.jpg",
-                            "https://s2.loli.net/2021/12/25/95VHc6JpZgwq3lG.jpg",
-                            "https://s2.loli.net/2021/12/25/l8EAx3KvGf7JD4R.jpg",
-                            "https://s2.loli.net/2021/12/25/DCsec1nd7QjuFyZ.jpg",
-                            "https://s2.loli.net/2021/12/25/yaNG6uXM5Zred2A.jpg"
+                            "https://img.zrp.cool/2021/12/28/61c5d5b9522eb.jpg",
+                            "https://img.zrp.cool/2021/12/28/81720886ffc97.jpg",
+                            "https://img.zrp.cool/2021/12/28/016083616823e.jpg",
+                            "https://img.zrp.cool/2021/12/28/06496263c7bd1.jpg",
+                            "https://img.zrp.cool/2021/12/28/7f44cdf22bbfc.jpg",
+                            "https://img.zrp.cool/2021/12/28/a0d3229cacabb.jpg"
                         ),
 
 
@@ -646,12 +646,12 @@ class product_detailViewlModel: ViewModel() {
                         108.00,
                         0,
                        arrayListOf(
-                           "https://s2.loli.net/2021/12/25/XwjqNLvntTbV1fc.jpg",
-                           "https://s2.loli.net/2021/12/25/APCEasv3nox9ZNG.jpg",
-                           "https://s2.loli.net/2021/12/25/IjcYgeBNVEilH7v.jpg",
-                           "https://s2.loli.net/2021/12/25/5uE7S6gMYTyL2Hl.jpg",
-                           "https://s2.loli.net/2021/12/25/r1EXFDCbGZnJI5l.jpg",
-                           "https://s2.loli.net/2021/12/25/mUGJdsnVeTvuOAQ.jpg"),
+                           "https://img.zrp.cool/2021/12/28/6ba01fe5481fd.jpg",
+                           "https://img.zrp.cool/2021/12/28/649778f153770.jpg",
+                           "https://img.zrp.cool/2021/12/28/f84b03b93cb97.jpg",
+                           "https://img.zrp.cool/2021/12/28/4d758d1e8b80c.jpg",
+                           "https://img.zrp.cool/2021/12/28/c4a87332d2e55.jpg",
+                           "https://img.zrp.cool/2021/12/28/cf08efeb3ac20.jpg"),
 
                        arrayListOf(
                            "G01",
@@ -676,12 +676,12 @@ class product_detailViewlModel: ViewModel() {
                         210.00,
                         0,
                        arrayListOf(
-                           "https://s2.loli.net/2021/12/25/Lr2aiHYRgtF97Wm.jpg",
-                           "https://s2.loli.net/2021/12/25/PdWoTylMOHUNjKY.jpg",
-                           "https://s2.loli.net/2021/12/25/ckv5urDSJ1R97Po.jpg",
-                           "https://s2.loli.net/2021/12/25/T1DqfNPhKWbAyXv.jpg",
-                           "https://s2.loli.net/2021/12/25/V8vQKj4zciIoMGX.jpg",
-                           "https://s2.loli.net/2021/12/25/AgohYpSRsZfD4Wi.jpg",
+                           "https://img.zrp.cool/2021/12/28/4a5331bd25f92.jpg",
+                           "https://img.zrp.cool/2021/12/28/05ba8379c25f7.jpg",
+                           "https://img.zrp.cool/2021/12/28/53dbdb6843db0.jpg",
+                           "https://img.zrp.cool/2021/12/28/05719074e7e1b.jpg",
+                           "https://img.zrp.cool/2021/12/28/a93a341e3df31.jpg",
+                           "https://img.zrp.cool/2021/12/28/f71002ddc4389.jpg",
                        ),
 
 
@@ -708,12 +708,12 @@ class product_detailViewlModel: ViewModel() {
                         0,
                       arrayListOf(
 
-                          "https://s2.loli.net/2021/12/25/PxVfYjCmBMp3DhG.jpg",
-                          "https://s2.loli.net/2021/12/25/ztlE3xhawFHspkN.jpg",
-                          "https://s2.loli.net/2021/12/25/WSY1QMhf4xeNiR6.jpg",
-                          "https://s2.loli.net/2021/12/25/mB5egTFsZy4XDVI.jpg",
-                          "https://s2.loli.net/2021/12/25/tTO7y4LYzuGIXhK.jpg",
-                          "https://s2.loli.net/2021/12/25/aOhXSgruqTnLElw.jpg"
+                          "https://img.zrp.cool/2021/12/28/7ef697efffd83.jpg",
+                          "https://img.zrp.cool/2021/12/28/d38e16624d5ef.jpg",
+                          "https://img.zrp.cool/2021/12/28/5a7c2eb7028e5.jpg",
+                          "https://img.zrp.cool/2021/12/28/137c76d9eccc4.jpg",
+                          "https://img.zrp.cool/2021/12/28/3aa4364440af7.jpg",
+                          "https://img.zrp.cool/2021/12/28/9bad05cae6ad4.jpg"
                       ),
 
 
