@@ -14,7 +14,6 @@ sealed class NavigationItem(
     object Store: NavigationItem("shop","商城", Icons.Outlined.ShoppingCart)
     object Profile: NavigationItem("profile","个人", Icons.Outlined.Person)
     object Community: NavigationItem("community","社区", Icons.Outlined.Face)
-//    object Add:Screen("add","Add", Icons.Outlined.AddCircle)
 
     object Items{
         val list = listOf(

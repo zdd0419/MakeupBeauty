@@ -1,5 +1,7 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.app.Activity
+import android.content.SharedPreferences
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,24 +34,37 @@ import com.example.makeupbeauty.ui.collectActivity
 @Composable
 fun ProfileScreen() {
     val context = LocalContext.current;
+    val userInfo: SharedPreferences = context.getSharedPreferences("userInfo", Activity.MODE_PRIVATE)
+    val userName = userInfo.getString("username", "")
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(245,245,245))
+            .background(Color(245, 245, 245))
     ) {
         Box(Modifier.background(Color.White)) {
-            Icon(
-                imageVector = Icons.Outlined.Settings,
-                tint = MaterialTheme.colors.onSurface,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(start = 12.dp, end = 12.dp, top = 18.dp, bottom = 12.dp)
-                    .clickable { context.startActivity(SettingScreen.newIntent(context)) }
-            )
-            Head(R.drawable.avatar, "test longest", "1", 0, 0)
+            if(userName != "" && userName != null){
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    tint = MaterialTheme.colors.onSurface,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(start = 12.dp, end = 12.dp, top = 18.dp, bottom = 12.dp)
+                        .clickable {
+                            if(userName != "" && userName != null){
+                                context.startActivity(SettingScreen.newIntent(context))
+                            }
+                        }
+                )
+                Head(R.drawable.user1, userName, "1", 3, 5)
+            }else{
+                HeadWithoutInput(R.drawable.login_before)
+            }
+
         }
-        List()
+        if(userName != "" && userName != null){
+            List()
+        }
     }
 }
 /*
@@ -67,7 +82,7 @@ fun List() {
     MeListItem(Icons.Outlined.ListAlt, "订单")
     Spacer(
         Modifier
-            .background(Color(245,245,245))
+            .background(Color(245, 245, 245))
             .fillMaxWidth()
             .height(8.dp)
     )
@@ -79,13 +94,48 @@ fun List() {
     Divider(color = Color.LightGray, thickness = 0.8f.dp)
 }
 
+@Composable
+fun HeadWithoutInput(imageid: Int){
+    val context = LocalContext.current;
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .padding(4.dp, 24.dp, 0.dp, 8.dp)
+        .height(height = 120.dp), Alignment.CenterStart) {
+        Row(modifier = Modifier) {
+            Image(
+                painter = painterResource(id = imageid),
+                contentDescription = "avatar",
+                modifier = Modifier
+                    .padding(12.dp)
+                    .clip(CircleShape)
+                    .size(80.dp)
+                    .clickable { context.startActivity(LoginScreen.newIntent(context)) })
+
+            Column() {
+                Spacer(
+                    Modifier
+                        .height(12.dp)
+                )
+                Row(modifier = Modifier.padding(horizontal = 4.dp), Arrangement.Center) {
+                    Text(
+                        text = "登录 / 注册",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 25.sp,
+                        modifier = Modifier.clickable { context.startActivity(LoginScreen.newIntent(context)) }
+                    )
+                }
+            }
+        }
+    }
+}
+
 //头像部分
 @Composable
 fun Head(imageid: Int, name: String, vip: String, prefer: Int, fans: Int) {
     val context = LocalContext.current;
     Box(modifier = Modifier
         .fillMaxWidth()
-        .padding(4.dp,24.dp,0.dp,8.dp)
+        .padding(4.dp, 24.dp, 0.dp, 8.dp)
         .height(height = 120.dp), Alignment.CenterStart) {
         Row(modifier = Modifier) {
             Image(
@@ -133,10 +183,20 @@ fun MeListItem(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .clickable{if(title == "订单"){context.startActivity(MyoderActivity.newIntent(context))}
-                if(title == "我的发布"){context.startActivity(MynotesActivity.newIntent(context))}
-                if(title == "我的收藏"){context.startActivity(collectActivity.newIntent(context))}
-                if(title == "我的消息"){context.startActivity(ChatListScreen.newIntent(context))}},
+            .clickable {
+                if (title == "订单") {
+                    context.startActivity(MyoderActivity.newIntent(context))
+                }
+                if (title == "我的发布") {
+                    context.startActivity(MynotesActivity.newIntent(context))
+                }
+                if (title == "我的收藏") {
+                    context.startActivity(collectActivity.newIntent(context))
+                }
+                if (title == "我的消息") {
+                    context.startActivity(ChatListScreen.newIntent(context))
+                }
+            },
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(

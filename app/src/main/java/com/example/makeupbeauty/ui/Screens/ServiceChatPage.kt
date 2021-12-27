@@ -32,30 +32,30 @@ import com.example.makeupbeauty.viewModel.ServiceChatViewModel
 @Composable
 fun ServiceChatPage(modifier: Modifier = Modifier, finish: (() -> Unit)? = null, context: Context) {
     val viewModel: ServiceChatViewModel = ServiceChatViewModel(context)
-        Column(
-            modifier
+    Column(
+        modifier
+            .background(Color.White)
+            .fillMaxSize()
+    ) {
+        // 联系人顶栏
+        ChatTopBar("客服", onBack = finish)
+        Box(
+            Modifier
                 .background(Color.White)
-                .fillMaxSize()
+                .weight(1f)
         ) {
-            // 联系人顶栏
-            ChatTopBar("客服", onBack = finish)
-            Box(
+            LazyColumn(
                 Modifier
-                    .background(Color.White)
-                    .weight(1f)
+                    .fillMaxSize()
             ) {
-                LazyColumn(
-                    Modifier
-                        .fillMaxSize()
-                ) {
-                    items(viewModel.messages.size) { index ->
-                        val msg = viewModel.messages[index]
-                        MessageItem(msg, 0, viewModel.messages.size - index - 1)
-                    }
+                items(viewModel.messages.size) { index ->
+                    val msg = viewModel.messages[index]
+                    MessageItem(msg, 0, viewModel.messages.size - index - 1)
                 }
             }
-            ServiceChatBottomBar(viewModel = viewModel)
         }
+        ServiceChatBottomBar(viewModel = viewModel)
+    }
 }
 
 

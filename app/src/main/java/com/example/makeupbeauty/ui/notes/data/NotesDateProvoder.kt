@@ -14,7 +14,7 @@ object NotesDateProvoder {
          ),
          newAttention(
              "ylg",
-         R.drawable.avatar
+         R.drawable.user1
         )
      )
 
@@ -26,7 +26,7 @@ object NotesDateProvoder {
         ),
         Like_and_Attention(
             "睡不醒",
-            R.drawable.avatar,
+            R.drawable.user1,
             "收藏"
         ),
         Like_and_Attention(
@@ -36,7 +36,7 @@ object NotesDateProvoder {
         ),
         Like_and_Attention(
             "糕哩个糕",
-            R.drawable.avatar,
+            R.drawable.user1,
             "点赞"
         )
     )
@@ -48,7 +48,7 @@ object NotesDateProvoder {
         ),
         Attention(
             "哈库拉玛塔塔",
-            R.drawable.avatar,
+            R.drawable.user1,
         ),
         Attention(
             "叽叽穷叽叽",
@@ -68,7 +68,7 @@ object NotesDateProvoder {
         ),
         Comment(
             "睡不醒",
-            R.drawable.avatar,
+            R.drawable.user1,
             "好好看哦！！"
         ),
         Comment(
@@ -78,7 +78,7 @@ object NotesDateProvoder {
         ),
         Comment(
             "糕哩个糕",
-            R.drawable.avatar,
+            R.drawable.user1,
             "哇~！"
         )
     )

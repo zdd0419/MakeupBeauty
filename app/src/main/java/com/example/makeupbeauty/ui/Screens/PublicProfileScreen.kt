@@ -68,6 +68,7 @@ fun Public_ProfileScreen() {
             .background(Color.White)
     ) {
         Column(Modifier.background(Color.White)) {
+            UserHead(R.drawable.user1, "test longest", "1", 0, 0)
             getUserPost()
         }
     }

@@ -1,6 +1,8 @@
 package com.example.makeupbeauty.ui
 
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -28,6 +30,12 @@ import com.androidisland.vita.vita
 import com.example.makeupbeauty.viewModel.PostViewModel
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        fun newIntent(context: Context) =
+            Intent(context, MainActivity::class.java)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                .apply { putExtra("ReStart", true) }
+    }
     @ExperimentalFoundationApi
     @ExperimentalPagerApi
     @InternalCoroutinesApi
