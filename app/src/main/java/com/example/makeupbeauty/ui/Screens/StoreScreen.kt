@@ -75,6 +75,7 @@ fun StoreScreen() {
 @Composable
 fun GridListView() {
     val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+    val list1 = product_detailViewlmodel.getList()
     val context = LocalContext.current;
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
@@ -89,7 +90,7 @@ fun GridListView() {
                     modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
                     onClick = {
                         product_detailViewlmodel.changeCategory(it.author)
-                        Log.e(it.author,it.author)
+                        Log.e(product_detailViewlmodel.getItem().title,product_detailViewlmodel.getItem().title)
                         context.startActivity(Catagory.newIntent(context))}
                 )
             }
@@ -100,9 +101,10 @@ fun GridListView() {
 @Composable
 fun productList(){
 
-    val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
-    product_detailViewlmodel.changeCategory("special")
-    val list1 = product_detailViewlmodel.getList()
+    val product_detailViewlmodel2 = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+//    product_detailViewlmodel.changeCategory("special")
+
+    val list1 = product_detailViewlmodel2.getFeature()
     val context = LocalContext.current;
     Column() {
             VerticalGrid(columns = 3) {
@@ -110,7 +112,8 @@ fun productList(){
                     GridListItem(item = it,
                         onClick = {
                             print("idididid:"+it.id)
-                             product_detailViewlmodel.setId(it.id)
+
+                             product_detailViewlmodel2.setId(it.id)
                             context.startActivity(productDetailActivity.newIntent(context))}
                         )
 

@@ -57,6 +57,7 @@ import kotlinx.coroutines.launch
 
 val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
 class productDetailActivity : ComponentActivity() {
+
     companion object {
         fun newIntent(context: Context) =
             Intent(context, productDetailActivity::class.java).apply { putExtra("product", true) }
@@ -119,11 +120,14 @@ fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
                         text = "立即购买",
                         color = white,
                         style = MaterialTheme.typography.button,
-                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp).clickable (
-                            onClick={
+                        modifier = Modifier
+                            .padding(top = 8.dp, bottom = 8.dp)
+                            .clickable(
+                                onClick = {
 
-                                context.startActivity(MyoderActivity.newIntent(context))}
-                                )
+                                    context.startActivity(MyoderActivity.newIntent(context))
+                                }
+                            )
 
 
 
@@ -143,7 +147,13 @@ fun ProductDetailsScreen(expand: suspend () -> Unit,onClick:()->Unit = {}) {
                     onClick = expandSheet,
                     colors = ButtonDefaults.buttonColors(backgroundColor = orange),
                     modifier = Modifier
-                        .width(200.dp),
+                        .width(200.dp)
+                        .clickable(
+                            onClick = {
+
+                                context.startActivity(shoppingCarActivity.newIntent(context))
+                            }
+                        ),
 //                        .padding(
 //                            top = 30.dp,
 //                            bottom = 34.dp
@@ -323,7 +333,7 @@ fun ProductAvailableSize() {
                             shape = RoundedCornerShape(10.dp)
                         )
                         .clickable {
-
+                            product_detailViewlmodel.setId(item)
                         }) {
                     Text(
                         modifier = Modifier
@@ -365,8 +375,7 @@ fun ProductItemColorWithDesc() {
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                ,
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(15.dp),
                 verticalAlignment = Alignment.CenterVertically,
 
@@ -552,6 +561,8 @@ fun commentCard(imageid: Int, name: String, vip: String, prefer: Int, fans: Int,
 @Composable
 fun chooseProduct(){
     val context = LocalContext.current;
+    val intent = Intent(LocalContext.current, shoppingCarActivity::class.java)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -568,10 +579,11 @@ fun chooseProduct(){
             )
             productDetail(labTitle =  product_detailViewlmodel.getItem().price, imageid =  product_detailViewlmodel.getItem().allimage[0])
         }
-        productCatagory()
+        productCatagory(intent)
         productNumber()
         Button(
             onClick = {
+                context.startActivity(intent)
 //                      context.startActivity(paymentActivity.newIntent(context))
             },
 
@@ -615,7 +627,9 @@ fun productNumber(){
         )
         Icon(
             imageVector = Icons.Default.RemoveCircle,
-            modifier = Modifier.padding(220.dp, 0.dp,0.dp,0.dp).clickable { number.value--},
+            modifier = Modifier
+                .padding(220.dp, 0.dp, 0.dp, 0.dp)
+                .clickable { number.value-- },
             contentDescription = null,
             tint= grey
         )
@@ -633,6 +647,7 @@ fun productNumber(){
             tint= grey,
             modifier = Modifier.clickable {
                 number.value++
+
             }
 
         )
@@ -687,9 +702,11 @@ fun productDetail(
 
 @Composable
 fun productCatagory(
+    intent: Intent,
     onClick:()->Unit = {}
 ){
     val choose = remember {mutableStateOf(0)}
+
     Card(
         modifier = Modifier
             .padding(1.dp) // 外边距
@@ -711,8 +728,15 @@ fun productCatagory(
                     modifier = Modifier
                         .padding(10.dp) // 外边距
                         .clickable(onClick = {
-                                choose.value = item
-                            }
+                            choose.value = item
+//                            product_detailViewlmodel.setChoose(item)
+
+                            intent.putExtra("price", product_detailViewlmodel.getItem().price)
+                            intent.putExtra("title", product_detailViewlmodel.getItem().title)
+                            intent.putExtra("catagory", product_detailViewlmodel.getItem().allcatagory[item])
+                            //intent.putExtra("product_id", product_detailViewlmodel.setId(item))
+                            intent.putExtra("photos", product_detailViewlmodel.getItem().allimage[item])
+                        }
                         )
                         .fillMaxWidth(),
 

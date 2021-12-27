@@ -1,8 +1,11 @@
 package com.example.makeupbeauty.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import com.example.makeupbeauty.data.detail
 import com.example.makeupbeauty.data.notesData
@@ -1712,12 +1715,12 @@ class product_detailViewlModel: ViewModel() {
                         350.0,
                         0,
                         arrayListOf(
-                            "https://s2.loli.net/2021/12/24/3Yk8S1msPfo29je.jpg",
-                            "https://s2.loli.net/2021/12/24/3Yk8S1msPfo29je.jpg",
-                            "https://s2.loli.net/2021/12/24/iwzUfRXMBo7V1AC.jpg",
-                            "https://s2.loli.net/2021/12/24/trExKUJdkQyXFzn.jpg",
-                            "https://s2.loli.net/2021/12/24/s2dcXBQZEhOzmIY.jpg",
-                            "https://s2.loli.net/2021/12/24/7rihHp2kXsJbnwt.jpg",
+                            "https://s2.loli.net/2021/12/27/LYziaNynRxFPtw1.jpg",
+                           "https://s2.loli.net/2021/12/27/rsS9bcC2fBaLTWl.jpg",
+                                "https://s2.loli.net/2021/12/27/3hjmHPBa5U8ZQTg.jpg",
+                                "https://s2.loli.net/2021/12/27/GOr7c5hWsMHZt4e.jpg",
+                                "https://s2.loli.net/2021/12/27/AKcX7BFVMUmIr2H.jpg",
+                                "https://s2.loli.net/2021/12/27/hgBA1Ptm6uGrxNw.jpg"
                         ),
                         arrayListOf(
 
@@ -2104,10 +2107,21 @@ class product_detailViewlModel: ViewModel() {
     )
 
     var currentList by mutableStateOf(kh)
+    var featurelist by mutableStateOf(featured)
+    var isFeature by mutableStateOf(false)
+    var shopCar by mutableStateOf(0)
+fun setChoose(storeid:Int){
+    shopCar=storeid
+}
+
+    fun getChoose():detail{
+        return currentList[shopCar]
+    }
 
     fun changeCategory(newCatagory:String){
 //        catagory = newCatagory
-        if(newCatagory.equals("口红") )
+
+        if(newCatagory=="口红" )
             currentList = kh
         else if(newCatagory=="眼影")
             currentList = eye
@@ -2125,8 +2139,11 @@ class product_detailViewlModel: ViewModel() {
             currentList = dizhuang
         else
             currentList=featured
+
+        Log.e(newCatagory, currentList[0].title)
     }
     fun getList():List<detail> {
+        isFeature = false
         return currentList
     }
     var index by mutableStateOf(0)
@@ -2135,9 +2152,20 @@ class product_detailViewlModel: ViewModel() {
         index=id-1
     }
 
-    fun getItem(): detail{
 
-        return currentList[index]
+    fun getFeature():List<detail> {
+        isFeature = true;
+        return featurelist
+    }
+
+
+
+
+    fun getItem(): detail{
+        if(isFeature)
+            return featurelist[index]
+        else
+            return currentList[index]
     }
 
 
