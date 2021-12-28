@@ -20,9 +20,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.makeupbeauty.VerticalGrid.VerticalGrid
 import com.example.makeupbeauty.component.models.Item
 import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.data.DemoDataProvider.adlist
+import com.example.makeupbeauty.data.DemoDataProvider.discoveryList
 import com.example.makeupbeauty.data.DemoDataProvider.historyList
 
 
@@ -62,7 +64,7 @@ fun showHistory() {
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
-            lazyVerticalGrid()
+            lazyVerticalGrid(historyList)
         }
     }
 }
@@ -70,23 +72,29 @@ fun showHistory() {
 
 @ExperimentalFoundationApi
 @Composable
-fun lazyVerticalGrid() {
-    val list = remember { historyList }
-//    LazyVerticalGrid(cells = GridCells.Fixed(3))
-//    {
-//       // items(historyList) {
-//    //    Text("$it")
-//     //   }
-//    }
-    Column() {
-        LazyRow() {
-            list.forEach { item->
+fun lazyVerticalGrid(list: List<String>) {
+    //val list = remember { historyList }
 
+    Column() {
+        VerticalGrid(columns = 3){
+            list.forEach { 
+                historytext(text = it)
             }
         }
     }
 
 
+}
+
+
+@Composable
+fun historytext(text: String) {
+    Text(
+        text = text,
+        fontSize = 15.sp,
+        color = Color.LightGray,
+        modifier = Modifier.padding(12.dp)
+    )
 }
 
 
@@ -114,7 +122,7 @@ fun showDiscovery() {
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
-            lazyVerticalGrid()
+            lazyVerticalGrid(discoveryList)
         }
     }
 }
