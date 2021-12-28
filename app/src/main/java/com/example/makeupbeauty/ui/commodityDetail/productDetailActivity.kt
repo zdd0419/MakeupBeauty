@@ -41,12 +41,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.PopupProperties
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.TryOn.TryOn
 import com.example.makeupbeauty.commodityDetail.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.TopAppBarWithBack
+import com.example.makeupbeauty.component.card.TopLabCards
 import com.example.makeupbeauty.ui.theme.*
 import com.example.makeupbeauty.viewModel.CartViewModel
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
@@ -302,6 +305,13 @@ fun ProductTitle() {
                     style = MaterialTheme.typography.subtitle1,
                 )
 
+                val context = LocalContext.current
+                val intent = Intent(context, TryOn::class.java)
+
+                TopLabCards(labTitle = "试妆实验室", labContent = "通过AR技术\n实时查看商品上脸效果\n", labImage = painterResource(id = R.drawable.ic_face_card),
+                    onClick = {
+                        ContextCompat.startActivity(context, intent, null)
+                    })
             }
         }
 
