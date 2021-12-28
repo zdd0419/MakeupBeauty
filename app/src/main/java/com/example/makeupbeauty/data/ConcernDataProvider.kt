@@ -1,4 +1,4 @@
-package com.example.makeupbeauty.data
+package com.example.makeupbeauty.data//package com.example.makeupbeauty.data
 
 import com.example.makeupbeauty.R
 

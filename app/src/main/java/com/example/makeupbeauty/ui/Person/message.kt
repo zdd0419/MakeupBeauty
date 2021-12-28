@@ -81,7 +81,7 @@ fun message(){
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.user1, "dd")
+                            newMesageCard(R.drawable.attention, "dd")
                         }
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,

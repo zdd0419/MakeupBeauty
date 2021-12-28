@@ -40,12 +40,15 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.AnimatedButton
 import com.example.makeupbeauty.ui.MainActivity
 import com.example.makeupbeauty.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.viewModel.LoginOrRegistViewModel
 import com.example.makeupbeauty.viewModel.Page
+import com.example.makeupbeauty.viewModel.PostViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -62,6 +65,7 @@ class LoginScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
             val context = LocalContext.current
             val viewModel = LoginOrRegistViewModel(context)
             val page by viewModel.page.observeAsState(Page.SIGN_IN)
@@ -72,13 +76,13 @@ class LoginScreen : ComponentActivity() {
                         Page.SIGN_IN -> {
                             LoginPage(loading, viewModel.changePage){ name: String, password: String ->
                                 viewModel.signIn(name, password)
-
+                                postViewModel.myName = name
                             }
                         }
                         Page.SIGN_UP -> {
                             RegisterPage(loading, viewModel.changePage){ name: String, password: String,confirmedPassword: String ->
                                 viewModel.signUp(name, password,confirmedPassword)
-
+                                postViewModel.myName = name
                             }
                         }
                         Page.SIGNED_IN->{
