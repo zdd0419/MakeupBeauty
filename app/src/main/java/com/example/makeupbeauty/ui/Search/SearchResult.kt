@@ -50,7 +50,9 @@ fun SearchResult() {
 
     Column(
     ) {
-        TabRow(selectedTabIndex = selectedIndex.value) {
+        TabRow(selectedTabIndex = selectedIndex.value,
+        backgroundColor = Color(0xFFec8aa4),
+        contentColor = Color.White) {
             tabsName.forEachIndexed { index, title ->
                 Tab(
                     selected = index == selectedIndex.value,
@@ -183,7 +185,7 @@ fun forBlank() {
                 .padding(12.dp)
                 .align(Alignment.Center),
             fontSize = 15.sp,
-            color = MaterialTheme.colors.primary
+            color = Color(0xFFec8aa4)
         )
     }
 
