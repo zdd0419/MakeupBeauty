@@ -1,7 +1,9 @@
 package com.example.makeupbeauty.ui.Screens
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -51,13 +53,18 @@ class SettingScreen : ComponentActivity(){
 
 @Composable
 fun Setting() {
+    val context = LocalContext.current;
+    val userInfo: SharedPreferences = context.getSharedPreferences("userInfo", Activity.MODE_PRIVATE)
+    val userName = userInfo.getString("username", "")
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.LightGray)
     ) {
         Box(Modifier.background(Color.White)) {
-            SettingHead(R.drawable.avatar, "test longest", "1", 0, 0)
+            if(userName != "" && userName != null){
+                SettingHead(R.drawable.user1, userName, "1", 0, 0)
+            }
         }
         // 设置列表
         SettingList()
@@ -74,6 +81,8 @@ fun ProfileScreenPreview() {
 @Composable
 fun SettingList() {
     val context = LocalContext.current;
+    val userInfo: SharedPreferences = context.getSharedPreferences("userInfo", Activity.MODE_PRIVATE)
+    var editor: SharedPreferences.Editor = userInfo.edit()
     LazyColumn(){
         item{
             Spacer(
@@ -241,7 +250,11 @@ fun SettingList() {
                     .fillMaxWidth()
                     .height(60.dp)
                     .background(Color.White)
-                    .clickable { context.startActivity(LoginScreen.newIntent(context)) },
+                    .clickable {
+                        editor.remove("username")
+                        editor.commit()
+                        context.startActivity(LoginScreen.newIntent(context))
+                    },
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Spacer(modifier = Modifier.width(16.dp))

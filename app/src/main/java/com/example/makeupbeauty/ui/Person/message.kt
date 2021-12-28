@@ -81,27 +81,27 @@ fun message(){
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.avatar, "dd")
+                            newMesageCard(R.drawable.user1, "dd")
                         }
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.avatar, "aa")
+                            newMesageCard(R.drawable.user1, "aa")
                         }
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.avatar, "aa")
+                            newMesageCard(R.drawable.user1, "aa")
                         }
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.avatar, "aa")
+                            newMesageCard(R.drawable.user1, "aa")
                         }
                         Card(shape = RoundedCornerShape(3.dp),
                             elevation = 2.dp,
                             modifier=Modifier.fillMaxWidth() ) {
-                            newMesageCard(R.drawable.avatar, "aa")
+                            newMesageCard(R.drawable.user1, "aa")
                         }
                     }
                 }

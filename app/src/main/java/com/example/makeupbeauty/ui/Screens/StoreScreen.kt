@@ -20,12 +20,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.androidisland.vita.VitaOwner
+import com.androidisland.vita.vita
 import com.example.makeupbeauty.Search.Catagory
 import com.example.makeupbeauty.VerticalGrid.StoryItem
 import com.example.makeupbeauty.VerticalGrid.VerticalGrid
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
 import com.example.makeupbeauty.component.Carousel
 import com.example.makeupbeauty.component.GridListItem
 import com.example.makeupbeauty.data.DemoDataProvider
+import com.example.makeupbeauty.viewModel.PostViewModel
 import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -42,13 +46,13 @@ fun StoreScreen() {
 //            .wrapContentSize(Alignment.Center)
     ) {
 //       item(){
-           Carousel(
-               modifier = Modifier
-                   .fillMaxWidth()
-                   .height(200.dp)
-                   .padding(10.dp),
-               DemoDataProvider.adlist
-           )
+//           Carousel(
+//               modifier = Modifier
+//                   .fillMaxWidth()
+//                   .height(220.dp)
+//                   .padding(10.dp),
+//               DemoDataProvider.adlist
+//           )
 
 
            GridListView()
@@ -70,7 +74,8 @@ fun StoreScreen() {
 
 @Composable
 fun GridListView() {
-    val product_detailViewlmodel: product_detailViewlModel = viewModel()
+    val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+    val list1 = product_detailViewlmodel.getList()
     val context = LocalContext.current;
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
@@ -85,7 +90,7 @@ fun GridListView() {
                     modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
                     onClick = {
                         product_detailViewlmodel.changeCategory(it.author)
-                        Log.e(it.author,it.author)
+                        Log.e(product_detailViewlmodel.getItem().title,product_detailViewlmodel.getItem().title)
                         context.startActivity(Catagory.newIntent(context))}
                 )
             }
@@ -95,11 +100,23 @@ fun GridListView() {
 
 @Composable
 fun productList(){
-    val list = remember { DemoDataProvider.storeItemlist.take(6) }
+
+    val product_detailViewlmodel2 = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+//    product_detailViewlmodel.changeCategory("special")
+
+    val list1 = product_detailViewlmodel2.getFeature()
+    val context = LocalContext.current;
     Column() {
             VerticalGrid(columns = 3) {
-                list.forEach {
-                    GridListItem(item = it)
+                list1.forEach {
+                    GridListItem(item = it,
+                        onClick = {
+                            print("idididid:"+it.id)
+
+                             product_detailViewlmodel2.setId(it.id)
+                            context.startActivity(productDetailActivity.newIntent(context))}
+                        )
+
 //                    when(it){
 //                        storeItem(4,"迪奥迷你唇膏口红",R.drawable.dior2) ->ProductDetailsScreen()
 //                    }

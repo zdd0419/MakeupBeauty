@@ -1,11 +1,9 @@
-package com.example.makeupbeauty.CommunityPost
+package com.example.makeupbeauty.ui.CommunityPost
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -14,15 +12,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -30,43 +24,40 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
+import com.example.makeupbeauty.CommunityPost.PostBottomBar
+import com.example.makeupbeauty.CommunityPost.PostImage
 import com.example.makeupbeauty.ui.Screens.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.component.models.CarouselItem
 import com.example.makeupbeauty.component.models.Comment
 import com.example.makeupbeauty.ui.Screens.LoadImage
 import com.example.makeupbeauty.viewModel.PostViewModel
+import com.example.makeupbeauty.viewModel.PublicProfileViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
 val commentText = mutableStateOf("")
-//val is = remember { mutableStateOf() }
 
-@InternalCoroutinesApi
-class PostActivity : ComponentActivity() {
+
+class MyPostActivity : ComponentActivity() {
     companion object {
         fun newIntent(context: Context) =
-            Intent(context,PostActivity::class.java).apply { putExtra("aaa",true) }
+            Intent(context,MyPostActivity::class.java).apply { putExtra("MyPostActivity",true) }
     }
 
-
-
     @ExperimentalComposeUiApi
+    @InternalCoroutinesApi
     @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         setContent {
             MakeupBeautyTheme {
                 // A surface container using the 'background' color from the theme
@@ -75,7 +66,7 @@ class PostActivity : ComponentActivity() {
                         topBar = {
                             TopAppBar(
                                 title = {
-                                        titleContent()
+                                    title_Content()
                                 },
                                 elevation = 0.dp,
                                 navigationIcon = {
@@ -90,23 +81,19 @@ class PostActivity : ComponentActivity() {
                             PostBottomBar(360, 65, 14)
                         }
                     ) {
-                        content()
+                        PostContent()
                     }
                 }
             }
         }
     }
-
-
 }
 
 
-@ExperimentalPagerApi
-@InternalCoroutinesApi
 @Composable
-fun titleContent() {
-    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val item = postViewModel.getPost()
+fun title_Content() {
+    val publicProfileViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PublicProfileViewModel>()
+    val item = publicProfileViewModel.getPost()
     LoadImage(
         url = item.avator,
         modifier = Modifier
@@ -138,26 +125,22 @@ fun titleContent() {
             Text(text = "关注")         //变动
         }
     }
-
 }
 
 
-@ExperimentalComposeUiApi
 @ExperimentalPagerApi
 @InternalCoroutinesApi
 @Composable
-fun imageHeader() {
+fun image_Header() {
     var newComment = ""
-    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val item = postViewModel.getPost()
-    val isFavourite = remember { mutableStateOf(item.isliked) }
-    val keyboardController = LocalSoftwareKeyboardController.current
+    val publicProfileViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PublicProfileViewModel>()
+    val item = publicProfileViewModel.getPost()
 
-    Column {
+    Column() {
         PostImage(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(300.dp, 500.dp)
+                .height(400.dp)
                 .padding(bottom = 4.dp),
             item.imagelist
         )
@@ -238,12 +221,8 @@ fun imageHeader() {
             Modifier
                 .height(8.dp))
 
-
-        val commentList = item.commentlist
-
         Text(
-
-            text = "共"+ commentList.size +"条评论",
+            text = "共"+ item.commentlist.size +"条评论",
             fontSize = 15.sp,
             color = Color.LightGray,
             modifier = Modifier.padding(8.dp)
@@ -258,7 +237,7 @@ fun imageHeader() {
             .wrapContentHeight()
             .padding(12.dp)){
             LoadImage(
-                url = postViewModel.myAvatar,
+                url = publicProfileViewModel.myAvatar,
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(30.dp),
@@ -269,7 +248,6 @@ fun imageHeader() {
                     .width(16.dp))
 
             TextField(
-                singleLine = true,
                 value = commentText.value,
                 onValueChange = { commentText.value = it },
                 placeholder = {
@@ -286,24 +264,6 @@ fun imageHeader() {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
-                keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Go),
-                keyboardActions = KeyboardActions(
-                    onGo = {
-
-                        keyboardController?.hide()
-                        postViewModel.postComment(
-                            item.id,
-                            Comment(
-                                postViewModel.myAvatar,
-                                postViewModel.myName,
-                                commentText.value,
-                                "",
-                                0
-                            )
-                        )
-                        commentText.value = ""
-                    }
-                )
             )
         }
 
@@ -315,56 +275,55 @@ fun imageHeader() {
 }
 
 
-@SuppressLint("UnrememberedMutableState")
-@ExperimentalComposeUiApi
+
 @ExperimentalPagerApi
 @InternalCoroutinesApi
 @Composable
-fun content() {
-    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
-    val item = postViewModel.getPost()
-    val commentList = item.commentlist
+fun PostContent() {
+    val publicProfileViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PublicProfileViewModel>()
+    val item = publicProfileViewModel.getPost()
+    val list = item.commentlist
 
-        LazyColumn(modifier = Modifier) {
-            item {
-                //HomeHeader()
-                imageHeader()
+    LazyColumn(modifier = Modifier) {
+        item {
+            //HomeHeader()
+            image_Header()
+        }
+        items(
+            items = list,
+            itemContent = { item -> MyPostListItem(item = item)
+                Spacer(
+                    Modifier
+                        .height(10.dp))
+                Divider(color = Color.LightGray, thickness = 0.8f.dp)
+                Spacer(
+                    Modifier
+                        .height(8.dp))
             }
-            items(
-                items = commentList,
-                itemContent = { item -> CommentListItem(item = item)
-                    Spacer(
-                        Modifier
-                            .height(10.dp))
-                    Divider(color = Color.LightGray, thickness = 0.8f.dp)
-                    Spacer(
-                        Modifier
-                            .height(8.dp))
-                }
-            )
-            item { 
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)) {
-                    Text(
-                        text = "- THE END -",
-                        color = Color.Gray,
-                        modifier = Modifier.align(Alignment.Center))
-                }
+        )
+        item {
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp)) {
+                Text(
+                    text = "- THE END -",
+                    color = Color.Gray,
+                    modifier = Modifier.align(Alignment.Center))
             }
         }
+    }
 }
 
 
 @InternalCoroutinesApi
 @Composable
-fun CommentListItem(item: Comment) {
-    val postViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PostViewModel>()
+fun MyPostListItem(item: Comment) {
+    val publicProfileViewModel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<PublicProfileViewModel>()
     //val item = postViewModel.getPost()
     Row(modifier = Modifier
         .padding(12.dp)) {
         LoadImage(
-            url = postViewModel.myAvatar,
+            url = publicProfileViewModel.myAvatar,
             modifier = Modifier
                 .clip(CircleShape)
                 .size(35.dp),
@@ -402,7 +361,7 @@ fun CommentListItem(item: Comment) {
 
         }
 
-        
+
         Box(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.align(Alignment.TopEnd)) {
                 Icon(
@@ -413,7 +372,7 @@ fun CommentListItem(item: Comment) {
                 )
                 Text(text = item.likeNum.toString())
             }
-            
+
         }
 
     }

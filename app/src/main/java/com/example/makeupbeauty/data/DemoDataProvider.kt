@@ -294,7 +294,7 @@ object DemoDataProvider {
 
     val userList = listOf(
         User(
-            R.drawable.avatar,
+            R.drawable.user1,
             "papi",
             "638112890",
             240,
@@ -302,7 +302,7 @@ object DemoDataProvider {
             concern = true
         ),
         User(
-            R.drawable.avatar,
+            R.drawable.user1,
             "papi",
             "638112890",
             240,
@@ -310,7 +310,7 @@ object DemoDataProvider {
             concern = true
         ),
         User(
-            R.drawable.avatar,
+            R.drawable.user1,
             "papi",
             "638112890",
             240,
@@ -318,7 +318,7 @@ object DemoDataProvider {
             concern = true
         ),
         User(
-            R.drawable.avatar,
+            R.drawable.user1,
             "papi",
             "638112890",
             240,
@@ -326,7 +326,7 @@ object DemoDataProvider {
             concern = true
         ),
         User(
-            R.drawable.avatar,
+            R.drawable.user1,
             "papi",
             "638112890",
             240,
@@ -368,22 +368,6 @@ object DemoDataProvider {
         )
     )
 
-    val productlist = listOf(
-        CarouselItem(
-            id = R.drawable.product
-        ),
-        CarouselItem(
-            id = R.drawable.ysl1
-        ),
-        CarouselItem(
-            id = R.drawable.ysl2
-        ),
-        CarouselItem(
-            id = R.drawable.ysl3
-        ),
-        CarouselItem(
-            id = R.drawable.ysl4
-        )
-    )
+
 
 }
