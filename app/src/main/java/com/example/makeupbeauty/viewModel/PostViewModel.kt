@@ -472,43 +472,107 @@ class PostViewModel: ViewModel() {
 
     val userList = mutableListOf(
         User(
-            R.drawable.avatar,
-            "papi",
+            R.drawable.user1,
+            "白敬亭",
             "638112890",
-            240,
-            3880,
+            4,
+            1021,
+            concern = true
+        ),
+        User(
+            R.drawable.user1,
+            "小羊",
+            "638112890",
+            1,
+            9,
             concern = true
         ),
         User(
             R.drawable.avatar,
             "papi",
             "638112890",
-            240,
-            3880,
+            5,
+            3,
             concern = true
         ),
         User(
             R.drawable.avatar,
-            "papi",
+            "丹丹",
             "638112890",
-            240,
-            3880,
+            2,
+            8,
             concern = true
         ),
         User(
             R.drawable.avatar,
-            "papi",
+            "梦凝",
             "638112890",
-            240,
-            3880,
+            1,
+            1,
             concern = true
         ),
         User(
             R.drawable.avatar,
-            "papi",
+            "小熊",
             "638112890",
-            240,
-            3880,
+            2,
+            3,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "小猪",
+            "638112890",
+            0,
+            8,
+            concern = true
+        ),
+        User(
+            R.drawable.user1,
+            "阿呆",
+            "638112890",
+            24,
+            38,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "小桃子",
+            "638112890",
+            6,
+            13,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "Dada",
+            "638112890",
+            10,
+            22,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "小doudou",
+            "638112890",
+            4,
+            3,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "Aria",
+            "638112890",
+            5,
+            0,
+            concern = true
+        ),
+        User(
+            R.drawable.avatar,
+            "Brandon",
+            "638112890",
+            1,
+            100,
             concern = true
         )
     )
