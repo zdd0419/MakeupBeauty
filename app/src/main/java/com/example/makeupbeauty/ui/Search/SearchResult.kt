@@ -129,9 +129,10 @@ fun showPost() {
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 list.forEach {
-                    if(it.title.contains(search) or it.content.contains(search))
+                    if(it.title.contains(search) or it.content.contains(search)){
                         num ++
                         CommendItem(item = it)
+                    }
                 }
             }
             if(num == 0) {
