@@ -32,6 +32,7 @@ fun TopLabCards(
             .padding(10.dp) // 外边距
             .clickable(onClick = onClick)
             .fillMaxWidth()
+            .height(100.dp)
         ,
 
         // 设置点击波纹效果，注意如果 CardDemo() 函数不在 MaterialTheme 下调用
@@ -45,7 +46,7 @@ fun TopLabCards(
             Column() {
                 Text(
                     buildAnnotatedString {
-                        withStyle(style = SpanStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colors.primary)
+                        withStyle(style = SpanStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color(0xFFec8aa4))
                         ) {
                             append(labTitle)
                         }

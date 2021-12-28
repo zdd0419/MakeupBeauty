@@ -30,6 +30,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,16 +38,20 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
 import com.example.makeupbeauty.ui.Screens.ui.theme.MakeupBeautyTheme
 import com.example.makeupbeauty.R
+import com.example.makeupbeauty.commodityDetail.productDetailActivity
+import com.example.makeupbeauty.component.card.TopLabCards
 import com.example.makeupbeauty.component.models.CarouselItem
 import com.example.makeupbeauty.component.models.Comment
 import com.example.makeupbeauty.ui.Screens.LoadImage
 import com.example.makeupbeauty.viewModel.PostViewModel
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -240,6 +245,18 @@ fun imageHeader() {
 
 
         val commentList = item.commentlist
+
+        if(item.title.contains("口红", true)) {
+            val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+            product_detailViewlmodel.setId(25)
+            val context = LocalContext.current
+            val intent = Intent(context, productDetailActivity::class.java)
+            TopLabCards(labTitle = "查看相关商品", labContent = product_detailViewlmodel.getKhItem().title, labImage = painterResource(id = R.drawable.dior1),
+                onClick = {
+                    ContextCompat.startActivity(context, intent, null)
+                },
+            )
+        }
 
         Text(
 
