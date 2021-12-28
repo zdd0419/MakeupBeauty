@@ -288,7 +288,7 @@ fun ProductTitle() {
 //            horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "$"+product_detailViewlmodel.getItem().price,
+                    text = "￥"+product_detailViewlmodel.getItem().price,
                     color = orange,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,

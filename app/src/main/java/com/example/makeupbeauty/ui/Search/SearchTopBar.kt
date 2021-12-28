@@ -79,7 +79,7 @@ fun SearchButton(navController: NavController) {
         ){
             Text(
                 text = "搜索",
-                fontSize = 10.sp)
+                fontSize = 12.sp)
         }
     }
 }
@@ -97,7 +97,7 @@ fun SearchTextField() {
         },
         modifier = Modifier
             .height(48.dp)
-            .width(230.dp)
+            .width(220.dp)
             .background(Color(0xFFD0D0D0), shape = CircleShape),
         shape = CircleShape,
         colors = TextFieldDefaults.textFieldColors(
@@ -113,7 +113,7 @@ fun SearchTextField() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_search_24),
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = Color(0xFFec8aa4)
             )
         }
     )
