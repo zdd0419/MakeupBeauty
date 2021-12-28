@@ -63,6 +63,7 @@ fun SearchButton(navController: NavController) {
         OutlinedButton(
             onClick = {
                 postViewModel.searchtext = searchTextInside.value
+                searchTextInside.value = ""
                 navController.navigate("result")
                       },
             shape = RoundedCornerShape(50),
@@ -75,7 +76,10 @@ fun SearchButton(navController: NavController) {
                 .width(80.dp)
                 .align(Alignment.Center)
                 .height(45.dp)
-                .clickable { navController.navigate("result") }
+                .clickable {
+
+                    navController.navigate("result")
+                }
         ){
             Text(
                 text = "搜索",
