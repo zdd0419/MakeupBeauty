@@ -51,6 +51,7 @@ import com.example.makeupbeauty.component.models.CarouselItem
 import com.example.makeupbeauty.component.models.Comment
 import com.example.makeupbeauty.ui.Screens.LoadImage
 import com.example.makeupbeauty.viewModel.PostViewModel
+import com.example.makeupbeauty.viewModel.product_detailViewlModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -246,12 +247,15 @@ fun imageHeader() {
         val commentList = item.commentlist
 
         if(item.title.contains("口红", true)) {
+            val product_detailViewlmodel = com.androidisland.vita.Vita.vita.with(VitaOwner.None).getViewModel<product_detailViewlModel>()
+            product_detailViewlmodel.setId(25)
             val context = LocalContext.current
             val intent = Intent(context, productDetailActivity::class.java)
-            TopLabCards(labTitle = "查看相关商品", labContent = item.title, labImage = painterResource(id = R.drawable.dior1),
+            TopLabCards(labTitle = "查看相关商品", labContent = product_detailViewlmodel.getKhItem().title, labImage = painterResource(id = R.drawable.dior1),
                 onClick = {
                     ContextCompat.startActivity(context, intent, null)
-                })
+                },
+            )
         }
 
         Text(

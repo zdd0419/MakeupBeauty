@@ -26,6 +26,7 @@ import com.google.mediapipe.solutions.facemesh.FaceMesh
 import com.google.mediapipe.solutions.facemesh.FaceMeshOptions
 import com.google.mediapipe.solutions.facemesh.FaceMeshResult
 import com.shehuan.niv.NiceImageView
+import java.lang.Math.random
 import java.lang.RuntimeException
 import java.util.*
 
@@ -36,8 +37,9 @@ class TryOn : AppCompatActivity() {
     private val eye_data = ArrayList<FacialPart>()
     private val brow_data = ArrayList<FacialPart>()
 
+    private val random = Random()
     // Todo: get below from intent parameters
-    private var selected_lip = 2
+    private var selected_lip = random.nextInt(5)
     private var selected_eye = -1
     private var selected_brow = -1
     private var current = "LIP";

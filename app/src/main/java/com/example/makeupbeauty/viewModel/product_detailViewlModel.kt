@@ -176,7 +176,7 @@ class product_detailViewlModel: ViewModel() {
 
 
 //                    )
-//                )
+//
 
             ),
 //
@@ -2167,5 +2167,8 @@ fun setChoose(storeid:Int){
             return currentList[index]
     }
 
+    fun getKhItem(): detail{
+        return kh[index]
+    }
 
 }
