@@ -291,7 +291,7 @@ fun ProductTitle() {
 //            horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "$"+product_detailViewlmodel.getItem().price,
+                    text = "￥"+product_detailViewlmodel.getItem().price,
                     color = orange,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
@@ -387,8 +387,8 @@ fun ProductItemColorWithDesc() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(15.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(0.dp),
+                verticalAlignment = Alignment.CenterVertically
 
                 ) {
 
