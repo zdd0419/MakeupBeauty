@@ -515,7 +515,7 @@ class PostViewModel: ViewModel() {
 
 
     val myAvatar = "https://img.zrp.cool/2021/12/26/3ae3b54bc4c12.jpg" //本人头像
-    val myName = "小羊" //本人头像
+    var myName by mutableStateOf("游客")  //本人头像
     var index by mutableStateOf(0)
     var option by mutableStateOf(0)    //0:concern, 1:recommend
  //   var isFavorited by mutableStateOf(3)   //3表示没有修改过
@@ -547,16 +547,17 @@ class PostViewModel: ViewModel() {
 
     fun postComment(id: Int, comment: Comment) {
         if (option == 1) {
-            for (i in 0 until notes_detail.size) {
-                if (notes_detail[i].id == id) {
-                    notes_detail[i].commentlist.add(comment)
-                    break
-                }
-            }
-        } else if(option == 2){
             for (i in 0 until my_concern.size) {
                 if (my_concern[i].id == id) {
                     my_concern[i].commentlist.add(comment)
+                    break
+                }
+            }
+
+        } else if(option == 2){
+            for (i in 0 until notes_detail.size) {
+                if (notes_detail[i].id == id) {
+                    notes_detail[i].commentlist.add(comment)
                     break
                 }
             }
@@ -587,8 +588,6 @@ class PostViewModel: ViewModel() {
     }
 
     fun getPost(): notesData {
-        Log.e("option", option.toString())
-        Log.e("index", index.toString())
         if(option == 1) {
             return my_concern.elementAt(index)
         } else if(option == 2){

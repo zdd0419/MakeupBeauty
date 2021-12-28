@@ -25,7 +25,7 @@ fun UserItem(item: User, modifier: Modifier = Modifier, onClick:()->Unit = {}) {
     Card() {
         Row(modifier = Modifier.padding(12.dp)) {
             Image(
-                painter = painterResource(id = R.drawable.user1),
+                painter = painterResource(id = item.avater),
                 contentDescription = null,
                 modifier = Modifier
                     .clip(CircleShape)

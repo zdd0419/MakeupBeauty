@@ -411,7 +411,7 @@ fun ProductItemColorWithDesc() {
             ) {
                 commentCard(R.drawable.profile4, "蛋蛋", "10", 0, 0,"这新上新的口红好棒！姐妹们快冲！")
                 Divider(color = lightGrey, thickness = 2.dp)
-                commentCard(R.drawable.use1, "小羊", "1", 0, 0,"整体包装特别好看，口红不拔干，上嘴效果很好")
+                commentCard(R.drawable.user1, "小羊", "1", 0, 0,"整体包装特别好看，口红不拔干，上嘴效果很好")
                 Divider(color = lightGrey, thickness = 2.dp)
                 commentCard(R.drawable.profile2, "小熊", "2", 0, 0,"随便挑一个色号，都很好看！")
                 Divider(color = lightGrey, thickness = 2.dp)

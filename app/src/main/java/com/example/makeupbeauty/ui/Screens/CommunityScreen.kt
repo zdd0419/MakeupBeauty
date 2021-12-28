@@ -26,7 +26,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidisland.vita.VitaOwner
 import com.androidisland.vita.vita
-import com.example.makeupbeauty.data.ConcernDataProvider
+//import com.example.makeupbeauty.data.ConcernDataProvider
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.TryOn.TryOn
 import com.example.makeupbeauty.data.notesData

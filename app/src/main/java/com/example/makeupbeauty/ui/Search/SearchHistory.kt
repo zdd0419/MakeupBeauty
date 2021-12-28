@@ -3,6 +3,7 @@ package com.example.makeupbeauty.Search.ui.theme
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -70,13 +71,22 @@ fun showHistory() {
 @ExperimentalFoundationApi
 @Composable
 fun lazyVerticalGrid() {
-    //val list = remember { historyList }
-    LazyVerticalGrid(cells = GridCells.Fixed(3))
-    {
-       // items(historyList) {
-    //    Text("$it")
-     //   }
+    val list = remember { historyList }
+//    LazyVerticalGrid(cells = GridCells.Fixed(3))
+//    {
+//       // items(historyList) {
+//    //    Text("$it")
+//     //   }
+//    }
+    Column() {
+        LazyRow() {
+            list.forEach { item->
+
+            }
+        }
     }
+
+
 }
 
 

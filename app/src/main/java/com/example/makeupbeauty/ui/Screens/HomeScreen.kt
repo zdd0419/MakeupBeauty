@@ -26,6 +26,7 @@ import com.example.makeupbeauty.R
 import com.example.makeupbeauty.TryOn.TryOn
 import com.example.makeupbeauty.component.card.TopLabCards
 import com.example.makeupbeauty.data.DemoDataProvider
+//import com.example.makeupbeauty.data.DemoDataProvider
 import androidx.compose.foundation.lazy.items as items
 
 
