@@ -77,7 +77,9 @@ fun SearchButton(navController: NavController) {
                 .height(45.dp)
                 .clickable { navController.navigate("result") }
         ){
-            Text(text = "搜索")
+            Text(
+                text = "搜索",
+                fontSize = 10.sp)
         }
     }
 }
