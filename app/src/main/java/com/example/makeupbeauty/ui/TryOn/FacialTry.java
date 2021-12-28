@@ -48,7 +48,8 @@ public class FacialTry implements ResultGlRenderer<FaceMeshResult> {
     private float specular = 1.0f;
     private float specularPower = 6.0f;
     private Context context;
-    private boolean deepmode = true;
+    private boolean lips_deepmode = true;
+    private boolean brows_deepmode = true;
     private boolean putLip = false;
     private boolean putBrow = false;
 
@@ -84,12 +85,20 @@ public class FacialTry implements ResultGlRenderer<FaceMeshResult> {
         this.putBrow = putBrow;
     }
 
-    public void setBlendMode(boolean deepmode){
-        this.deepmode = deepmode;
+    public void setLips_deepmode() {
+        lips_deepmode = !lips_deepmode;
     }
 
-    public boolean getBlendMode(){
-        return deepmode;
+    public void setBrows_deepmode() {
+        brows_deepmode = !brows_deepmode;
+    }
+
+    public boolean isLips_deepmode() {
+        return lips_deepmode;
+    }
+
+    public boolean isBrows_deepmode() {
+        return brows_deepmode;
     }
 
     @Override
@@ -227,12 +236,12 @@ public class FacialTry implements ResultGlRenderer<FaceMeshResult> {
         GLES20.glVertexAttribPointer(attriUvs, 2, GLES20.GL_FLOAT, false, 0, textureCoords);
 
         GLES20.glDepthMask(true);
-//        if(deepmode){
-//
-//        }else{
-//            GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_SRC_ALPHA);
-//        }
-        GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_DST_COLOR);
+        if(lips_deepmode){
+            GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_DST_COLOR);
+        }else{
+            GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_SRC_ALPHA);
+        }
+
         GLES20.glDrawElements(
                 GLES20.GL_TRIANGLES, indexBuffer.limit(), GLES20.GL_UNSIGNED_SHORT, indexBuffer);
 
@@ -314,12 +323,11 @@ public class FacialTry implements ResultGlRenderer<FaceMeshResult> {
         GLES20.glVertexAttribPointer(attriUvs, 2, GLES20.GL_FLOAT, false, 0, textureCoords);
 
         GLES20.glDepthMask(true);
-//        if(deepmode){
-//            GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_DST_COLOR);
-//        }else{
-//
-//        }
-        GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_SRC_ALPHA);
+        if(brows_deepmode){
+            GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_SRC_ALPHA);
+        }else{
+            GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_DST_COLOR);
+        }
         GLES20.glDrawElements(
                 GLES20.GL_TRIANGLES, indexBuffer.limit(), GLES20.GL_UNSIGNED_SHORT, indexBuffer);
 

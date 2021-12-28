@@ -108,16 +108,6 @@
             android:textColor="#232323" />
 
         <Button
-            android:id="@+id/btn_eye"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FFFFFF"
-            android:onClick="eye_onClick"
-            android:text="美瞳"
-            android:textColor="#232323" />
-
-        <Button
             android:id="@+id/btn_brow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,6 +129,6 @@
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_business_24" />
+        app:srcCompat="@drawable/recycle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

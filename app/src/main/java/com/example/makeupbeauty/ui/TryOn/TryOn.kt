@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.makeupbeauty.R
 import com.example.makeupbeauty.ui.TryOn.FacialPart
 import com.example.makeupbeauty.ui.TryOn.FacialTry
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.mediapipe.components.TextureFrameConsumer
 import com.google.mediapipe.framework.TextureFrame
 import com.google.mediapipe.solutioncore.CameraInput
@@ -65,6 +66,15 @@ class TryOn : AppCompatActivity() {
 
     private fun setRecyclerView() {
         val recyclerview = findViewById<RecyclerView>(R.id.rec)
+        val floatingButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        floatingButton.setOnClickListener {
+            if(current == "LIP"){
+                glRenderer?.setLips_deepmode()
+            }else if(current == "BROW"){
+                glRenderer?.setBrows_deepmode()
+            }
+        }
         //设置布局管理器
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
@@ -74,15 +84,11 @@ class TryOn : AppCompatActivity() {
 
         if (current == "LIP")
             mAdapter = GalleryAdapter(this, lip_data)
-        else if (current == "EYE")
-            mAdapter = GalleryAdapter(this, eye_data)
         else if (current == "BROW")
             mAdapter = GalleryAdapter(this, brow_data)
 
         if (current == "LIP")
             mAdapter.selected_pos = selected_lip
-        else if (current == "EYE")
-            mAdapter.selected_pos = selected_eye
         else if (current == "BROW")
             mAdapter.selected_pos = selected_brow
 
@@ -94,11 +100,6 @@ class TryOn : AppCompatActivity() {
         change_category()
     }
 
-    fun eye_onClick(view: View) {
-        current = "EYE"
-        change_category()
-    }
-
     fun brow_onClick(view: View) {
         current = "BROW"
         change_category()
@@ -106,17 +107,13 @@ class TryOn : AppCompatActivity() {
 
     private fun change_category() {
         val lip_btn = findViewById<Button>(R.id.btn_lip)
-        val eye_btn = findViewById<Button>(R.id.btn_eye)
         val brow_btn = findViewById<Button>(R.id.btn_brow)
 
         lip_btn.setTextColor(getResources().getColor(R.color.black));
         brow_btn.setTextColor(getResources().getColor(R.color.black))
-        eye_btn.setTextColor(getResources().getColor(R.color.black))
 
         if(current == "LIP")
             lip_btn.setTextColor(getResources().getColor(R.color.purple_500))
-        if(current == "EYE")
-            eye_btn.setTextColor(getResources().getColor(R.color.purple_500))
         if(current == "BROW")
             brow_btn.setTextColor(getResources().getColor(R.color.purple_500))
 
@@ -211,8 +208,6 @@ class TryOn : AppCompatActivity() {
 
                 if(current == "LIP")
                     selected_lip = selected_pos
-                if(current == "EYE")
-                    selected_eye = selected_pos
                 if(current == "BROW")
                     selected_brow = selected_pos
 
